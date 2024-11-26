@@ -26,6 +26,10 @@ local function AddDisenchantInfo(tooltip, itemLink)
         table.insert(disenchantResults, "Strange Dust")
         table.insert(disenchantResults, "Lesser Astral Essence")
         table.insert(disenchantResults, "Small Glimmering Shard")
+    elseif itemLevel <= 30 then
+        table.insert(disenchantResults, "Soul Dust")
+        table.insert(disenchantResults, "Greater Astral Essence")
+        table.insert(disenchantResults, "Large Glimmering Shard")
     end
 
     tooltip:AddLine("Disenchant results:")
