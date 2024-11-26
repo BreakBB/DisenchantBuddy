@@ -263,5 +263,35 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Lesser Nether Essence", 1, 1, 1)
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Small Radiant Shard", 1, 1, 1)
         end)
+
+        it("should show tooltip for level 46 items", function()
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Uncommon, 46, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Dream Dust", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Greater Nether Essence", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Large Radiant Shard", 1, 1, 1)
+        end)
+
+        it("should show tooltip for level 50 items", function()
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Uncommon, 50, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Dream Dust", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Greater Nether Essence", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Large Radiant Shard", 1, 1, 1)
+        end)
     end)
 end)
