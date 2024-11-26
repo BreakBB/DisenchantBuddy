@@ -163,5 +163,50 @@ describe("DisenchantBuddy", function()
             assert.spy(tooltip.AddLine).was.called_with(tooltip, "Strange Dust", 1, 1, 1)
             assert.spy(tooltip.AddLine).was.called_with(tooltip, "Greater Magic Essence", 1, 1, 1)
         end)
+
+        it("should show tooltip for level 21 items", function()
+            ---@type GameTooltip
+            local tooltip = {
+                GetItem = spy.new(function()
+                    return "Gray Woolen Robe", "|cff1eff00|Hitem:2585:0:0:0:0:0:0:0:0:0:0|h[Gray Woolen Robe]|h|r"
+                end),
+                Show = spy.new(),
+                AddLine = spy.new(),
+            }
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Uncommon, 21, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(tooltip)
+
+            assert.spy(tooltip.GetItem).was.called()
+            assert.spy(tooltip.Show).was.called()
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Disenchant results:")
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Strange Dust", 1, 1, 1)
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Lesser Astral Essence", 1, 1, 1)
+        end)
+
+        it("should show tooltip for level 25 items", function()
+            ---@type GameTooltip
+            local tooltip = {
+                GetItem = spy.new(function()
+                    return "Fletcher's Gloves", "|cff1eff00|Hitem:7348:0:0:0:0:0:0:0:0:0:0|h[Fletcher's Gloves]|h|r"
+                end),
+                Show = spy.new(),
+                AddLine = spy.new(),
+            }
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Uncommon, 25, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(tooltip)
+
+            assert.spy(tooltip.GetItem).was.called()
+            assert.spy(tooltip.Show).was.called()
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Disenchant results:")
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Strange Dust", 1, 1, 1)
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Lesser Astral Essence", 1, 1, 1)
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Small Glimmering Shard", 1, 1, 1)
+        end)
     end)
 end)
