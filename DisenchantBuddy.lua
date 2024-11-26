@@ -5,6 +5,10 @@ local function AddDisenchantInfo(tooltip, itemLink)
 
     local _, _, quality, itemLevel, _, itemType = GetItemInfo(itemLink)
 
+    if quality == Enum.ItemQuality.Poor then
+        return false
+    end
+
     local disenchantResults = {}
 
     if itemLevel <= 15 then
@@ -16,14 +20,18 @@ local function AddDisenchantInfo(tooltip, itemLink)
     for _, result in ipairs(disenchantResults) do
         tooltip:AddLine(result, 1, 1, 1) -- White text
     end
+
+    return true
 end
 
 function DisenchantBuddy.OnTooltipSetItem(tooltip)
     local _, link = tooltip:GetItem()
 
-    AddDisenchantInfo(tooltip, link)
+    local tooltipAdded = AddDisenchantInfo(tooltip, link)
 
-    tooltip:Show()
+    if tooltipAdded then
+        tooltip:Show()
+    end
 end
 
 GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)

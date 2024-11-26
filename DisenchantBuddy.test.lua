@@ -16,6 +16,26 @@ describe("DisenchantBuddy", function()
     end)
 
     describe("OnTooltipSetItem", function()
+        it("should not show tooltip for poor quality items", function()
+            ---@type GameTooltip
+            local tooltip = {
+                GetItem = spy.new(function()
+                    return "Ruined Pelt", "|c9d9d9d|Hitem:2934:0:0:0:0:0:0:0:0:0:0|h[Ruined Pelt]|h|r"
+                end),
+                Show = spy.new(),
+                AddLine = spy.new(),
+            }
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Poor, 0, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(tooltip)
+
+            assert.spy(tooltip.GetItem).was.called()
+            assert.spy(tooltip.Show).was_not.called()
+            assert.spy(tooltip.AddLine).was_not.called()
+        end)
+
         it("should show tooltip for level 15 items", function()
             ---@type GameTooltip
             local tooltip = {
