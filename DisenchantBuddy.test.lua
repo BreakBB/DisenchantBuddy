@@ -15,7 +15,10 @@ describe("DisenchantBuddy", function()
             AddLine = spy.new(),
         }
         gameTooltipMock = _G.GameTooltip
-        DisenchantBuddy = require("DisenchantBuddy")
+
+        DisenchantBuddy = {}
+        -- We use `loadfile` over `require` to be able to hand in our own environment
+        loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
     end)
 
     it("should hook GameTooltip with OnTooltipSetItem", function()

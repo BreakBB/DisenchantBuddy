@@ -1,4 +1,4 @@
-local DisenchantBuddy = {}
+local _, DisenchantBuddy = ...
 
 ---@param itemLevel number
 ---@return table<string>|nil Disenchant results
