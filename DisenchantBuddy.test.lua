@@ -36,6 +36,26 @@ describe("DisenchantBuddy", function()
             assert.spy(tooltip.AddLine).was_not.called()
         end)
 
+        it("should not show tooltip for common quality items", function()
+            ---@type GameTooltip
+            local tooltip = {
+                GetItem = spy.new(function()
+                    return "Hillman's Cloak", "|c9d9d9d|Hitem:3719:0:0:0:0:0:0:0:0:0:0|h[Hillman's Cloak]|h|r"
+                end),
+                Show = spy.new(),
+                AddLine = spy.new(),
+            }
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Common, 0, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(tooltip)
+
+            assert.spy(tooltip.GetItem).was.called()
+            assert.spy(tooltip.Show).was_not.called()
+            assert.spy(tooltip.AddLine).was_not.called()
+        end)
+
         it("should show tooltip for level 15 items", function()
             ---@type GameTooltip
             local tooltip = {
