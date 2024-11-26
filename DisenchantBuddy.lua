@@ -2,7 +2,7 @@ local DisenchantBuddy = {}
 
 ---@param itemLevel number
 ---@return table<string> Disenchant results
-local function GetDisenchantResults(itemLevel)
+local function GetUncommonDisenchantResults(itemLevel)
     local disenchantResults = {}
 
     if itemLevel <= 15 then
@@ -52,6 +52,33 @@ local function GetDisenchantResults(itemLevel)
     return disenchantResults
 end
 
+---@param itemLevel number
+---@return table<string> Disenchant results
+local function GetRareDisenchantResults(itemLevel)
+    local disenchantResults = {}
+
+    if itemLevel <= 25 then
+        table.insert(disenchantResults, "Small Glimmering Shard")
+    elseif itemLevel <= 30 then
+        table.insert(disenchantResults, "Large Glimmering Shard")
+    elseif itemLevel <= 35 then
+        table.insert(disenchantResults, "Small Glowing Shard")
+    elseif itemLevel <= 40 then
+        table.insert(disenchantResults, "Large Glowing Shard")
+    elseif itemLevel <= 45 then
+        table.insert(disenchantResults, "Small Radiant Shard")
+    elseif itemLevel <= 50 then
+        table.insert(disenchantResults, "Large Radiant Shard")
+    elseif itemLevel <= 55 then
+        table.insert(disenchantResults, "Small Brilliant Shard")
+    elseif itemLevel <= 65 then
+        table.insert(disenchantResults, "Large Brilliant Shard")
+        table.insert(disenchantResults, "Nexus Crystal")
+    end
+
+    return disenchantResults
+end
+
 ---@param tooltip GameTooltip
 ---@param itemLink string
 ---@return boolean True if tooltip was added, false otherwise
@@ -64,7 +91,12 @@ local function AddDisenchantInfo(tooltip, itemLink)
         return false
     end
 
-    local disenchantResults = GetDisenchantResults(itemLevel)
+    local disenchantResults
+    if quality == Enum.ItemQuality.Good then
+        disenchantResults = GetUncommonDisenchantResults(itemLevel)
+    elseif quality == Enum.ItemQuality.Rare then
+        disenchantResults = GetRareDisenchantResults(itemLevel)
+    end
 
     tooltip:AddLine("Disenchant results:")
     for _, result in ipairs(disenchantResults) do
