@@ -50,6 +50,10 @@ local function AddDisenchantInfo(tooltip, itemLink)
         table.insert(disenchantResults, "Dream Dust")
         table.insert(disenchantResults, "Lesser Eternal Essence")
         table.insert(disenchantResults, "Small Brilliant Shard")
+    elseif itemLevel <= 60 then
+        table.insert(disenchantResults, "Illusion Dust")
+        table.insert(disenchantResults, "Greater Eternal Essence")
+        table.insert(disenchantResults, "Large Brilliant Shard")
     end
 
     tooltip:AddLine("Disenchant results:")
