@@ -14,7 +14,9 @@ exclude_files = {
 }
 ignore = {}
 globals = {
+    "Enum",
     "GameTooltip",
+    "GetItemInfo",
     "assert.spy",
     "describe",
     "before_each",

@@ -1,3 +1,5 @@
+dofile(".types/wow-api/library/Data/Enum.lua")
+
 describe("DisenchantBuddy", function()
 
     local DisenchantBuddy
@@ -14,18 +16,26 @@ describe("DisenchantBuddy", function()
     end)
 
     describe("OnTooltipSetItem", function()
-        it("should show tooltip", function()
+        it("should show tooltip for level 15 items", function()
+            ---@type GameTooltip
             local tooltip = {
                 GetItem = spy.new(function()
-                    return "Cookie's Tenderizer", "|cff1eff00|Hitem:5197:0:0:0:0:0:0:0:0:0:0|h[Cookie's Tenderizer]|h|r"
+                    return "Red Linen Robe", "|cff1eff00|Hitem:2572:0:0:0:0:0:0:0:0:0:0|h[Red Linen Robe]|h|r"
                 end),
-                Show = spy.new()
+                Show = spy.new(),
+                AddLine = spy.new(),
             }
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Uncommon, 15, nil, Enum.ItemClass.Armor
+            end)
 
             DisenchantBuddy.OnTooltipSetItem(tooltip)
 
             assert.spy(tooltip.GetItem).was.called()
             assert.spy(tooltip.Show).was.called()
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Disenchant results:")
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Strange Dust", 1, 1, 1)
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Lesser Magic Essence", 1, 1, 1)
         end)
     end)
 end)
