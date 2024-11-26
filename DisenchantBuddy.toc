@@ -1,0 +1,7 @@
+## Interface: 11505
+## Title: Disenchant Buddy
+## Author: BreakBB
+## Notes: A lightweight addon to show disenchant results.
+## Version: 0.0.1
+
+DisenchantBuddy.lua
