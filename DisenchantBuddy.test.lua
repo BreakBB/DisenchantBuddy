@@ -56,6 +56,26 @@ describe("DisenchantBuddy", function()
             assert.spy(tooltip.AddLine).was_not.called()
         end)
 
+        it("should not show tooltip for item types other than armor and weapon", function()
+            ---@type GameTooltip
+            local tooltip = {
+                GetItem = spy.new(function()
+                    return "Small Blue Pouch", "|cff1eff00|Hitem:4496:0:0:0:0:0:0:0:0:0:0|h[Small Blue Pouch]|h|r"
+                end),
+                Show = spy.new(),
+                AddLine = spy.new(),
+            }
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Uncommon, 0, nil, Enum.ItemClass.Container
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(tooltip)
+
+            assert.spy(tooltip.GetItem).was.called()
+            assert.spy(tooltip.Show).was_not.called()
+            assert.spy(tooltip.AddLine).was_not.called()
+        end)
+
         it("should show tooltip for level 15 items", function()
             ---@type GameTooltip
             local tooltip = {
