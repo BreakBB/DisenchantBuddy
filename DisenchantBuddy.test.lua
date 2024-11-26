@@ -203,5 +203,35 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Lesser Mystic Essence", 1, 1, 1)
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Small Glowing Shard", 1, 1, 1)
         end)
+
+        it("should show tooltip for level 36 items", function()
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Uncommon, 36, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Vision Dust", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Greater Mystic Essence", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Large Glowing Shard", 1, 1, 1)
+        end)
+
+        it("should show tooltip for level 40 items", function()
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Uncommon, 40, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Vision Dust", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Greater Mystic Essence", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Large Glowing Shard", 1, 1, 1)
+        end)
     end)
 end)
