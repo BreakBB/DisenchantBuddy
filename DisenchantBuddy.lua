@@ -38,6 +38,10 @@ local function AddDisenchantInfo(tooltip, itemLink)
         table.insert(disenchantResults, "Vision Dust")
         table.insert(disenchantResults, "Greater Mystic Essence")
         table.insert(disenchantResults, "Large Glowing Shard")
+    elseif itemLevel <= 45 then
+        table.insert(disenchantResults, "Vision Dust")
+        table.insert(disenchantResults, "Lesser Nether Essence")
+        table.insert(disenchantResults, "Small Radiant Shard")
     end
 
     tooltip:AddLine("Disenchant results:")
