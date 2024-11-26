@@ -1,5 +1,8 @@
 local DisenchantBuddy = {}
 
+---@param tooltip GameTooltip
+---@param itemLink string
+---@return boolean True if tooltip was added, false otherwise
 local function AddDisenchantInfo(tooltip, itemLink)
     -- TODO: Add disenchant info to tooltip
 
@@ -24,6 +27,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
     return true
 end
 
+---@param tooltip GameTooltip
 function DisenchantBuddy.OnTooltipSetItem(tooltip)
     local _, link = tooltip:GetItem()
 
