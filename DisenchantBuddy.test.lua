@@ -7,6 +7,11 @@ describe("DisenchantBuddy", function()
     before_each(function()
         _G.GameTooltip = {
             HookScript = spy.new(),
+            GetItem = spy.new(function()
+                return "itemName", "itemLink"
+            end),
+            Show = spy.new(),
+            AddLine = spy.new(),
         }
         DisenchantBuddy = require("DisenchantBuddy")
     end)
@@ -17,14 +22,7 @@ describe("DisenchantBuddy", function()
 
     describe("OnTooltipSetItem", function()
         it("should not show tooltip for poor quality items", function()
-            ---@type GameTooltip
-            local tooltip = {
-                GetItem = spy.new(function()
-                    return "Ruined Pelt", "|c9d9d9d|Hitem:2934:0:0:0:0:0:0:0:0:0:0|h[Ruined Pelt]|h|r"
-                end),
-                Show = spy.new(),
-                AddLine = spy.new(),
-            }
+            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Poor, 0, nil, Enum.ItemClass.Armor
             end)
@@ -37,14 +35,7 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should not show tooltip for common quality items", function()
-            ---@type GameTooltip
-            local tooltip = {
-                GetItem = spy.new(function()
-                    return "Hillman's Cloak", "|c9d9d9d|Hitem:3719:0:0:0:0:0:0:0:0:0:0|h[Hillman's Cloak]|h|r"
-                end),
-                Show = spy.new(),
-                AddLine = spy.new(),
-            }
+            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Common, 0, nil, Enum.ItemClass.Armor
             end)
@@ -57,14 +48,7 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should not show tooltip for item types other than armor and weapon", function()
-            ---@type GameTooltip
-            local tooltip = {
-                GetItem = spy.new(function()
-                    return "Small Blue Pouch", "|cff1eff00|Hitem:4496:0:0:0:0:0:0:0:0:0:0|h[Small Blue Pouch]|h|r"
-                end),
-                Show = spy.new(),
-                AddLine = spy.new(),
-            }
+            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 0, nil, Enum.ItemClass.Container
             end)
@@ -77,14 +61,7 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should show tooltip for level 5 items", function()
-            ---@type GameTooltip
-            local tooltip = {
-                GetItem = spy.new(function()
-                    return "Red Linen Robe", "|cff1eff00|Hitem:2572:0:0:0:0:0:0:0:0:0:0|h[Red Linen Robe]|h|r"
-                end),
-                Show = spy.new(),
-                AddLine = spy.new(),
-            }
+            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 5, nil, Enum.ItemClass.Armor
             end)
@@ -99,14 +76,7 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should show tooltip for level 15 items", function()
-            ---@type GameTooltip
-            local tooltip = {
-                GetItem = spy.new(function()
-                    return "Shadow Goggles", "|cff1eff00|Hitem:4373:0:0:0:0:0:0:0:0:0:0|h[Shadow Goggles]|h|r"
-                end),
-                Show = spy.new(),
-                AddLine = spy.new(),
-            }
+            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 15, nil, Enum.ItemClass.Armor
             end)
@@ -121,14 +91,7 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should show tooltip for level 16 items", function()
-            ---@type GameTooltip
-            local tooltip = {
-                GetItem = spy.new(function()
-                    return "Soft-soled Linen Boots", "|cff1eff00|Hitem:4312:0:0:0:0:0:0:0:0:0:0|h[Soft-soled Linen Boots]|h|r"
-                end),
-                Show = spy.new(),
-                AddLine = spy.new(),
-            }
+            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 16, nil, Enum.ItemClass.Armor
             end)
@@ -143,14 +106,7 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should show tooltip for level 20 items", function()
-            ---@type GameTooltip
-            local tooltip = {
-                GetItem = spy.new(function()
-                    return "War Paint Shield", "|cff1eff00|Hitem:14729:0:0:0:0:0:0:0:0:0:0|h[War Paint Shield]|h|r"
-                end),
-                Show = spy.new(),
-                AddLine = spy.new(),
-            }
+            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 20, nil, Enum.ItemClass.Armor
             end)
@@ -165,14 +121,7 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should show tooltip for level 21 items", function()
-            ---@type GameTooltip
-            local tooltip = {
-                GetItem = spy.new(function()
-                    return "Gray Woolen Robe", "|cff1eff00|Hitem:2585:0:0:0:0:0:0:0:0:0:0|h[Gray Woolen Robe]|h|r"
-                end),
-                Show = spy.new(),
-                AddLine = spy.new(),
-            }
+            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 21, nil, Enum.ItemClass.Armor
             end)
@@ -187,14 +136,7 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should show tooltip for level 25 items", function()
-            ---@type GameTooltip
-            local tooltip = {
-                GetItem = spy.new(function()
-                    return "Fletcher's Gloves", "|cff1eff00|Hitem:7348:0:0:0:0:0:0:0:0:0:0|h[Fletcher's Gloves]|h|r"
-                end),
-                Show = spy.new(),
-                AddLine = spy.new(),
-            }
+            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 25, nil, Enum.ItemClass.Armor
             end)
