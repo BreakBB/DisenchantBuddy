@@ -3,6 +3,7 @@ dofile(".types/wow-api/library/Data/Enum.lua")
 describe("DisenchantBuddy", function()
 
     local DisenchantBuddy
+    local gameTooltipMock
 
     before_each(function()
         _G.GameTooltip = {
@@ -13,6 +14,7 @@ describe("DisenchantBuddy", function()
             Show = spy.new(),
             AddLine = spy.new(),
         }
+        gameTooltipMock = _G.GameTooltip
         DisenchantBuddy = require("DisenchantBuddy")
     end)
 
@@ -22,133 +24,124 @@ describe("DisenchantBuddy", function()
 
     describe("OnTooltipSetItem", function()
         it("should not show tooltip for poor quality items", function()
-            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Poor, 0, nil, Enum.ItemClass.Armor
             end)
 
-            DisenchantBuddy.OnTooltipSetItem(tooltip)
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
-            assert.spy(tooltip.GetItem).was.called()
-            assert.spy(tooltip.Show).was_not.called()
-            assert.spy(tooltip.AddLine).was_not.called()
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was_not.called()
+            assert.spy(gameTooltipMock.AddLine).was_not.called()
         end)
 
         it("should not show tooltip for common quality items", function()
-            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Common, 0, nil, Enum.ItemClass.Armor
             end)
 
-            DisenchantBuddy.OnTooltipSetItem(tooltip)
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
-            assert.spy(tooltip.GetItem).was.called()
-            assert.spy(tooltip.Show).was_not.called()
-            assert.spy(tooltip.AddLine).was_not.called()
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was_not.called()
+            assert.spy(gameTooltipMock.AddLine).was_not.called()
         end)
 
         it("should not show tooltip for item types other than armor and weapon", function()
-            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 0, nil, Enum.ItemClass.Container
             end)
 
-            DisenchantBuddy.OnTooltipSetItem(tooltip)
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
-            assert.spy(tooltip.GetItem).was.called()
-            assert.spy(tooltip.Show).was_not.called()
-            assert.spy(tooltip.AddLine).was_not.called()
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was_not.called()
+            assert.spy(gameTooltipMock.AddLine).was_not.called()
         end)
 
         it("should show tooltip for level 5 items", function()
-            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 5, nil, Enum.ItemClass.Armor
             end)
 
-            DisenchantBuddy.OnTooltipSetItem(tooltip)
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
-            assert.spy(tooltip.GetItem).was.called()
-            assert.spy(tooltip.Show).was.called()
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Disenchant results:")
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Strange Dust", 1, 1, 1)
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Lesser Magic Essence", 1, 1, 1)
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Strange Dust", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Lesser Magic Essence", 1, 1, 1)
         end)
 
         it("should show tooltip for level 15 items", function()
-            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 15, nil, Enum.ItemClass.Armor
             end)
 
-            DisenchantBuddy.OnTooltipSetItem(tooltip)
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
-            assert.spy(tooltip.GetItem).was.called()
-            assert.spy(tooltip.Show).was.called()
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Disenchant results:")
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Strange Dust", 1, 1, 1)
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Lesser Magic Essence", 1, 1, 1)
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Strange Dust", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Lesser Magic Essence", 1, 1, 1)
         end)
 
         it("should show tooltip for level 16 items", function()
-            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 16, nil, Enum.ItemClass.Armor
             end)
 
-            DisenchantBuddy.OnTooltipSetItem(tooltip)
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
-            assert.spy(tooltip.GetItem).was.called()
-            assert.spy(tooltip.Show).was.called()
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Disenchant results:")
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Strange Dust", 1, 1, 1)
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Greater Magic Essence", 1, 1, 1)
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Strange Dust", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Greater Magic Essence", 1, 1, 1)
         end)
 
         it("should show tooltip for level 20 items", function()
-            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 20, nil, Enum.ItemClass.Armor
             end)
 
-            DisenchantBuddy.OnTooltipSetItem(tooltip)
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
-            assert.spy(tooltip.GetItem).was.called()
-            assert.spy(tooltip.Show).was.called()
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Disenchant results:")
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Strange Dust", 1, 1, 1)
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Greater Magic Essence", 1, 1, 1)
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Strange Dust", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Greater Magic Essence", 1, 1, 1)
         end)
 
         it("should show tooltip for level 21 items", function()
-            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 21, nil, Enum.ItemClass.Armor
             end)
 
-            DisenchantBuddy.OnTooltipSetItem(tooltip)
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
-            assert.spy(tooltip.GetItem).was.called()
-            assert.spy(tooltip.Show).was.called()
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Disenchant results:")
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Strange Dust", 1, 1, 1)
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Lesser Astral Essence", 1, 1, 1)
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Strange Dust", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Lesser Astral Essence", 1, 1, 1)
         end)
 
         it("should show tooltip for level 25 items", function()
-            local tooltip = _G.GameTooltip
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Uncommon, 25, nil, Enum.ItemClass.Armor
             end)
 
-            DisenchantBuddy.OnTooltipSetItem(tooltip)
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
-            assert.spy(tooltip.GetItem).was.called()
-            assert.spy(tooltip.Show).was.called()
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Disenchant results:")
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Strange Dust", 1, 1, 1)
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Lesser Astral Essence", 1, 1, 1)
-            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Small Glimmering Shard", 1, 1, 1)
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Strange Dust", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Lesser Astral Essence", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Small Glimmering Shard", 1, 1, 1)
         end)
     end)
 end)
