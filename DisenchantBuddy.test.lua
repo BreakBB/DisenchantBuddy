@@ -76,11 +76,33 @@ describe("DisenchantBuddy", function()
             assert.spy(tooltip.AddLine).was_not.called()
         end)
 
-        it("should show tooltip for level 15 items", function()
+        it("should show tooltip for level 5 items", function()
             ---@type GameTooltip
             local tooltip = {
                 GetItem = spy.new(function()
                     return "Red Linen Robe", "|cff1eff00|Hitem:2572:0:0:0:0:0:0:0:0:0:0|h[Red Linen Robe]|h|r"
+                end),
+                Show = spy.new(),
+                AddLine = spy.new(),
+            }
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Uncommon, 5, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(tooltip)
+
+            assert.spy(tooltip.GetItem).was.called()
+            assert.spy(tooltip.Show).was.called()
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Disenchant results:")
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Strange Dust", 1, 1, 1)
+            assert.spy(tooltip.AddLine).was.called_with(tooltip, "Lesser Magic Essence", 1, 1, 1)
+        end)
+
+        it("should show tooltip for level 15 items", function()
+            ---@type GameTooltip
+            local tooltip = {
+                GetItem = spy.new(function()
+                    return "Shadow Goggles", "|cff1eff00|Hitem:4373:0:0:0:0:0:0:0:0:0:0|h[Shadow Goggles]|h|r"
                 end),
                 Show = spy.new(),
                 AddLine = spy.new(),
