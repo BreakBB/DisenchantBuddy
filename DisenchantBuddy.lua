@@ -1,19 +1,8 @@
 local DisenchantBuddy = {}
 
----@param tooltip GameTooltip
----@param itemLink string
----@return boolean True if tooltip was added, false otherwise
-local function AddDisenchantInfo(tooltip, itemLink)
-    -- TODO: Add disenchant info to tooltip
-
-    local _, _, quality, itemLevel, _, _, _, _, _, _, _, classId = GetItemInfo(itemLink)
-
-    if quality == Enum.ItemQuality.Poor or
-            quality == Enum.ItemQuality.Standard or
-            (classId ~= Enum.ItemClass.Armor and classId ~= Enum.ItemClass.Weapon) then
-        return false
-    end
-
+---@param itemLevel number
+---@return table<string> Disenchant results
+local function GetDisenchantResults(itemLevel)
     local disenchantResults = {}
 
     if itemLevel <= 15 then
@@ -59,6 +48,25 @@ local function AddDisenchantInfo(tooltip, itemLink)
         table.insert(disenchantResults, "Greater Eternal Essence")
         table.insert(disenchantResults, "Large Brilliant Shard")
     end
+
+    return disenchantResults
+end
+
+---@param tooltip GameTooltip
+---@param itemLink string
+---@return boolean True if tooltip was added, false otherwise
+local function AddDisenchantInfo(tooltip, itemLink)
+    -- TODO: Add disenchant info to tooltip
+
+    local _, _, quality, itemLevel, _, _, _, _, _, _, _, classId = GetItemInfo(itemLink)
+
+    if quality == Enum.ItemQuality.Poor or
+            quality == Enum.ItemQuality.Standard or
+            (classId ~= Enum.ItemClass.Armor and classId ~= Enum.ItemClass.Weapon) then
+        return false
+    end
+
+    local disenchantResults = GetDisenchantResults(itemLevel)
 
     tooltip:AddLine("Disenchant results:")
     for _, result in ipairs(disenchantResults) do
