@@ -3488,8 +3488,10 @@ Enum.ItemProfessionSubclass = {
 ---@enum Enum.ItemQuality
 Enum.ItemQuality = {
 	Poor = 0,
-	Common = 1,
-	Uncommon = 2,
+	--Common = 1,
+	Standard = 1, -- Classic
+	--Uncommon = 2,
+	Good = 2, -- Classic
 	Rare = 3,
 	Epic = 4,
 	Legendary = 5,

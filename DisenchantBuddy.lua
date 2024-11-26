@@ -9,7 +9,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
     local _, _, quality, itemLevel, _, _, _, _, _, _, _, classId = GetItemInfo(itemLink)
 
     if quality == Enum.ItemQuality.Poor or
-            quality == Enum.ItemQuality.Common or
+            quality == Enum.ItemQuality.Standard or
             (classId ~= Enum.ItemClass.Armor and classId ~= Enum.ItemClass.Weapon) then
         return false
     end
