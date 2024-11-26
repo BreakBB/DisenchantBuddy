@@ -25,7 +25,7 @@ describe("DisenchantBuddy", function()
     describe("OnTooltipSetItem", function()
         it("should not show tooltip for poor quality items", function()
             _G.GetItemInfo = spy.new(function()
-                return nil, nil, Enum.ItemQuality.Poor, 0, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                return nil, nil, Enum.ItemQuality.Poor, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
@@ -37,7 +37,7 @@ describe("DisenchantBuddy", function()
 
         it("should not show tooltip for common quality items", function()
             _G.GetItemInfo = spy.new(function()
-                return nil, nil, Enum.ItemQuality.Standard, 0, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                return nil, nil, Enum.ItemQuality.Standard, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
@@ -49,7 +49,7 @@ describe("DisenchantBuddy", function()
 
         it("should not show tooltip for legendary quality items", function()
             _G.GetItemInfo = spy.new(function()
-                return nil, nil, Enum.ItemQuality.Legendary, 0, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                return nil, nil, Enum.ItemQuality.Legendary, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
@@ -61,7 +61,7 @@ describe("DisenchantBuddy", function()
 
         it("should not show tooltip for item types other than armor and weapon", function()
             _G.GetItemInfo = spy.new(function()
-                return nil, nil, Enum.ItemQuality.Good, 0, nil, Enum.ItemClass.Container
+                return nil, nil, Enum.ItemQuality.Good, 5, nil, Enum.ItemClass.Container
             end)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
@@ -72,6 +72,18 @@ describe("DisenchantBuddy", function()
         end)
 
         describe("Uncommon armor", function()
+            it("should not show tooltip for unhandled item level", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Good, 66, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was_not.called()
+                assert.spy(gameTooltipMock.AddLine).was_not.called()
+            end)
+
             it("should show tooltip for level 5 items", function()
                 _G.GetItemInfo = spy.new(function()
                     return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
@@ -399,6 +411,18 @@ describe("DisenchantBuddy", function()
         end)
 
         describe("Rare items", function()
+            it("should not show tooltip for unhandled item level", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Rare, 66, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was_not.called()
+                assert.spy(gameTooltipMock.AddLine).was_not.called()
+            end)
+
             it("should show tooltip for level 5 items", function()
                 _G.GetItemInfo = spy.new(function()
                     return nil, nil, Enum.ItemQuality.Rare, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
@@ -691,6 +715,18 @@ describe("DisenchantBuddy", function()
         end)
 
         describe("Epic items", function()
+            it("should not show tooltip for unhandled item level", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Epic, 66, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was_not.called()
+                assert.spy(gameTooltipMock.AddLine).was_not.called()
+            end)
+
             it("should show tooltip for level 40 items", function()
                 _G.GetItemInfo = spy.new(function()
                     return nil, nil, Enum.ItemQuality.Epic, 40, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor

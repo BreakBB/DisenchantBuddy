@@ -1,7 +1,7 @@
 local DisenchantBuddy = {}
 
 ---@param itemLevel number
----@return table<string> Disenchant results
+---@return table<string>|nil Disenchant results
 local function GetUncommonDisenchantResults(itemLevel)
     if itemLevel <= 15 then
         return {"Strange Dust","Lesser Magic Essence"}
@@ -26,12 +26,12 @@ local function GetUncommonDisenchantResults(itemLevel)
     elseif itemLevel <= 65 then
         return {"Illusion Dust","Greater Eternal Essence","Large Brilliant Shard"}
     else
-        return {}
+        return nil
     end
 end
 
 ---@param itemLevel number
----@return table<string> Disenchant results
+---@return table<string>|nil Disenchant results
 local function GetRareDisenchantResults(itemLevel)
     if itemLevel <= 25 then
         return {"Small Glimmering Shard"}
@@ -50,12 +50,12 @@ local function GetRareDisenchantResults(itemLevel)
     elseif itemLevel <= 65 then
         return {"Large Brilliant Shard","Nexus Crystal"}
     else
-        return {}
+        return nil
     end
 end
 
 ---@param itemLevel number
----@return table<string> Disenchant results
+---@return table<string>|nil Disenchant results
 local function GetEpicDisenchantResults(itemLevel)
     if itemLevel <= 45 then
         return {"Small Radiant Shard"}
@@ -66,7 +66,7 @@ local function GetEpicDisenchantResults(itemLevel)
     elseif itemLevel <= 65 then
         return {"Nexus Crystal"}
     else
-        return {}
+        return nil
     end
 end
 
@@ -90,6 +90,11 @@ local function AddDisenchantInfo(tooltip, itemLink)
         disenchantResults = GetRareDisenchantResults(itemLevel)
     elseif quality == Enum.ItemQuality.Epic then
         disenchantResults = GetEpicDisenchantResults(itemLevel)
+    end
+
+    if (not disenchantResults) then
+        -- No disenchant results for this item, e.g. itemLevel too high
+        return false
     end
 
     tooltip:AddLine("Disenchant results:")
