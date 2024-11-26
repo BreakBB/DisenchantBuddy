@@ -689,5 +689,137 @@ describe("DisenchantBuddy", function()
                 assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Nexus Crystal", 1, 1, 1)
             end)
         end)
+
+        describe("Epic items", function()
+            it("should show tooltip for level 40 items", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Epic, 40, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was.called()
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Small Radiant Shard", 1, 1, 1)
+            end)
+
+            it("should show tooltip for level 45 items", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Epic, 45, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was.called()
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Small Radiant Shard", 1, 1, 1)
+            end)
+
+            it("should show tooltip for level 46 items", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Epic, 46, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was.called()
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Large Radiant Shard", 1, 1, 1)
+            end)
+
+            it("should show tooltip for level 50 items", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Epic, 50, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was.called()
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Large Radiant Shard", 1, 1, 1)
+            end)
+
+            it("should show tooltip for level 51 items", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Epic, 51, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was.called()
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Small Brilliant Shard", 1, 1, 1)
+            end)
+
+            it("should show tooltip for level 55 items", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Epic, 55, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was.called()
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Small Brilliant Shard", 1, 1, 1)
+            end)
+
+            it("should show tooltip for level 56 items", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Epic, 56, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was.called()
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Nexus Crystal", 1, 1, 1)
+            end)
+
+            it("should show tooltip for level 60 items", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Epic, 60, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was.called()
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Nexus Crystal", 1, 1, 1)
+            end)
+
+            it("should show tooltip for level 61 items", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Epic, 61, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was.called()
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Nexus Crystal", 1, 1, 1)
+            end)
+
+            it("should show tooltip for level 65 items", function()
+                _G.GetItemInfo = spy.new(function()
+                    return nil, nil, Enum.ItemQuality.Epic, 65, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                end)
+
+                DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+                assert.spy(gameTooltipMock.GetItem).was.called()
+                assert.spy(gameTooltipMock.Show).was.called()
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+                assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Nexus Crystal", 1, 1, 1)
+            end)
+        end)
     end)
 end)

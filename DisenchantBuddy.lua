@@ -79,6 +79,24 @@ local function GetRareDisenchantResults(itemLevel)
     return disenchantResults
 end
 
+---@param itemLevel number
+---@return table<string> Disenchant results
+local function GetEpicDisenchantResults(itemLevel)
+    local disenchantResults = {}
+
+    if itemLevel <= 45 then
+        table.insert(disenchantResults, "Small Radiant Shard")
+    elseif itemLevel <= 50 then
+        table.insert(disenchantResults, "Large Radiant Shard")
+    elseif itemLevel <= 55 then
+        table.insert(disenchantResults, "Small Brilliant Shard")
+    elseif itemLevel <= 65 then
+        table.insert(disenchantResults, "Nexus Crystal")
+    end
+
+    return disenchantResults
+end
+
 ---@param tooltip GameTooltip
 ---@param itemLink string
 ---@return boolean True if tooltip was added, false otherwise
@@ -97,6 +115,8 @@ local function AddDisenchantInfo(tooltip, itemLink)
         disenchantResults = GetUncommonDisenchantResults(itemLevel)
     elseif quality == Enum.ItemQuality.Rare then
         disenchantResults = GetRareDisenchantResults(itemLevel)
+    elseif quality == Enum.ItemQuality.Epic then
+        disenchantResults = GetEpicDisenchantResults(itemLevel)
     end
 
     tooltip:AddLine("Disenchant results:")
