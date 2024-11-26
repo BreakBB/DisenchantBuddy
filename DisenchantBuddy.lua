@@ -3,98 +3,71 @@ local DisenchantBuddy = {}
 ---@param itemLevel number
 ---@return table<string> Disenchant results
 local function GetUncommonDisenchantResults(itemLevel)
-    local disenchantResults = {}
-
     if itemLevel <= 15 then
-        table.insert(disenchantResults, "Strange Dust")
-        table.insert(disenchantResults, "Lesser Magic Essence")
+        return {"Strange Dust","Lesser Magic Essence"}
     elseif itemLevel <= 20 then
-        table.insert(disenchantResults, "Strange Dust")
-        table.insert(disenchantResults, "Greater Magic Essence")
+        return {"Strange Dust","Greater Magic Essence"}
     elseif itemLevel <= 25 then
-        table.insert(disenchantResults, "Strange Dust")
-        table.insert(disenchantResults, "Lesser Astral Essence")
-        table.insert(disenchantResults, "Small Glimmering Shard")
+        return {"Strange Dust","Lesser Astral Essence","Small Glimmering Shard"}
     elseif itemLevel <= 30 then
-        table.insert(disenchantResults, "Soul Dust")
-        table.insert(disenchantResults, "Greater Astral Essence")
-        table.insert(disenchantResults, "Large Glimmering Shard")
+        return {"Soul Dust","Greater Astral Essence","Large Glimmering Shard"}
     elseif itemLevel <= 35 then
-        table.insert(disenchantResults, "Soul Dust")
-        table.insert(disenchantResults, "Lesser Mystic Essence")
-        table.insert(disenchantResults, "Small Glowing Shard")
+        return {"Soul Dust","Lesser Mystic Essence","Small Glowing Shard"}
     elseif itemLevel <= 40 then
-        table.insert(disenchantResults, "Vision Dust")
-        table.insert(disenchantResults, "Greater Mystic Essence")
-        table.insert(disenchantResults, "Large Glowing Shard")
+        return {"Vision Dust","Greater Mystic Essence","Large Glowing Shard"}
     elseif itemLevel <= 45 then
-        table.insert(disenchantResults, "Vision Dust")
-        table.insert(disenchantResults, "Lesser Nether Essence")
-        table.insert(disenchantResults, "Small Radiant Shard")
+        return {"Vision Dust","Lesser Nether Essence","Small Radiant Shard"}
     elseif itemLevel <= 50 then
-        table.insert(disenchantResults, "Dream Dust")
-        table.insert(disenchantResults, "Greater Nether Essence")
-        table.insert(disenchantResults, "Large Radiant Shard")
+        return {"Dream Dust","Greater Nether Essence","Large Radiant Shard"}
     elseif itemLevel <= 55 then
-        table.insert(disenchantResults, "Dream Dust")
-        table.insert(disenchantResults, "Lesser Eternal Essence")
-        table.insert(disenchantResults, "Small Brilliant Shard")
+        return {"Dream Dust","Lesser Eternal Essence","Small Brilliant Shard"}
     elseif itemLevel <= 60 then
-        table.insert(disenchantResults, "Illusion Dust")
-        table.insert(disenchantResults, "Greater Eternal Essence")
-        table.insert(disenchantResults, "Large Brilliant Shard")
+        return {"Illusion Dust","Greater Eternal Essence","Large Brilliant Shard"}
     elseif itemLevel <= 65 then
-        table.insert(disenchantResults, "Illusion Dust")
-        table.insert(disenchantResults, "Greater Eternal Essence")
-        table.insert(disenchantResults, "Large Brilliant Shard")
+        return {"Illusion Dust","Greater Eternal Essence","Large Brilliant Shard"}
+    else
+        return {}
     end
-
-    return disenchantResults
 end
 
 ---@param itemLevel number
 ---@return table<string> Disenchant results
 local function GetRareDisenchantResults(itemLevel)
-    local disenchantResults = {}
-
     if itemLevel <= 25 then
-        table.insert(disenchantResults, "Small Glimmering Shard")
+        return {"Small Glimmering Shard"}
     elseif itemLevel <= 30 then
-        table.insert(disenchantResults, "Large Glimmering Shard")
+        return {"Large Glimmering Shard"}
     elseif itemLevel <= 35 then
-        table.insert(disenchantResults, "Small Glowing Shard")
+        return {"Small Glowing Shard"}
     elseif itemLevel <= 40 then
-        table.insert(disenchantResults, "Large Glowing Shard")
+        return {"Large Glowing Shard"}
     elseif itemLevel <= 45 then
-        table.insert(disenchantResults, "Small Radiant Shard")
+        return {"Small Radiant Shard"}
     elseif itemLevel <= 50 then
-        table.insert(disenchantResults, "Large Radiant Shard")
+        return {"Large Radiant Shard"}
     elseif itemLevel <= 55 then
-        table.insert(disenchantResults, "Small Brilliant Shard")
+        return {"Small Brilliant Shard"}
     elseif itemLevel <= 65 then
-        table.insert(disenchantResults, "Large Brilliant Shard")
-        table.insert(disenchantResults, "Nexus Crystal")
+        return {"Large Brilliant Shard","Nexus Crystal"}
+    else
+        return {}
     end
-
-    return disenchantResults
 end
 
 ---@param itemLevel number
 ---@return table<string> Disenchant results
 local function GetEpicDisenchantResults(itemLevel)
-    local disenchantResults = {}
-
     if itemLevel <= 45 then
-        table.insert(disenchantResults, "Small Radiant Shard")
+        return {"Small Radiant Shard"}
     elseif itemLevel <= 50 then
-        table.insert(disenchantResults, "Large Radiant Shard")
+        return {"Large Radiant Shard"}
     elseif itemLevel <= 55 then
-        table.insert(disenchantResults, "Small Brilliant Shard")
+        return {"Small Brilliant Shard"}
     elseif itemLevel <= 65 then
-        table.insert(disenchantResults, "Nexus Crystal")
+        return {"Nexus Crystal"}
+    else
+        return {}
     end
-
-    return disenchantResults
 end
 
 ---@param tooltip GameTooltip
