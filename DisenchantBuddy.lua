@@ -56,8 +56,6 @@ end
 ---@param itemLink string
 ---@return boolean True if tooltip was added, false otherwise
 local function AddDisenchantInfo(tooltip, itemLink)
-    -- TODO: Add disenchant info to tooltip
-
     local _, _, quality, itemLevel, _, _, _, _, _, _, _, classId = GetItemInfo(itemLink)
 
     if quality == Enum.ItemQuality.Poor or
