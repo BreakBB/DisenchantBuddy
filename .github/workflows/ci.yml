@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  workflow_call:
+    inputs:
+      event_name:
+        required: true
+        type: string
+      repo_full_name:
+        required: true
+        type: string
+  push:
+    branches:
+      - '**'
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run Unit Tests
+        uses: lunarmodules/busted@v2.2.0
+        with:
+          args: -p ".test.lua" .
