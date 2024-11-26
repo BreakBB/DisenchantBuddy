@@ -19,6 +19,9 @@ local function AddDisenchantInfo(tooltip, itemLink)
     if itemLevel <= 15 then
         table.insert(disenchantResults, "Strange Dust")
         table.insert(disenchantResults, "Lesser Magic Essence")
+    elseif itemLevel <= 20 then
+        table.insert(disenchantResults, "Strange Dust")
+        table.insert(disenchantResults, "Greater Magic Essence")
     end
 
     tooltip:AddLine("Disenchant results:")
