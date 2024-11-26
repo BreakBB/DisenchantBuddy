@@ -6,11 +6,11 @@ local DisenchantBuddy = {}
 local function AddDisenchantInfo(tooltip, itemLink)
     -- TODO: Add disenchant info to tooltip
 
-    local _, _, quality, itemLevel, _, itemType = GetItemInfo(itemLink)
+    local _, _, quality, itemLevel, _, _, _, _, _, _, _, classId = GetItemInfo(itemLink)
 
     if quality == Enum.ItemQuality.Poor or
             quality == Enum.ItemQuality.Common or
-            (itemType ~= Enum.ItemClass.Armor and itemType ~= Enum.ItemClass.Weapon) then
+            (classId ~= Enum.ItemClass.Armor and classId ~= Enum.ItemClass.Weapon) then
         return false
     end
 
