@@ -33,7 +33,8 @@ local function AddDisenchantInfo(tooltip, itemLink)
     end
 
     tooltip:AddLine("Disenchant results:")
-    for _, result in ipairs(disenchantResults) do
+    for i = 1, #disenchantResults do
+        local result = disenchantResults[i]
         local name = GetItemInfo(result)
         tooltip:AddLine(name, 1, 1, 1) -- White text
     end
