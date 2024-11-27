@@ -17,7 +17,7 @@ It helps players to quickly see what materials they can expect to receive from d
 This project uses [luacheck](https://github.com/lunarmodules/luacheck/) for linting. To run the linter, execute the following command:
 
 ```sh
-luacheck .
+luacheck -q .
 ```
 
 ### Unit Tests
