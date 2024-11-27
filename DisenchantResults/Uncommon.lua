@@ -4,10 +4,10 @@ local _, DisenchantBuddy = ...
 local Materials = DisenchantBuddy.Materials
 
 ---@param itemLevel number
----@return table<ItemId>|nil Disenchant results
+---@return table<DisenchantResult>|nil Disenchant results
 function DisenchantBuddy.GetMaterialsForUncommonItem(itemLevel)
     if itemLevel <= 15 then
-        return {Materials.STRANGE_DUST, Materials.LESSER_MAGIC_ESSENCE}
+        return {{itemId = Materials.STRANGE_DUST, probability = 80}, {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 20}}
     elseif itemLevel <= 20 then
         return {Materials.STRANGE_DUST, Materials.GREATER_MAGIC_ESSENCE, Materials.SMALL_GLIMMERING_SHARD}
     elseif itemLevel <= 25 then

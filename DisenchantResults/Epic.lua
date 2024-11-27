@@ -4,7 +4,7 @@ local _, DisenchantBuddy = ...
 local Materials = DisenchantBuddy.Materials
 
 ---@param itemLevel number
----@return table<ItemId>|nil Disenchant results
+---@return table<DisenchantResult>|nil Disenchant results
 function DisenchantBuddy.GetMaterialsForEpicItem(itemLevel)
     if itemLevel <= 45 then
         return {Materials.SMALL_RADIANT_SHARD}
@@ -13,7 +13,7 @@ function DisenchantBuddy.GetMaterialsForEpicItem(itemLevel)
     elseif itemLevel <= 55 then
         return {Materials.SMALL_BRILLIANT_SHARD}
     elseif itemLevel <= 65 then
-        return {Materials.NEXUS_CRYSTAL}
+        return {{itemId = Materials.NEXUS_CRYSTAL, probability = 100}}
     else
         return nil
     end

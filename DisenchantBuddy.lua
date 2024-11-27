@@ -30,12 +30,13 @@ local function AddDisenchantInfo(tooltip, itemLink)
 
     tooltip:AddLine("Disenchant results:")
     for i = 1, #disenchantResults do
+        ---@type DisenchantResult
         local result = disenchantResults[i]
-        local materialName, _, materialQuality, _, _, _, _, _, _, materialTexture = GetItemInfo(result)
+        local materialName, _, materialQuality, _, _, _, _, _, _, materialTexture = GetItemInfo(result.itemId)
 
         local _, _, _, hex = GetItemQualityColor(materialQuality)
 
-        tooltip:AddLine("  |T" .. materialTexture .. ":0|t " .. "|c" .. hex .. materialName .. "|r")
+        tooltip:AddLine("  |T" .. materialTexture .. ":0|t " .. "|c" .. hex .. materialName .. "|r (" .. result.probability .. "%)")
     end
 
     return true

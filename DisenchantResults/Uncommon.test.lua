@@ -23,13 +23,13 @@ describe("GetMaterialsForUncommonItem", function()
     it("should return correct results for level 5 items", function()
         local results = GetMaterialsForUncommonItem(5)
 
-        assert.are_same({Materials.STRANGE_DUST, Materials.LESSER_MAGIC_ESSENCE}, results)
+        assert.are_same({{itemId = Materials.STRANGE_DUST, probability = 80}, {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 20}}, results)
     end)
 
     it("should return correct results for level 15 items", function()
         local results = GetMaterialsForUncommonItem(15)
 
-        assert.are_same({Materials.STRANGE_DUST, Materials.LESSER_MAGIC_ESSENCE}, results)
+        assert.are_same({{itemId = Materials.STRANGE_DUST, probability = 80}, {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 20}}, results)
     end)
 
     it("should return correct results for level 16 items", function()

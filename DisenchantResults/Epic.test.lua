@@ -131,24 +131,24 @@ describe("GetMaterialsForEpicItem", function()
     it("should return correct results for level 56 items", function()
         local results = GetMaterialsForEpicItem(56)
 
-        assert.are_same({Materials.NEXUS_CRYSTAL}, results)
+        assert.are_same({{itemId = Materials.NEXUS_CRYSTAL, probability = 100}}, results)
     end)
 
     it("should return correct results for level 60 items", function()
         local results = GetMaterialsForEpicItem(60)
 
-        assert.are_same({Materials.NEXUS_CRYSTAL}, results)
+        assert.are_same({{itemId = Materials.NEXUS_CRYSTAL, probability = 100}}, results)
     end)
 
     it("should return correct results for level 61 items", function()
         local results = GetMaterialsForEpicItem(61)
 
-        assert.are_same({Materials.NEXUS_CRYSTAL}, results)
+        assert.are_same({{itemId = Materials.NEXUS_CRYSTAL, probability = 100}}, results)
     end)
 
     it("should return correct results for level 65 items", function()
         local results = GetMaterialsForEpicItem(65)
 
-        assert.are_same({Materials.NEXUS_CRYSTAL}, results)
+        assert.are_same({{itemId = Materials.NEXUS_CRYSTAL, probability = 100}}, results)
     end)
 end)
