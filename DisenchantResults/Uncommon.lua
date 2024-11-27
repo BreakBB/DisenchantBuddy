@@ -9,7 +9,7 @@ local function GetUncommonDisenchantResults(itemLevel)
     if itemLevel <= 15 then
         return {Materials.STRANGE_DUST, Materials.LESSER_MAGIC_ESSENCE}
     elseif itemLevel <= 20 then
-        return {Materials.STRANGE_DUST, Materials.GREATER_MAGIC_ESSENCE}
+        return {Materials.STRANGE_DUST, Materials.GREATER_MAGIC_ESSENCE, Materials.SMALL_GLIMMERING_SHARD}
     elseif itemLevel <= 25 then
         return {Materials.STRANGE_DUST, Materials.LESSER_ASTRAL_ESSENCE, Materials.SMALL_GLIMMERING_SHARD}
     elseif itemLevel <= 30 then

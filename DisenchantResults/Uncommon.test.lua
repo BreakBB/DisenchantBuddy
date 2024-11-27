@@ -35,13 +35,13 @@ describe("GetUncommonDisenchantResults", function()
     it("should return correct results for level 16 items", function()
         local results = GetUncommonDisenchantResults(16)
 
-        assert.are_same({Materials.STRANGE_DUST, Materials.GREATER_MAGIC_ESSENCE}, results)
+        assert.are_same({Materials.STRANGE_DUST, Materials.GREATER_MAGIC_ESSENCE, Materials.SMALL_GLIMMERING_SHARD}, results)
     end)
 
     it("should return correct results for level 20 items", function()
         local results = GetUncommonDisenchantResults(20)
 
-        assert.are_same({Materials.STRANGE_DUST, Materials.GREATER_MAGIC_ESSENCE}, results)
+        assert.are_same({Materials.STRANGE_DUST, Materials.GREATER_MAGIC_ESSENCE, Materials.SMALL_GLIMMERING_SHARD}, results)
     end)
 
     it("should return correct results for level 21 items", function()
