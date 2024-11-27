@@ -7,27 +7,70 @@ local Materials = DisenchantBuddy.Materials
 ---@return table<DisenchantResult>|nil Disenchant results
 function DisenchantBuddy.GetMaterialsForUncommonItem(itemLevel)
     if itemLevel <= 15 then
-        return {{itemId = Materials.STRANGE_DUST, probability = 80}, {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 20}}
+        return {
+            {itemId = Materials.STRANGE_DUST, probability = 80},
+            {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 20}
+        }
     elseif itemLevel <= 20 then
-        return {Materials.STRANGE_DUST, Materials.GREATER_MAGIC_ESSENCE, Materials.SMALL_GLIMMERING_SHARD}
+        return {
+            {itemId = Materials.STRANGE_DUST, probability = 75},
+            {itemId = Materials.GREATER_MAGIC_ESSENCE, probability = 20},
+            {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 5}
+        }
     elseif itemLevel <= 25 then
-        return {Materials.STRANGE_DUST, Materials.LESSER_ASTRAL_ESSENCE, Materials.SMALL_GLIMMERING_SHARD}
+        return {
+            {itemId = Materials.STRANGE_DUST, probability = 75},
+            {itemId = Materials.LESSER_ASTRAL_ESSENCE, probability = 15},
+            {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 10}
+        }
     elseif itemLevel <= 30 then
-        return {Materials.SOUL_DUST, Materials.GREATER_ASTRAL_ESSENCE, Materials.LARGE_GLIMMERING_SHARD}
+        return {
+            {itemId = Materials.SOUL_DUST, probability = 75},
+            {itemId = Materials.GREATER_ASTRAL_ESSENCE, probability = 20},
+            {itemId = Materials.LARGE_GLIMMERING_SHARD, probability = 5}
+        }
     elseif itemLevel <= 35 then
-        return {Materials.SOUL_DUST, Materials.LESSER_MYSTIC_ESSENCE, Materials.SMALL_GLOWING_SHARD}
+        return {
+            {itemId = Materials.SOUL_DUST, probability = 75},
+            {itemId = Materials.LESSER_MYSTIC_ESSENCE, probability = 20},
+            {itemId = Materials.SMALL_GLOWING_SHARD, probability = 5}
+        }
     elseif itemLevel <= 40 then
-        return {Materials.VISION_DUST, Materials.GREATER_MYSTIC_ESSENCE, Materials.LARGE_GLOWING_SHARD}
+        return {
+            {itemId = Materials.VISION_DUST, probability = 75},
+            {itemId = Materials.GREATER_MYSTIC_ESSENCE, probability = 20},
+            {itemId = Materials.LARGE_GLOWING_SHARD, probability = 5}
+        }
     elseif itemLevel <= 45 then
-        return {Materials.VISION_DUST, Materials.LESSER_NETHER_ESSENCE, Materials.SMALL_RADIANT_SHARD}
+        return {
+            {itemId = Materials.VISION_DUST, probability = 75},
+            {itemId = Materials.LESSER_NETHER_ESSENCE, probability = 20},
+            {itemId = Materials.SMALL_RADIANT_SHARD, probability = 5}
+        }
     elseif itemLevel <= 50 then
-        return {Materials.DREAM_DUST, Materials.GREATER_NETHER_ESSENCE, Materials.LARGE_RADIANT_SHARD}
+        return {
+            {itemId = Materials.DREAM_DUST, probability = 75},
+            {itemId = Materials.GREATER_NETHER_ESSENCE, probability = 20},
+            {itemId = Materials.LARGE_RADIANT_SHARD, probability = 5}
+        }
     elseif itemLevel <= 55 then
-        return {Materials.DREAM_DUST, Materials.LESSER_ETERNAL_ESSENCE, Materials.SMALL_BRILLIANT_SHARD}
+        return {
+            {itemId = Materials.DREAM_DUST, probability = 75},
+            {itemId = Materials.LESSER_ETERNAL_ESSENCE, probability = 20},
+            {itemId = Materials.SMALL_BRILLIANT_SHARD, probability = 5}
+        }
     elseif itemLevel <= 60 then
-        return {Materials.ILLUSION_DUST, Materials.GREATER_ETERNAL_ESSENCE, Materials.LARGE_BRILLIANT_SHARD}
+        return {
+            {itemId = Materials.ILLUSION_DUST, probability = 75},
+            {itemId = Materials.GREATER_ETERNAL_ESSENCE, probability = 20},
+            {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 5}
+        }
     elseif itemLevel <= 65 then
-        return {Materials.ILLUSION_DUST, Materials.GREATER_ETERNAL_ESSENCE, Materials.LARGE_BRILLIANT_SHARD}
+        return {
+            {itemId = Materials.ILLUSION_DUST, probability = 75},
+            {itemId = Materials.GREATER_ETERNAL_ESSENCE, probability = 20},
+            {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 5}
+        }
     else
         return nil
     end
