@@ -101,7 +101,7 @@ describe("DisenchantBuddy", function()
 
         it("should not show tooltip for item types other than armor and weapon", function()
             _G.GetItemInfo = spy.new(function()
-                return nil, nil, Enum.ItemQuality.Good, 5, nil, Enum.ItemClass.Container
+                return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Container
             end)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
