@@ -108,7 +108,7 @@ describe("DisenchantBuddy", function()
             _G.GetItemInfo = spy.new(function(itemId)
                 local materialName = _GetItemInfoForMaterials(itemId)
                 if materialName then
-                    return materialName
+                    return _GetItemInfoForMaterials(itemId)
                 end
                 return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
@@ -118,15 +118,15 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.GetItem).was.called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Strange Dust", 1, 1, 1)
-            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Lesser Magic Essence", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "|T132858:0|t Strange Dust", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "|T132867:0|t Lesser Magic Essence", 1, 1, 1)
         end)
 
         it("should show tooltip for rare level 5 items", function()
             _G.GetItemInfo = spy.new(function(itemId)
                 local materialName = _GetItemInfoForMaterials(itemId)
                 if materialName then
-                    return materialName
+                    return _GetItemInfoForMaterials(itemId)
                 end
                 return nil, nil, Enum.ItemQuality.Rare, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
@@ -136,14 +136,14 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.GetItem).was.called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Small Glimmering Shard", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "|T132877:0|t Small Glimmering Shard", 1, 1, 1)
         end)
 
         it("should show tooltip for epic level 40 items", function()
             _G.GetItemInfo = spy.new(function(itemId)
                 local materialName = _GetItemInfoForMaterials(itemId)
                 if materialName then
-                    return materialName
+                    return _GetItemInfoForMaterials(itemId)
                 end
                 return nil, nil, Enum.ItemQuality.Epic, 40, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
@@ -153,59 +153,59 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.GetItem).was.called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Small Radiant Shard", 1, 1, 1)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "|T132884:0|t Small Radiant Shard", 1, 1, 1)
         end)
     end)
 
     _GetItemInfoForMaterials = function(itemId)
         if itemId == 10940 then
-            return "Strange Dust"
+            return "Strange Dust", nil, nil, nil, nil, nil, nil, nil, nil, 132858
         elseif itemId == 11083 then
-            return "Soul Dust"
+            return "Soul Dust", nil, nil, nil, nil, nil, nil, nil, nil, 132857
         elseif itemId == 11137 then
-            return "Vision Dust"
+            return "Vision Dust", nil, nil, nil, nil, nil, nil, nil, nil, 132859
         elseif itemId == 11176 then
-            return "Dream Dust"
+            return "Dream Dust", nil, nil, nil, nil, nil, nil, nil, nil, 132855
         elseif itemId == 16204 then
-            return "Illusion Dust"
+            return "Illusion Dust", nil, nil, nil, nil, nil, nil, nil, nil, 132856
         elseif itemId == 10938 then
-            return "Lesser Magic Essence"
+            return "Lesser Magic Essence", nil, nil, nil, nil, nil, nil, nil, nil, 132867
         elseif itemId == 10939 then
-            return "Greater Magic Essence"
+            return "Greater Magic Essence", nil, nil, nil, nil, nil, nil, nil, nil, 132866
         elseif itemId == 10998 then
-            return "Lesser Astral Essence"
+            return "Lesser Astral Essence", nil, nil, nil, nil, nil, nil, nil, nil, 132863
         elseif itemId == 11082 then
-            return "Greater Astral Essence"
+            return "Greater Astral Essence", nil, nil, nil, nil, nil, nil, nil, nil, 132862
         elseif itemId == 11134 then
-            return "Lesser Mystic Essence"
+            return "Lesser Mystic Essence", nil, nil, nil, nil, nil, nil, nil, nil, 132869
         elseif itemId == 11135 then
-            return "Greater Mystic Essence"
+            return "Greater Mystic Essence", nil, nil, nil, nil, nil, nil, nil, nil, 132868
         elseif itemId == 11174 then
-            return "Lesser Nether Essence"
+            return "Lesser Nether Essence", nil, nil, nil, nil, nil, nil, nil, nil, 132871
         elseif itemId == 11175 then
-            return "Greater Nether Essence"
+            return "Greater Nether Essence", nil, nil, nil, nil, nil, nil, nil, nil, 132870
         elseif itemId == 16202 then
-            return "Lesser Eternal Essence"
+            return "Lesser Eternal Essence", nil, nil, nil, nil, nil, nil, nil, nil, 132865
         elseif itemId == 16203 then
-            return "Greater Eternal Essence"
+            return "Greater Eternal Essence", nil, nil, nil, nil, nil, nil, nil, nil, 132864
         elseif itemId == 10978 then
-            return "Small Glimmering Shard"
+            return "Small Glimmering Shard", nil, nil, nil, nil, nil, nil, nil, nil, 132877
         elseif itemId == 11084 then
-            return "Large Glimmering Shard"
+            return "Large Glimmering Shard", nil, nil, nil, nil, nil, nil, nil, nil, 132876
         elseif itemId == 11138 then
-            return "Small Glowing Shard"
+            return "Small Glowing Shard", nil, nil, nil, nil, nil, nil, nil, nil, 132879
         elseif itemId == 11139 then
-            return "Large Glowing Shard"
+            return "Large Glowing Shard", nil, nil, nil, nil, nil, nil, nil, nil, 132878
         elseif itemId == 11177 then
-            return "Small Radiant Shard"
+            return "Small Radiant Shard", nil, nil, nil, nil, nil, nil, nil, nil, 132884
         elseif itemId == 11178 then
-            return "Large Radiant Shard"
+            return "Large Radiant Shard", nil, nil, nil, nil, nil, nil, nil, nil, 132883
         elseif itemId == 14343 then
-            return "Small Brilliant Shard"
+            return "Small Brilliant Shard", nil, nil, nil, nil, nil, nil, nil, nil, 132874
         elseif itemId == 14344 then
-            return "Large Brilliant Shard"
+            return "Large Brilliant Shard", nil, nil, nil, nil, nil, nil, nil, nil, 132873
         elseif itemId == 20725 then
-            return "Nexus Crystal"
+            return "Nexus Crystal", nil, nil, nil, nil, nil, nil, nil, nil, 132880
         else
             return nil
         end
