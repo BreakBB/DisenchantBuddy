@@ -18,6 +18,8 @@ globals = {
     "GameTooltip",
     "GetItemInfo",
     "assert.spy",
+    "assert.are_same",
+    "assert.is_nil",
     "describe",
     "before_each",
     "it",
