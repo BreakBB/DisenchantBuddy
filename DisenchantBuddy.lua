@@ -2,7 +2,7 @@
 local _, DisenchantBuddy = ...
 
 local GetMaterialsForUncommonItem = DisenchantBuddy.GetMaterialsForUncommonItem
-local GetRareDisenchantResults = DisenchantBuddy.GetRareDisenchantResults
+local GetMaterialsForRareItem = DisenchantBuddy.GetMaterialsForRareItem
 local GetEpicDisenchantResults = DisenchantBuddy.GetEpicDisenchantResults
 
 ---@param tooltip GameTooltip
@@ -22,7 +22,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
     if quality == Enum.ItemQuality.Good then
         disenchantResults = GetMaterialsForUncommonItem(itemLevel)
     elseif quality == Enum.ItemQuality.Rare then
-        disenchantResults = GetRareDisenchantResults(itemLevel)
+        disenchantResults = GetMaterialsForRareItem(itemLevel)
     elseif quality == Enum.ItemQuality.Epic then
         disenchantResults = GetEpicDisenchantResults(itemLevel)
     end

@@ -5,7 +5,7 @@ local Materials = DisenchantBuddy.Materials
 
 ---@param itemLevel number
 ---@return table<ItemId>|nil Disenchant results
-local function GetRareDisenchantResults(itemLevel)
+local function GetMaterialsForRareItem(itemLevel)
     if itemLevel <= 25 then
         return {Materials.SMALL_GLIMMERING_SHARD}
     elseif itemLevel <= 30 then
@@ -27,4 +27,4 @@ local function GetRareDisenchantResults(itemLevel)
     end
 end
 
-DisenchantBuddy.GetRareDisenchantResults = GetRareDisenchantResults
+DisenchantBuddy.GetMaterialsForRareItem = GetMaterialsForRareItem
