@@ -17,6 +17,7 @@ globals = {
     "Enum",
     "GameTooltip",
     "GetItemInfo",
+    "GetItemQualityColor",
     "assert.spy",
     "assert.are_same",
     "assert.is_nil",
