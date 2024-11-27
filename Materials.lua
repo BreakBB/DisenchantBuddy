@@ -1,7 +1,7 @@
 ---@type DisenchantBuddy
 local _, DisenchantBuddy = ...
 
----@enum Materials
+---@class Materials
 DisenchantBuddy.Materials = {
     STRANGE_DUST = 10940,
     SOUL_DUST = 11083,

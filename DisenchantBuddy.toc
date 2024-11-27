@@ -5,4 +5,5 @@
 ## Version: 0.0.1
 
 Materials.lua
+DisenchantResults/Uncommon.lua
 DisenchantBuddy.lua
