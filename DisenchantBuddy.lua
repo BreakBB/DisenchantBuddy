@@ -46,6 +46,10 @@ end
 function DisenchantBuddy.OnTooltipSetItem(tooltip)
     local _, link = tooltip:GetItem()
 
+    if (not link) then
+        return
+    end
+
     local tooltipAdded = AddDisenchantInfo(tooltip, link)
 
     if tooltipAdded then

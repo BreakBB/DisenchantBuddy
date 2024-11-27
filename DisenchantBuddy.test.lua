@@ -51,6 +51,18 @@ describe("DisenchantBuddy", function()
     end)
 
     describe("OnTooltipSetItem", function()
+        it("should not show when itemLink is nil", function()
+            gameTooltipMock.GetItem = spy.new(function()
+                return nil, nil
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was_not.called()
+            assert.spy(gameTooltipMock.AddLine).was_not.called()
+        end)
+
         it("should not show tooltip for poor quality items", function()
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Poor, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
