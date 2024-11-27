@@ -9,19 +9,22 @@ function DisenchantBuddy.GetMaterialsForRareItem(itemLevel)
     if itemLevel <= 25 then
         return {{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100}}
     elseif itemLevel <= 30 then
-        return {Materials.LARGE_GLIMMERING_SHARD}
+        return {{itemId = Materials.LARGE_GLIMMERING_SHARD, probability = 100}}
     elseif itemLevel <= 35 then
-        return {Materials.SMALL_GLOWING_SHARD}
+        return {{itemId = Materials.SMALL_GLOWING_SHARD, probability = 100}}
     elseif itemLevel <= 40 then
-        return {Materials.LARGE_GLOWING_SHARD}
+        return {{itemId = Materials.LARGE_GLOWING_SHARD, probability = 100}}
     elseif itemLevel <= 45 then
-        return {Materials.SMALL_RADIANT_SHARD}
+        return {{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}
     elseif itemLevel <= 50 then
-        return {Materials.LARGE_RADIANT_SHARD}
+        return {{itemId = Materials.LARGE_RADIANT_SHARD, probability = 100}}
     elseif itemLevel <= 55 then
-        return {Materials.SMALL_BRILLIANT_SHARD}
+        return {{itemId = Materials.SMALL_BRILLIANT_SHARD, probability = 100}}
     elseif itemLevel <= 65 then
-        return {Materials.LARGE_BRILLIANT_SHARD, Materials.NEXUS_CRYSTAL}
+        return {
+            {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 99.5},
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5},
+        }
     else
         return nil
     end
