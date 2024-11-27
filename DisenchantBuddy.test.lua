@@ -1,7 +1,6 @@
 dofile(".types/wow-api/library/Data/Enum.lua")
 
 local Colors = {
-    POOR = "ff9d9d9d",
     STANDARD = "ffffffff",
     GOOD = "ff1eff00",
     RARE = "ff0070dd",
@@ -9,9 +8,7 @@ local Colors = {
 }
 
 _G.GetItemQualityColor = function(quality)
-    if quality == Enum.ItemQuality.Poor then
-        return nil, nil, nil, Colors.POOR
-    elseif quality == Enum.ItemQuality.Standard then
+    if quality == Enum.ItemQuality.Standard then
         return nil, nil, nil, Colors.STANDARD
     elseif quality == Enum.ItemQuality.Good then
         return nil, nil, nil, Colors.GOOD
