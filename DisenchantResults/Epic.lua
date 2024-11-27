@@ -4,7 +4,7 @@ local _, DisenchantBuddy = ...
 local Materials = DisenchantBuddy.Materials
 
 ---@param itemLevel number
----@return table<string>|nil Disenchant results
+---@return table<ItemId>|nil Disenchant results
 local function GetEpicDisenchantResults(itemLevel)
     if itemLevel <= 45 then
         return {Materials.SMALL_RADIANT_SHARD}
