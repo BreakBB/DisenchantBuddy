@@ -50,6 +50,13 @@ function DisenchantBuddy.OnTooltipSetItem(tooltip)
         return
     end
 
+    -- crafted wands can not be disenchanted
+    local itemId = tonumber(string.match(link, "item:(%d+)"))
+    if itemId == 11287 or itemId == 11288 or itemId == 11289 or itemId == 11290 then
+        -- TODO: Show that these can not be disenchanted
+        return
+    end
+
     local tooltipAdded = AddDisenchantInfo(tooltip, link)
 
     if tooltipAdded then

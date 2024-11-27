@@ -135,6 +135,66 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.AddLine).was_not.called()
         end)
 
+        it("should not show tooltip for Lesser Magic Wand", function()
+            gameTooltipMock.GetItem = spy.new(function()
+                return nil, "|cff1eff00|Hitem:11287::::::::21::::::::|h[Lesser Magic Wand]|h|r"
+            end)
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was_not.called()
+            assert.spy(gameTooltipMock.AddLine).was_not.called()
+        end)
+
+        it("should not show tooltip for Greater Magic Wand", function()
+            gameTooltipMock.GetItem = spy.new(function()
+                return nil, "|cff1eff00|Hitem:11288::::::::21::::::::|h[Greater Magic Wand]|h|r"
+            end)
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was_not.called()
+            assert.spy(gameTooltipMock.AddLine).was_not.called()
+        end)
+
+        it("should not show tooltip for Lesser Mystic Wand", function()
+            gameTooltipMock.GetItem = spy.new(function()
+                return nil, "|cff1eff00|Hitem:11289::::::::21::::::::|h[Lesser Mystic Wand]|h|r"
+            end)
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was_not.called()
+            assert.spy(gameTooltipMock.AddLine).was_not.called()
+        end)
+
+        it("should not show tooltip for Greater Mystic Wand", function()
+            gameTooltipMock.GetItem = spy.new(function()
+                return nil, "|cff1eff00|Hitem:11290::::::::21::::::::|h[Greater Mystic Wand]|h|r"
+            end)
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was_not.called()
+            assert.spy(gameTooltipMock.AddLine).was_not.called()
+        end)
+
         it("should show tooltip for uncommon level 5 items", function()
             _G.GetItemInfo = spy.new(function(itemId)
                 local materialName = _GetItemInfoForMaterials(itemId)
