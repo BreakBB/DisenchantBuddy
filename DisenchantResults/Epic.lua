@@ -5,7 +5,7 @@ local Materials = DisenchantBuddy.Materials
 
 ---@param itemLevel number
 ---@return table<ItemId>|nil Disenchant results
-local function GetMaterialsForEpicItem(itemLevel)
+function DisenchantBuddy.GetMaterialsForEpicItem(itemLevel)
     if itemLevel <= 45 then
         return {Materials.SMALL_RADIANT_SHARD}
     elseif itemLevel <= 50 then
@@ -18,5 +18,3 @@ local function GetMaterialsForEpicItem(itemLevel)
         return nil
     end
 end
-
-DisenchantBuddy.GetMaterialsForEpicItem = GetMaterialsForEpicItem
