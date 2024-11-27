@@ -4,27 +4,27 @@ local _, DisenchantBuddy = ...
 ---@return table<string>|nil Disenchant results
 local function GetUncommonDisenchantResults(itemLevel)
     if itemLevel <= 15 then
-        return {"Strange Dust","Lesser Magic Essence"}
+        return {"Strange Dust", "Lesser Magic Essence"}
     elseif itemLevel <= 20 then
-        return {"Strange Dust","Greater Magic Essence"}
+        return {"Strange Dust", "Greater Magic Essence"}
     elseif itemLevel <= 25 then
-        return {"Strange Dust","Lesser Astral Essence","Small Glimmering Shard"}
+        return {"Strange Dust", "Lesser Astral Essence", "Small Glimmering Shard"}
     elseif itemLevel <= 30 then
-        return {"Soul Dust","Greater Astral Essence","Large Glimmering Shard"}
+        return {"Soul Dust", "Greater Astral Essence", "Large Glimmering Shard"}
     elseif itemLevel <= 35 then
-        return {"Soul Dust","Lesser Mystic Essence","Small Glowing Shard"}
+        return {"Soul Dust", "Lesser Mystic Essence", "Small Glowing Shard"}
     elseif itemLevel <= 40 then
-        return {"Vision Dust","Greater Mystic Essence","Large Glowing Shard"}
+        return {"Vision Dust", "Greater Mystic Essence", "Large Glowing Shard"}
     elseif itemLevel <= 45 then
-        return {"Vision Dust","Lesser Nether Essence","Small Radiant Shard"}
+        return {"Vision Dust", "Lesser Nether Essence", "Small Radiant Shard"}
     elseif itemLevel <= 50 then
-        return {"Dream Dust","Greater Nether Essence","Large Radiant Shard"}
+        return {"Dream Dust", "Greater Nether Essence", "Large Radiant Shard"}
     elseif itemLevel <= 55 then
-        return {"Dream Dust","Lesser Eternal Essence","Small Brilliant Shard"}
+        return {"Dream Dust", "Lesser Eternal Essence", "Small Brilliant Shard"}
     elseif itemLevel <= 60 then
-        return {"Illusion Dust","Greater Eternal Essence","Large Brilliant Shard"}
+        return {"Illusion Dust", "Greater Eternal Essence", "Large Brilliant Shard"}
     elseif itemLevel <= 65 then
-        return {"Illusion Dust","Greater Eternal Essence","Large Brilliant Shard"}
+        return {"Illusion Dust", "Greater Eternal Essence", "Large Brilliant Shard"}
     else
         return nil
     end
@@ -48,7 +48,7 @@ local function GetRareDisenchantResults(itemLevel)
     elseif itemLevel <= 55 then
         return {"Small Brilliant Shard"}
     elseif itemLevel <= 65 then
-        return {"Large Brilliant Shard","Nexus Crystal"}
+        return {"Large Brilliant Shard", "Nexus Crystal"}
     else
         return nil
     end
