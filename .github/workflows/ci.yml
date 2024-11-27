@@ -35,7 +35,6 @@ jobs:
       - name: Install and run Luacheck
         uses: nebularg/actions-luacheck@v1
         with:
-          files: Database Localization Modules Questie.lua
           args: "--no-color -q"
 
   unit-tests:
