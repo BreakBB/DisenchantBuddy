@@ -1,10 +1,6 @@
 ---@class DisenchantBuddy
 local _, DisenchantBuddy = ...
 
-local GetMaterialsForUncommonItem = DisenchantBuddy.GetMaterialsForUncommonItem
-local GetMaterialsForRareItem = DisenchantBuddy.GetMaterialsForRareItem
-local GetMaterialsForEpicItem = DisenchantBuddy.GetMaterialsForEpicItem
-
 ---@param tooltip GameTooltip
 ---@param itemLink string
 ---@return boolean True if tooltip was added, false otherwise
@@ -20,11 +16,11 @@ local function AddDisenchantInfo(tooltip, itemLink)
 
     local disenchantResults
     if quality == Enum.ItemQuality.Good then
-        disenchantResults = GetMaterialsForUncommonItem(itemLevel)
+        disenchantResults = DisenchantBuddy.GetMaterialsForUncommonItem(itemLevel)
     elseif quality == Enum.ItemQuality.Rare then
-        disenchantResults = GetMaterialsForRareItem(itemLevel)
+        disenchantResults = DisenchantBuddy.GetMaterialsForRareItem(itemLevel)
     elseif quality == Enum.ItemQuality.Epic then
-        disenchantResults = GetMaterialsForEpicItem(itemLevel)
+        disenchantResults = DisenchantBuddy.GetMaterialsForEpicItem(itemLevel)
     end
 
     if (not disenchantResults) then
