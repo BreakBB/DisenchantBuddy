@@ -39,7 +39,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
 
         local _, _, _, hex = GetItemQualityColor(materialQuality)
 
-        tooltip:AddLine("|T" .. materialTexture .. ":0|t " .. "|c" .. hex .. materialName .. "|r")
+        tooltip:AddLine("  |T" .. materialTexture .. ":0|t " .. "|c" .. hex .. materialName .. "|r")
     end
 
     return true
