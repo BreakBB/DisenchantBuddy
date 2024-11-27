@@ -6,4 +6,5 @@
 
 Materials.lua
 DisenchantResults/Uncommon.lua
+DisenchantResults/Rare.lua
 DisenchantBuddy.lua
