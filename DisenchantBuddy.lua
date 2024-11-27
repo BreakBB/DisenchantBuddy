@@ -1,25 +1,9 @@
 ---@class DisenchantBuddy
 local _, DisenchantBuddy = ...
 
-local Materials = DisenchantBuddy.Materials
 local GetUncommonDisenchantResults = DisenchantBuddy.GetUncommonDisenchantResults
 local GetRareDisenchantResults = DisenchantBuddy.GetRareDisenchantResults
-
----@param itemLevel number
----@return table<string>|nil Disenchant results
-local function GetEpicDisenchantResults(itemLevel)
-    if itemLevel <= 45 then
-        return {Materials.SMALL_RADIANT_SHARD}
-    elseif itemLevel <= 50 then
-        return {Materials.LARGE_RADIANT_SHARD}
-    elseif itemLevel <= 55 then
-        return {Materials.SMALL_BRILLIANT_SHARD}
-    elseif itemLevel <= 65 then
-        return {Materials.NEXUS_CRYSTAL}
-    else
-        return nil
-    end
-end
+local GetEpicDisenchantResults = DisenchantBuddy.GetEpicDisenchantResults
 
 ---@param tooltip GameTooltip
 ---@param itemLink string
