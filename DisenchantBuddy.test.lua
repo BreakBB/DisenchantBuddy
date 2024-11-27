@@ -158,13 +158,13 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "  |T132877:0|t" .. " |c" .. Colors.RARE .. "Small Glimmering Shard" .. "|r")
         end)
 
-        it("should show tooltip for epic level 40 items", function()
+        it("should show tooltip for epic level 60 items", function()
             _G.GetItemInfo = spy.new(function(itemId)
                 local materialName = _GetItemInfoForMaterials(itemId)
                 if materialName then
                     return _GetItemInfoForMaterials(itemId)
                 end
-                return nil, nil, Enum.ItemQuality.Epic, 40, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                return nil, nil, Enum.ItemQuality.Epic, 60, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
@@ -172,7 +172,7 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.GetItem).was.called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "  |T132884:0|t" .. " |c" .. Colors.RARE .. "Small Radiant Shard" .. "|r")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "  |T132880:0|t" .. " |c" .. Colors.EPIC .. "Nexus Crystal" .. "|r")
         end)
     end)
 
