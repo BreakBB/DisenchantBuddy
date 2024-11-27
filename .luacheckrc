@@ -1,6 +1,6 @@
 ---@diagnostic disable: lowercase-global
 std = "lua51"
-max_line_length = 140
+max_line_length = 160
 exclude_files = {
     ".github/",
     ".history/",
