@@ -7,6 +7,8 @@ local Colors = {
     EPIC = "|cffa335ee",
 }
 
+_G.ITEM_DISENCHANT_NOT_DISENCHANTABLE = "Cannot be disenchanted"
+
 _G.GetItemQualityColor = function(quality)
     if quality == Enum.ItemQuality.Standard then
         return nil, nil, nil, Colors.STANDARD

@@ -21,6 +21,7 @@ globals = {
     "GetItemQualityColor",
     "Item",
     "ItemRefTooltip",
+    "ITEM_DISENCHANT_NOT_DISENCHANTABLE",
     "assert.spy",
     "assert.are_same",
     "assert.is_nil",
