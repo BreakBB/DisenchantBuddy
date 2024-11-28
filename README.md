@@ -1,5 +1,7 @@
 # Disenchant Buddy
 
+[![Downloads](https://img.shields.io/github/downloads/BreakBB/DisenchantBuddy/total.svg)](https://github.com/BreakBB/DisenchantBuddy/releases/)
+
 Disenchant Buddy is a lightweight World of Warcraft addon that displays disenchant results on item tooltips.
 It helps players to quickly see what materials they can expect to receive from disenchanting an item.
 
