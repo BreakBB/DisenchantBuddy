@@ -40,6 +40,9 @@ describe("DisenchantBuddy", function()
             Show = spy.new(),
             AddLine = spy.new(),
         }
+        _G.ItemRefTooltip = {
+            HookScript = spy.new(),
+        }
         gameTooltipMock = _G.GameTooltip
         _G.Item = {
             CreateFromItemID = function(_, itemId)
@@ -71,8 +74,9 @@ describe("DisenchantBuddy", function()
         loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
     end)
 
-    it("should hook GameTooltip with OnTooltipSetItem", function()
+    it("should hook OnTooltipSetItem", function()
         assert.spy(_G.GameTooltip.HookScript).was.called_with(_G.GameTooltip, "OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
+        assert.spy(_G.ItemRefTooltip.HookScript).was.called_with(_G.ItemRefTooltip, "OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
     end)
 
     describe("OnTooltipSetItem", function()

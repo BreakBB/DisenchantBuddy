@@ -73,4 +73,5 @@ function DisenchantBuddy.OnTooltipSetItem(tooltip)
     AddDisenchantInfo(tooltip, link)
 end
 
-GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
+GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- hovering over an item
+ItemRefTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- clicking an item link
