@@ -40,14 +40,14 @@ local function AddDisenchantInfo(tooltip, itemLink)
             local materialTexture = item:GetItemIcon()
             local hex = item:GetItemQualityColor().hex
 
-            lines[i] = "  |T" .. materialTexture .. ":0|t " .. hex .. materialName .. "|r (" .. result.probability .. "%)"
+            lines[i] = {"  |T" .. materialTexture .. ":0|t " .. hex .. materialName .. "|r", result.probability .. "%"}
 
             itemsLoaded = itemsLoaded + 1
             if itemsLoaded == totalItems then
                 tooltip:AddLine("Disenchant results:")
                 for j = 1, totalItems do
                     local line = lines[j]
-                    tooltip:AddLine(line)
+                    tooltip:AddDoubleLine(line[1], line[2])
                 end
                 tooltip:Show()
             end

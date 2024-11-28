@@ -51,6 +51,7 @@ describe("DisenchantBuddy", function()
             end),
             Show = spy.new(),
             AddLine = spy.new(),
+            AddDoubleLine = spy.new(),
         }
         _G.ItemRefTooltip = {
             HookScript = spy.new(),
@@ -291,8 +292,8 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.GetItem).was.called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(_, "  |T132858:0|t " .. Colors.STANDARD .. "Strange Dust" .. "|r (80%)")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(_, "  |T132867:0|t " .. Colors.GOOD .. "Lesser Magic Essence" .. "|r (20%)")
+            assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132858:0|t " .. Colors.STANDARD .. "Strange Dust" .. "|r", "80%")
+            assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132867:0|t " .. Colors.GOOD .. "Lesser Magic Essence" .. "|r", "20%")
         end)
 
         it("should show tooltip for rare level 5 items", function()
@@ -305,7 +306,7 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.GetItem).was.called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(_, "  |T132877:0|t " .. Colors.RARE .. "Small Glimmering Shard" .. "|r (100%)")
+            assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132877:0|t " .. Colors.RARE .. "Small Glimmering Shard" .. "|r", "100%")
         end)
 
         it("should show tooltip for epic level 60 items", function()
@@ -318,7 +319,7 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.GetItem).was.called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(_, "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r (100%)")
+            assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r", "100%")
         end)
     end)
 
