@@ -59,7 +59,7 @@ end
 function DisenchantBuddy.OnTooltipSetItem(tooltip)
     local _, link = tooltip:GetItem()
 
-    if (not link) then
+    if (not link) or tooltip:IsForbidden() then
         return
     end
 

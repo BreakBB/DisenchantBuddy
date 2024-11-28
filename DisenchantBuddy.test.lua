@@ -34,6 +34,9 @@ describe("DisenchantBuddy", function()
     before_each(function()
         _G.GameTooltip = {
             HookScript = spy.new(),
+            IsForbidden = function()
+                return false
+            end,
             GetItem = spy.new(function()
                 return "itemName", "itemLink"
             end),
@@ -84,6 +87,18 @@ describe("DisenchantBuddy", function()
             gameTooltipMock.GetItem = spy.new(function()
                 return nil, nil
             end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was_not.called()
+            assert.spy(gameTooltipMock.AddLine).was_not.called()
+        end)
+
+        it("should not show when IsForbidden is true", function()
+            gameTooltipMock.IsForbidden = function()
+                return true
+            end
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
