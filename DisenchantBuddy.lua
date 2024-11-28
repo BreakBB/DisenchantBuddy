@@ -73,9 +73,13 @@ function DisenchantBuddy.OnTooltipSetItem(tooltip)
     AddDisenchantInfo(tooltip, link)
 end
 
+---@param isLogin boolean
+---@param isReload boolean
 function DisenchantBuddy.OnPlayerEnteringWorld(_, _, isLogin, isReload)
-    GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- hovering over an item
-    ItemRefTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- clicking an item link
+    if isLogin or isReload then
+        GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- hovering over an item
+        ItemRefTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- clicking an item link
+    end
 end
 
 local frame = CreateFrame("Frame")
