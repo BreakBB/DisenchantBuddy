@@ -75,8 +75,8 @@ def main():
     if len(includedExpansions) == 0:
         # If expansions go online/offline their major version needs to be added/removed here
         includedExpansions.append(1)
-        includedExpansions.append(3)
-        includedExpansions.append(4)
+        # includedExpansions.append(3)
+        # includedExpansions.append(4)
 
     release_dir = get_version_dir(isReleaseBuild, versionOverride)
 
@@ -215,9 +215,8 @@ def get_branch():
     if is_tool("git"):
         script_dir = os.path.dirname(os.path.realpath(__file__))
         # git rev-parse --abbrev-ref HEAD
-        p = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=script_dir)
-        branch = str(p).rstrip("\\n'").lstrip("b'")
-        return branch
+        branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=script_dir)
+        return branch.decode().strip()
 
 
 def get_interface_version(expansion='Vanilla'):
