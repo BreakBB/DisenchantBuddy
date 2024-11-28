@@ -18,6 +18,7 @@ globals = {
     "GameTooltip",
     "GetItemInfo",
     "GetItemQualityColor",
+    "Item",
     "assert.spy",
     "assert.are_same",
     "assert.is_nil",

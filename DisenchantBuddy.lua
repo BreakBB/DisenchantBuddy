@@ -28,15 +28,31 @@ local function AddDisenchantInfo(tooltip, itemLink)
         return false
     end
 
-    tooltip:AddLine("Disenchant results:")
-    for i = 1, #disenchantResults do
+    local itemsLoaded = 0
+    local totalItems = #disenchantResults
+    local lines = {}
+
+    for i = 1, totalItems do
         ---@type DisenchantResult
         local result = disenchantResults[i]
-        local materialName, _, materialQuality, _, _, _, _, _, _, materialTexture = GetItemInfo(result.itemId)
+        local item = Item:CreateFromItemID(result.itemId)
+        item:ContinueOnItemLoad(function()
+            local materialName = item:GetItemName()
+            local materialTexture = item:GetItemIcon()
+            local hex = item:GetItemQualityColor().hex
 
-        local _, _, _, hex = GetItemQualityColor(materialQuality)
+            lines[i] = "  |T" .. materialTexture .. ":0|t " .. hex .. materialName .. "|r (" .. result.probability .. "%)"
 
-        tooltip:AddLine("  |T" .. materialTexture .. ":0|t " .. "|c" .. hex .. materialName .. "|r (" .. result.probability .. "%)")
+            itemsLoaded = itemsLoaded + 1
+            if itemsLoaded == totalItems then
+                tooltip:AddLine("Disenchant results:")
+                for j = 1, totalItems do
+                    local line = lines[j]
+                    tooltip:AddLine(line)
+                end
+                tooltip:Show()
+            end
+        end)
     end
 
     return true

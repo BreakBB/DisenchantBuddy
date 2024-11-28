@@ -1,10 +1,10 @@
 dofile(".types/wow-api/library/Data/Enum.lua")
 
 local Colors = {
-    STANDARD = "ffffffff",
-    GOOD = "ff1eff00",
-    RARE = "ff0070dd",
-    EPIC = "ffa335ee",
+    STANDARD = "|cffffffff",
+    GOOD = "|cff1eff00",
+    RARE = "|cff0070dd",
+    EPIC = "|cffa335ee",
 }
 
 _G.GetItemQualityColor = function(quality)
@@ -18,6 +18,11 @@ _G.GetItemQualityColor = function(quality)
         return nil, nil, nil, Colors.EPIC
     end
 end
+
+local match = require("luassert.match")
+local _ = match._ -- any match
+_.name = "any"
+_.arguments = {n = 0}
 
 describe("DisenchantBuddy", function()
 
@@ -36,6 +41,26 @@ describe("DisenchantBuddy", function()
             AddLine = spy.new(),
         }
         gameTooltipMock = _G.GameTooltip
+        _G.Item = {
+            CreateFromItemID = function(_, itemId)
+                return {
+                    ContinueOnItemLoad = function(_, callback)
+                        callback()
+                    end,
+                    GetItemName = function()
+                        return select(1, _GetItemInfoForMaterials(itemId))
+                    end,
+                    GetItemIcon = function()
+                        return select(10, _GetItemInfoForMaterials(itemId))
+                    end,
+                    GetItemQualityColor = function()
+                        return {
+                            hex = select(4, GetItemQualityColor(select(3, _GetItemInfoForMaterials(itemId))))
+                        }
+                    end
+                }
+            end,
+        }
 
         DisenchantBuddy = {}
         -- We use `loadfile` over `require` to be able to hand in our own environment
@@ -196,11 +221,7 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should show tooltip for uncommon level 5 items", function()
-            _G.GetItemInfo = spy.new(function(itemId)
-                local materialName = _GetItemInfoForMaterials(itemId)
-                if materialName then
-                    return _GetItemInfoForMaterials(itemId)
-                end
+            _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
 
@@ -209,16 +230,12 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.GetItem).was.called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "  |T132858:0|t" .. " |c" .. Colors.STANDARD .. "Strange Dust" .. "|r (80%)")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "  |T132867:0|t" .. " |c" .. Colors.GOOD .. "Lesser Magic Essence" .. "|r (20%)")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(_, "  |T132858:0|t " .. Colors.STANDARD .. "Strange Dust" .. "|r (80%)")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(_, "  |T132867:0|t " .. Colors.GOOD .. "Lesser Magic Essence" .. "|r (20%)")
         end)
 
         it("should show tooltip for rare level 5 items", function()
-            _G.GetItemInfo = spy.new(function(itemId)
-                local materialName = _GetItemInfoForMaterials(itemId)
-                if materialName then
-                    return _GetItemInfoForMaterials(itemId)
-                end
+            _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Rare, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
 
@@ -227,15 +244,11 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.GetItem).was.called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "  |T132877:0|t" .. " |c" .. Colors.RARE .. "Small Glimmering Shard" .. "|r (100%)")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(_, "  |T132877:0|t " .. Colors.RARE .. "Small Glimmering Shard" .. "|r (100%)")
         end)
 
         it("should show tooltip for epic level 60 items", function()
-            _G.GetItemInfo = spy.new(function(itemId)
-                local materialName = _GetItemInfoForMaterials(itemId)
-                if materialName then
-                    return _GetItemInfoForMaterials(itemId)
-                end
+            _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Epic, 60, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
 
@@ -244,7 +257,7 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.GetItem).was.called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
-            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "  |T132880:0|t" .. " |c" .. Colors.EPIC .. "Nexus Crystal" .. "|r (100%)")
+            assert.spy(gameTooltipMock.AddLine).was.called_with(_, "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r (100%)")
         end)
     end)
 
