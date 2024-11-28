@@ -67,10 +67,10 @@ function DisenchantBuddy.OnTooltipSetItem(tooltip)
         return
     end
 
-    -- crafted wands can not be disenchanted
+    -- crafted wands Cannot be disenchanted
     local itemId = tonumber(string.match(link, "item:(%d+)"))
     if itemId == 11287 or itemId == 11288 or itemId == 11289 or itemId == 11290 then
-        tooltip:AddLine("Can not be disenchanted") -- TODO: Localize
+        tooltip:AddLine("Cannot be disenchanted") -- TODO: Localize
         tooltip:Show()
         return
     end
