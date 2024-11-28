@@ -15,7 +15,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
 
     local disenchantResults
     if quality == Enum.ItemQuality.Good then
-        disenchantResults = DisenchantBuddy.GetMaterialsForUncommonItem(itemLevel)
+        disenchantResults = DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
     elseif quality == Enum.ItemQuality.Rare then
         disenchantResults = DisenchantBuddy.GetMaterialsForRareItem(itemLevel)
     elseif quality == Enum.ItemQuality.Epic then

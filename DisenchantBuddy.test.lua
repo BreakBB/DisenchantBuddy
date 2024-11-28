@@ -67,11 +67,11 @@ describe("DisenchantBuddy", function()
                         return select(1, _GetItemInfoForMaterials(itemId))
                     end,
                     GetItemIcon = function()
-                        return select(10, _GetItemInfoForMaterials(itemId))
+                        return select(3, _GetItemInfoForMaterials(itemId))
                     end,
                     GetItemQualityColor = function()
                         return {
-                            hex = select(4, GetItemQualityColor(select(3, _GetItemInfoForMaterials(itemId))))
+                            hex = select(2, GetItemQualityColor(select(3, _GetItemInfoForMaterials(itemId))))
                         }
                     end
                 }
@@ -325,53 +325,53 @@ describe("DisenchantBuddy", function()
 
     _GetItemInfoForMaterials = function(itemId)
         if itemId == 10940 then
-            return "Strange Dust", nil, Enum.ItemQuality.Standard, nil, nil, nil, nil, nil, nil, 132858
+            return "Strange Dust", Enum.ItemQuality.Standard, 132858
         elseif itemId == 11083 then
-            return "Soul Dust", nil, Enum.ItemQuality.Standard, nil, nil, nil, nil, nil, nil, 132857
+            return "Soul Dust", Enum.ItemQuality.Standard, 132857
         elseif itemId == 11137 then
-            return "Vision Dust", nil, Enum.ItemQuality.Standard, nil, nil, nil, nil, nil, nil, 132859
+            return "Vision Dust", Enum.ItemQuality.Standard, 132859
         elseif itemId == 11176 then
-            return "Dream Dust", nil, Enum.ItemQuality.Standard, nil, nil, nil, nil, nil, nil, 132855
+            return "Dream Dust", Enum.ItemQuality.Standard, 132855
         elseif itemId == 16204 then
-            return "Illusion Dust", nil, Enum.ItemQuality.Standard, nil, nil, nil, nil, nil, nil, 132856
+            return "Illusion Dust", Enum.ItemQuality.Standard, 132856
         elseif itemId == 10938 then
-            return "Lesser Magic Essence", nil, Enum.ItemQuality.Good, nil, nil, nil, nil, nil, nil, 132867
+            return "Lesser Magic Essence", Enum.ItemQuality.Good, 132867
         elseif itemId == 10939 then
-            return "Greater Magic Essence", nil, Enum.ItemQuality.Good, nil, nil, nil, nil, nil, nil, 132866
+            return "Greater Magic Essence", Enum.ItemQuality.Good, 132866
         elseif itemId == 10998 then
-            return "Lesser Astral Essence", nil, Enum.ItemQuality.Good, nil, nil, nil, nil, nil, nil, 132863
+            return "Lesser Astral Essence", Enum.ItemQuality.Good, 132863
         elseif itemId == 11082 then
-            return "Greater Astral Essence", nil, Enum.ItemQuality.Good, nil, nil, nil, nil, nil, nil, 132862
+            return "Greater Astral Essence", Enum.ItemQuality.Good, 132862
         elseif itemId == 11134 then
-            return "Lesser Mystic Essence", nil, Enum.ItemQuality.Good, nil, nil, nil, nil, nil, nil, 132869
+            return "Lesser Mystic Essence", Enum.ItemQuality.Good, 132869
         elseif itemId == 11135 then
-            return "Greater Mystic Essence", nil, Enum.ItemQuality.Good, nil, nil, nil, nil, nil, nil, 132868
+            return "Greater Mystic Essence", Enum.ItemQuality.Good, 132868
         elseif itemId == 11174 then
-            return "Lesser Nether Essence", nil, Enum.ItemQuality.Good, nil, nil, nil, nil, nil, nil, 132871
+            return "Lesser Nether Essence", Enum.ItemQuality.Good, 132871
         elseif itemId == 11175 then
-            return "Greater Nether Essence", nil, Enum.ItemQuality.Good, nil, nil, nil, nil, nil, nil, 132870
+            return "Greater Nether Essence", Enum.ItemQuality.Good, 132870
         elseif itemId == 16202 then
-            return "Lesser Eternal Essence", nil, Enum.ItemQuality.Good, nil, nil, nil, nil, nil, nil, 132865
+            return "Lesser Eternal Essence", Enum.ItemQuality.Good, 132865
         elseif itemId == 16203 then
-            return "Greater Eternal Essence", nil, Enum.ItemQuality.Good, nil, nil, nil, nil, nil, nil, 132864
+            return "Greater Eternal Essence", Enum.ItemQuality.Good, 132864
         elseif itemId == 10978 then
-            return "Small Glimmering Shard", nil, Enum.ItemQuality.Rare, nil, nil, nil, nil, nil, nil, 132877
+            return "Small Glimmering Shard", Enum.ItemQuality.Rare, 132877
         elseif itemId == 11084 then
-            return "Large Glimmering Shard", nil, Enum.ItemQuality.Rare, nil, nil, nil, nil, nil, nil, 132876
+            return "Large Glimmering Shard", Enum.ItemQuality.Rare, 132876
         elseif itemId == 11138 then
-            return "Small Glowing Shard", nil, Enum.ItemQuality.Rare, nil, nil, nil, nil, nil, nil, 132879
+            return "Small Glowing Shard", Enum.ItemQuality.Rare, 132879
         elseif itemId == 11139 then
-            return "Large Glowing Shard", nil, Enum.ItemQuality.Rare, nil, nil, nil, nil, nil, nil, 132878
+            return "Large Glowing Shard", Enum.ItemQuality.Rare, 132878
         elseif itemId == 11177 then
-            return "Small Radiant Shard", nil, Enum.ItemQuality.Rare, nil, nil, nil, nil, nil, nil, 132884
+            return "Small Radiant Shard", Enum.ItemQuality.Rare, 132884
         elseif itemId == 11178 then
-            return "Large Radiant Shard", nil, Enum.ItemQuality.Rare, nil, nil, nil, nil, nil, nil, 132883
+            return "Large Radiant Shard", Enum.ItemQuality.Rare, 132883
         elseif itemId == 14343 then
-            return "Small Brilliant Shard", nil, Enum.ItemQuality.Rare, nil, nil, nil, nil, nil, nil, 132874
+            return "Small Brilliant Shard", Enum.ItemQuality.Rare, 132874
         elseif itemId == 14344 then
-            return "Large Brilliant Shard", nil, Enum.ItemQuality.Rare, nil, nil, nil, nil, nil, nil, 132873
+            return "Large Brilliant Shard", Enum.ItemQuality.Rare, 132873
         elseif itemId == 20725 then
-            return "Nexus Crystal", nil, Enum.ItemQuality.Epic, nil, nil, nil, nil, nil, nil, 132880
+            return "Nexus Crystal", Enum.ItemQuality.Epic, 132880
         else
             return nil
         end
