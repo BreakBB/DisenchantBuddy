@@ -71,7 +71,7 @@ describe("DisenchantBuddy", function()
                     end,
                     GetItemQualityColor = function()
                         return {
-                            hex = select(2, GetItemQualityColor(select(3, _GetItemInfoForMaterials(itemId))))
+                            hex = select(4, GetItemQualityColor(select(2, _GetItemInfoForMaterials(itemId))))
                         }
                     end
                 }
