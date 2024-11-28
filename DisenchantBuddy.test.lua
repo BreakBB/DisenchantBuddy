@@ -282,7 +282,7 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.AddLine).was_not.called()
         end)
 
-        it("should show tooltip for uncommon level 5 items", function()
+        it("should show tooltip for uncommon level 5 armor", function()
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
@@ -294,6 +294,20 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
             assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132858:0|t " .. Colors.STANDARD .. "Strange Dust" .. "|r", "80%")
             assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132867:0|t " .. Colors.GOOD .. "Lesser Magic Essence" .. "|r", "20%")
+        end)
+
+        it("should show tooltip for uncommon level 5 weapons", function()
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Weapon
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132867:0|t " .. Colors.GOOD .. "Lesser Magic Essence" .. "|r", "80%")
+            assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132858:0|t " .. Colors.STANDARD .. "Strange Dust" .. "|r", "20%")
         end)
 
         it("should show tooltip for rare level 5 items", function()
