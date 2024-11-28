@@ -19,6 +19,7 @@ globals = {
     "GetItemInfo",
     "GetItemQualityColor",
     "Item",
+    "ItemRefTooltip",
     "assert.spy",
     "assert.are_same",
     "assert.is_nil",
