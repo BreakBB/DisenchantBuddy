@@ -233,8 +233,8 @@ describe("DisenchantBuddy", function()
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
             assert.spy(gameTooltipMock.GetItem).was.called()
-            assert.spy(gameTooltipMock.Show).was_not.called()
-            assert.spy(gameTooltipMock.AddLine).was_not.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Can not be disenchanted")
         end)
 
         it("should not show tooltip for Greater Magic Wand", function()
@@ -248,8 +248,8 @@ describe("DisenchantBuddy", function()
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
             assert.spy(gameTooltipMock.GetItem).was.called()
-            assert.spy(gameTooltipMock.Show).was_not.called()
-            assert.spy(gameTooltipMock.AddLine).was_not.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Can not be disenchanted")
         end)
 
         it("should not show tooltip for Lesser Mystic Wand", function()
@@ -263,8 +263,8 @@ describe("DisenchantBuddy", function()
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
             assert.spy(gameTooltipMock.GetItem).was.called()
-            assert.spy(gameTooltipMock.Show).was_not.called()
-            assert.spy(gameTooltipMock.AddLine).was_not.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Can not be disenchanted")
         end)
 
         it("should not show tooltip for Greater Mystic Wand", function()
@@ -278,8 +278,8 @@ describe("DisenchantBuddy", function()
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
             assert.spy(gameTooltipMock.GetItem).was.called()
-            assert.spy(gameTooltipMock.Show).was_not.called()
-            assert.spy(gameTooltipMock.AddLine).was_not.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Can not be disenchanted")
         end)
 
         it("should show tooltip for uncommon level 5 armor", function()
