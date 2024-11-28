@@ -73,5 +73,11 @@ function DisenchantBuddy.OnTooltipSetItem(tooltip)
     AddDisenchantInfo(tooltip, link)
 end
 
-GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- hovering over an item
-ItemRefTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- clicking an item link
+function DisenchantBuddy.OnPlayerEnteringWorld(_, _, isLogin, isReload)
+    GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- hovering over an item
+    ItemRefTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- clicking an item link
+end
+
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+frame:SetScript("OnEvent", DisenchantBuddy.OnPlayerEnteringWorld)

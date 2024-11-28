@@ -28,10 +28,18 @@ describe("DisenchantBuddy", function()
 
     local DisenchantBuddy
     local gameTooltipMock
+    local frameMock
 
     local _GetItemInfoForMaterials
 
     before_each(function()
+        frameMock = {
+            RegisterEvent = spy.new(),
+            SetScript = spy.new(),
+        }
+        _G.CreateFrame = function()
+            return frameMock
+        end
         _G.GameTooltip = {
             HookScript = spy.new(),
             IsForbidden = function()
@@ -77,9 +85,17 @@ describe("DisenchantBuddy", function()
         loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
     end)
 
-    it("should hook OnTooltipSetItem", function()
-        assert.spy(_G.GameTooltip.HookScript).was.called_with(_G.GameTooltip, "OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
-        assert.spy(_G.ItemRefTooltip.HookScript).was.called_with(_G.ItemRefTooltip, "OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
+    it("should hook PLAYER_ENTERING_WORLD event", function()
+        assert.spy(frameMock.RegisterEvent).was.called_with(_, "PLAYER_ENTERING_WORLD")
+        assert.spy(frameMock.SetScript).was.called_with(_, "OnEvent", DisenchantBuddy.OnPlayerEnteringWorld)
+    end)
+
+    describe("OnPlayerEnteringWorld", function()
+        it("should hook OnTooltipSetItem", function()
+            DisenchantBuddy.OnPlayerEnteringWorld()
+            assert.spy(_G.GameTooltip.HookScript).was.called_with(_G.GameTooltip, "OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
+            assert.spy(_G.ItemRefTooltip.HookScript).was.called_with(_G.ItemRefTooltip, "OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
+        end)
     end)
 
     describe("OnTooltipSetItem", function()
