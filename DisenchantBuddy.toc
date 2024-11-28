@@ -1,11 +1,2 @@
-## Interface: 11505
-## Title: Disenchant Buddy v0.0.1
-## Author: BreakBB
-## Notes: A lightweight addon to show disenchant results.
-## Version: 0.0.1
-
-Materials.lua
-DisenchantResults/Uncommon.lua
-DisenchantResults/Rare.lua
-DisenchantResults/Epic.lua
-DisenchantBuddy.lua
+# This file is intentionally empty.
+# Check expansion specific TOC files for the correct data.
