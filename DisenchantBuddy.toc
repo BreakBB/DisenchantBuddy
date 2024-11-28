@@ -1,5 +1,5 @@
 ## Interface: 11505
-## Title: Disenchant Buddy
+## Title: Disenchant Buddy v0.0.1
 ## Author: BreakBB
 ## Notes: A lightweight addon to show disenchant results.
 ## Version: 0.0.1
