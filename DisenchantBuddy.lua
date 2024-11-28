@@ -76,6 +76,13 @@ end
 ---@param isLogin boolean
 ---@param isReload boolean
 function DisenchantBuddy.OnPlayerEnteringWorld(_, _, isLogin, isReload)
+    if isLogin then
+        -- Trigger caching of all materials, so they are available when hovering over items
+        for _, itemId in pairs(DisenchantBuddy.Materials) do
+            GetItemInfo(itemId)
+        end
+    end
+
     if isLogin or isReload then
         GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- hovering over an item
         ItemRefTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- clicking an item link

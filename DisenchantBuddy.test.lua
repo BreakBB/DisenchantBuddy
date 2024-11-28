@@ -93,21 +93,34 @@ describe("DisenchantBuddy", function()
 
     describe("OnPlayerEnteringWorld", function()
         it("should hook OnTooltipSetItem when isLogin is true", function()
+            _G.GetItemInfo = spy.new()
+
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
+
             assert.spy(_G.GameTooltip.HookScript).was.called_with(_G.GameTooltip, "OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
             assert.spy(_G.ItemRefTooltip.HookScript).was.called_with(_G.ItemRefTooltip, "OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
         end)
 
         it("should hook OnTooltipSetItem when isReload is true", function()
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, false, true)
+
             assert.spy(_G.GameTooltip.HookScript).was.called_with(_G.GameTooltip, "OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
             assert.spy(_G.ItemRefTooltip.HookScript).was.called_with(_G.ItemRefTooltip, "OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
         end)
 
         it("should hook OnTooltipSetItem when isLogin and isReload are false", function()
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, false, false)
+
             assert.spy(_G.GameTooltip.HookScript).was_not.called()
             assert.spy(_G.ItemRefTooltip.HookScript).was_not.called()
+        end)
+
+        it("should trigger material caching on login", function()
+            _G.GetItemInfo = spy.new()
+
+            DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
+
+            assert.spy(_G.GetItemInfo).was.called(24)
         end)
     end)
 
