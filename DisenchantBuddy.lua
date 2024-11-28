@@ -3,7 +3,6 @@ local _, DisenchantBuddy = ...
 
 ---@param tooltip GameTooltip
 ---@param itemLink string
----@return boolean True if tooltip was added, false otherwise
 local function AddDisenchantInfo(tooltip, itemLink)
     local _, _, quality, itemLevel, _, _, _, _, _, _, _, classId = GetItemInfo(itemLink)
 
@@ -11,7 +10,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
             quality == Enum.ItemQuality.Standard or
             quality == Enum.ItemQuality.Legendary or
             (classId ~= Enum.ItemClass.Armor and classId ~= Enum.ItemClass.Weapon) then
-        return false
+        return
     end
 
     local disenchantResults
@@ -25,7 +24,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
 
     if (not disenchantResults) then
         -- No disenchant results for this item, e.g. itemLevel too high
-        return false
+        return
     end
 
     local itemsLoaded = 0
@@ -54,8 +53,6 @@ local function AddDisenchantInfo(tooltip, itemLink)
             end
         end)
     end
-
-    return true
 end
 
 ---@param tooltip GameTooltip
@@ -73,11 +70,7 @@ function DisenchantBuddy.OnTooltipSetItem(tooltip)
         return
     end
 
-    local tooltipAdded = AddDisenchantInfo(tooltip, link)
-
-    if tooltipAdded then
-        tooltip:Show()
-    end
+    AddDisenchantInfo(tooltip, link)
 end
 
 GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
