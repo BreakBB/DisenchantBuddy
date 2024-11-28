@@ -3,6 +3,8 @@
 ## Author: BreakBB
 ## Notes: A lightweight addon to show disenchant results.
 ## Version: 0.0.1
+## X-Curse-Project-ID: 1149594
+## X-Wago-ID: 56n9DdN9
 
 Materials.lua
 DisenchantResults/Uncommon.lua
