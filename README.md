@@ -7,10 +7,14 @@ It helps players to quickly see what materials they can expect to receive from d
 
 ## Installation
 
-1. Download the latest version of the addon.
-2. Extract the contents of the zip file to your World of Warcraft Interface\AddOns directory:
+I suggest you use an addon manager like the [CurseForge Client](https://curseforge.overwolf.com/) to ease the installation and update process. You will find
+DisenchantBuddy [here on CurseForge](https://www.curseforge.com/wow/addons/disenchantbuddy).
+
+Alternatively you can always use [the latest GitHub release](https://github.com/BreakBB/DisenchantBuddy/releases/latest) and manually install it:
+
+1. Extract the contents of the zip file to your World of Warcraft Interface\AddOns directory:
     - Era/HC/Anniversary: `World of Warcraft\_classic_era_\Interface\AddOns\DisenchantBuddy`
-3. Restart World of Warcraft or reload your UI
+2. Restart World of Warcraft or reload your UI
 
 ## Development
 
