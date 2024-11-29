@@ -25,9 +25,7 @@ CF_METADATA=$(cat <<-EOF
     "changelog": $CHANGELOG,
     "changelogType": "markdown",
     "gameVersions": [12216],
-    "relations": {
-      projects: []
-    }
+    "relations": {}
 }
 EOF
 )
