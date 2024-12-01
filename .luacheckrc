@@ -12,7 +12,9 @@ exclude_files = {
     "**/.luarocks/**/", -- Created by the GitHub Action
     "**/.install/**/",  -- Created by the GitHub Action
 }
-ignore = {}
+ignore = {
+    "631", -- Line is too long.
+}
 globals = {
     "Auctionator",
     "CreateFrame",
