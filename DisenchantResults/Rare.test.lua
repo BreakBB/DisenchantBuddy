@@ -132,7 +132,7 @@ describe("GetMaterialsForRareItem", function()
         local results = GetMaterialsForRareItem(56)
 
         assert.are_same({
-            {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 99.5},
+            {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 99.5},
             {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5},
         }, results)
     end)
@@ -141,7 +141,7 @@ describe("GetMaterialsForRareItem", function()
         local results = GetMaterialsForRareItem(60)
 
         assert.are_same({
-            {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 99.5},
+            {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 99.5},
             {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5},
         }, results)
     end)
@@ -150,7 +150,7 @@ describe("GetMaterialsForRareItem", function()
         local results = GetMaterialsForRareItem(61)
 
         assert.are_same({
-            {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 99.5},
+            {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 99.5},
             {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5},
         }, results)
     end)
@@ -159,7 +159,7 @@ describe("GetMaterialsForRareItem", function()
         local results = GetMaterialsForRareItem(65)
 
         assert.are_same({
-            {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 99.5},
+            {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 99.5},
             {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5},
         }, results)
     end)

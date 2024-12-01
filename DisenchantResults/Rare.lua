@@ -22,7 +22,7 @@ function DisenchantBuddy.GetMaterialsForRareItem(itemLevel)
         return {{itemId = Materials.SMALL_BRILLIANT_SHARD, probability = 100}}
     elseif itemLevel <= 65 then
         return {
-            {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 99.5},
+            {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 99.5},
             {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5},
         }
     else
