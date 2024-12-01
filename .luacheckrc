@@ -14,9 +14,11 @@ exclude_files = {
 }
 ignore = {}
 globals = {
+    "Auctionator",
     "CreateFrame",
     "Enum",
     "GameTooltip",
+    "GetCoinTextureString",
     "GetItemInfo",
     "GetItemQualityColor",
     "Item",
