@@ -6,6 +6,8 @@
 Disenchant Buddy is a lightweight World of Warcraft addon that displays disenchant results on item tooltips.
 It helps players to quickly see what materials they can expect to receive from disenchanting an item.
 
+When [Auctionator](https://github.com/Auctionator/Auctionator) is installed, then Disenchant Buddy will also show the auction prices for the materials.
+
 ## Installation
 
 I suggest you use an addon manager like the [CurseForge Client](https://curseforge.overwolf.com/) to ease the installation and update process. You will find
