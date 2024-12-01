@@ -44,7 +44,17 @@ local function AddDisenchantInfo(tooltip, itemLink)
             local materialTexture = item:GetItemIcon()
             local hex = item:GetItemQualityColor().hex
 
-            lines[i] = {"  |T" .. materialTexture .. ":0|t " .. hex .. materialName .. "|r", result.probability .. "%"}
+            local leftSide = "  |T" .. materialTexture .. ":0|t " .. hex .. materialName .. "|r"
+            local rightSide = result.probability .. "%"
+
+            if Auctionator then
+                local auctionValue = Auctionator.API.v1.GetAuctionPriceByItemID("DisenchantBuddy", result.itemId)
+                if auctionValue then
+                    rightSide = rightSide .. " (" .. GetCoinTextureString(auctionValue) .. ")"
+                end
+            end
+
+            lines[i] = {leftSide, rightSide}
 
             itemsLoaded = itemsLoaded + 1
             if itemsLoaded == totalItems then

@@ -26,6 +26,10 @@ local _ = match._ -- any match
 _.name = "any"
 _.arguments = {n = 0}
 
+local GOLD_COIN_ICON = "|TInterface\\MoneyFrame\\UI-GoldIcon:14:14:2:0|t"
+local SILVER_COIN_ICON = "|TInterface\\MoneyFrame\\UI-SilverIcon:14:14:2:0|t"
+local COPPER_COIN_ICON = "|TInterface\\MoneyFrame\\UI-CopperIcon:14:14:2:0|t"
+
 describe("DisenchantBuddy", function()
 
     ---@type DisenchantBuddy
@@ -58,6 +62,7 @@ describe("DisenchantBuddy", function()
         _G.ItemRefTooltip = {
             HookScript = spy.new(),
         }
+        _G.Auctionator = nil
         gameTooltipMock = _G.GameTooltip
         _G.Item = {
             CreateFromItemID = function(_, itemId)
@@ -334,6 +339,43 @@ describe("DisenchantBuddy", function()
 
             assert.spy(gameTooltipMock.GetItem).was.called()
             assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r", "100%")
+        end)
+
+        it("should show auction price for materials when Auctionator is active", function()
+            _G.Auctionator = {API = {v1 = {GetAuctionPriceByItemID = spy.new(function()
+                return 12345
+            end)}}}
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Epic, 60, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+            end)
+            _G.GetCoinTextureString = function(amount)
+                return math.floor((amount / 10000)) .. GOLD_COIN_ICON .. " " .. math.floor(((amount % 10000) / 100)) .. SILVER_COIN_ICON .. " " .. math.floor((amount % 100)) .. COPPER_COIN_ICON
+            end
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(_G.Auctionator.API.v1.GetAuctionPriceByItemID).was.called_with(_, 20725)
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
+            assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r", "100% (1" .. GOLD_COIN_ICON .. " 23" .. SILVER_COIN_ICON .. " 45" .. COPPER_COIN_ICON .. ")")
+        end)
+
+        it("should not show auction price for materials when Auctionator is active but does not have a price", function()
+            _G.Auctionator = {API = {v1 = {GetAuctionPriceByItemID = spy.new(function()
+                return nil
+            end)}}}
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Epic, 60, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+            end)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.GetItem).was.called()
+            assert.spy(gameTooltipMock.Show).was.called()
+            assert.spy(_G.Auctionator.API.v1.GetAuctionPriceByItemID).was.called_with(_, 20725)
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
             assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r", "100%")
         end)
