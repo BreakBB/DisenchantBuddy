@@ -47,16 +47,20 @@ local function AddDisenchantInfo(tooltip, itemLink)
             local leftSide = "  |T" .. materialTexture .. ":0|t " .. hex .. materialName .. "|r"
             local rightSide = result.probability .. "%"
             if result.minQuantity == result.maxQuantity then
-                rightSide = rightSide .. " (" .. result.minQuantity .. "x"
+                rightSide = rightSide .. " (" .. result.minQuantity
             else
-                rightSide = rightSide .. " (" .. result.minQuantity .. "-" .. result.maxQuantity .. "x"
+                rightSide = rightSide .. " (" .. result.minQuantity .. "-" .. result.maxQuantity
             end
 
             if Auctionator then
                 local auctionValue = Auctionator.API.v1.GetAuctionPriceByItemID("DisenchantBuddy", result.itemId)
                 if auctionValue then
-                    rightSide = rightSide .. " " .. HIGHLIGHT_FONT_COLOR_CODE .. GetCoinTextureString(auctionValue, 12) .. "|r"
+                    rightSide = rightSide .. " x " .. HIGHLIGHT_FONT_COLOR_CODE .. GetCoinTextureString(auctionValue, 12) .. "|r"
+                else
+                    rightSide = rightSide .. "x"
                 end
+            else
+                rightSide = rightSide .. "x"
             end
             rightSide = rightSide .. ")"
 

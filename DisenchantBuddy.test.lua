@@ -362,7 +362,7 @@ describe("DisenchantBuddy", function()
             assert.spy(_G.Auctionator.API.v1.GetAuctionPriceByItemID).was.called_with(_, 20725)
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
             local leftSide = "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r"
-            local rightSide = "100% (1x " .. _G.HIGHLIGHT_FONT_COLOR_CODE .. "1" .. GOLD_COIN_ICON .. " 23" .. SILVER_COIN_ICON .. " 45" .. COPPER_COIN_ICON .. "|r)"
+            local rightSide = "100% (1 x " .. _G.HIGHLIGHT_FONT_COLOR_CODE .. "1" .. GOLD_COIN_ICON .. " 23" .. SILVER_COIN_ICON .. " 45" .. COPPER_COIN_ICON .. "|r)"
             assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, leftSide, rightSide)
         end)
 
