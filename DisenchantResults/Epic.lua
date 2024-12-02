@@ -14,7 +14,7 @@ function DisenchantBuddy.GetMaterialsForEpicItem(itemLevel)
         return {{itemId = Materials.SMALL_BRILLIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}
     elseif itemLevel <= 60 then
         return {{itemId = Materials.NEXUS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 1}}
-    elseif itemLevel <= 65 then
+    elseif itemLevel <= 92 then
         return {{itemId = Materials.NEXUS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2}}
     else
         return nil
