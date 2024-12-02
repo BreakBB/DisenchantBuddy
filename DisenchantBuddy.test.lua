@@ -26,9 +26,9 @@ local _ = match._ -- any match
 _.name = "any"
 _.arguments = {n = 0}
 
-local GOLD_COIN_ICON = "|TInterface\\MoneyFrame\\UI-GoldIcon:14:14:2:0|t"
-local SILVER_COIN_ICON = "|TInterface\\MoneyFrame\\UI-SilverIcon:14:14:2:0|t"
-local COPPER_COIN_ICON = "|TInterface\\MoneyFrame\\UI-CopperIcon:14:14:2:0|t"
+local GOLD_COIN_ICON = "|TInterface\\MoneyFrame\\UI-GoldIcon:12:12:2:0|t"
+local SILVER_COIN_ICON = "|TInterface\\MoneyFrame\\UI-SilverIcon:12:12:2:0|t"
+local COPPER_COIN_ICON = "|TInterface\\MoneyFrame\\UI-CopperIcon:12:12:2:0|t"
 
 describe("DisenchantBuddy", function()
 
