@@ -23,37 +23,37 @@ describe("GetMaterialsForRareItem", function()
     it("should return correct results for level 5 items", function()
         local results = GetMaterialsForRareItem(5)
 
-        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1}}, results)
     end)
 
     it("should return correct results for level 15 items", function()
         local results = GetMaterialsForRareItem(15)
 
-        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1}}, results)
     end)
 
     it("should return correct results for level 16 items", function()
         local results = GetMaterialsForRareItem(16)
 
-        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1}}, results)
     end)
 
     it("should return correct results for level 20 items", function()
         local results = GetMaterialsForRareItem(20)
 
-        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1}}, results)
     end)
 
     it("should return correct results for level 21 items", function()
         local results = GetMaterialsForRareItem(21)
 
-        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1}}, results)
     end)
 
     it("should return correct results for level 25 items", function()
         local results = GetMaterialsForRareItem(25)
 
-        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1}}, results)
     end)
 
     it("should return correct results for level 26 items", function()

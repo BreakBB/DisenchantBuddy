@@ -8,8 +8,8 @@ local Materials = DisenchantBuddy.Materials
 function DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
     if itemLevel <= 15 then
         return {
-            {itemId = Materials.STRANGE_DUST, probability = 80},
-            {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 20}
+            {itemId = Materials.STRANGE_DUST, probability = 80, minQuantity = 1, maxQuantity = 2},
+            {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 2}
         }
     elseif itemLevel <= 20 then
         return {
@@ -81,8 +81,8 @@ end
 function DisenchantBuddy.GetMaterialsForUncommonWeapons(itemLevel)
     if itemLevel <= 15 then
         return {
-            {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 80},
-            {itemId = Materials.STRANGE_DUST, probability = 20}
+            {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 80, minQuantity = 1, maxQuantity = 2},
+            {itemId = Materials.STRANGE_DUST, probability = 20, minQuantity = 1, maxQuantity = 2}
         }
     elseif itemLevel <= 20 then
         return {

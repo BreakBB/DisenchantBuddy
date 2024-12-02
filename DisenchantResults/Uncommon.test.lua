@@ -27,8 +27,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonArmor(5)
 
             assert.are_same({
-                {itemId = Materials.STRANGE_DUST, probability = 80},
-                {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 20},
+                {itemId = Materials.STRANGE_DUST, probability = 80, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 2},
             }, results)
         end)
 
@@ -36,8 +36,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonArmor(15)
 
             assert.are_same({
-                {itemId = Materials.STRANGE_DUST, probability = 80},
-                {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 20},
+                {itemId = Materials.STRANGE_DUST, probability = 80, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 2},
             }, results)
         end)
 
@@ -253,8 +253,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(5)
 
             assert.are_same({
-                {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 80},
-                {itemId = Materials.STRANGE_DUST, probability = 20},
+                {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 80, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.STRANGE_DUST, probability = 20, minQuantity = 1, maxQuantity = 2},
             }, results)
         end)
 
@@ -262,8 +262,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(15)
 
             assert.are_same({
-                {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 80},
-                {itemId = Materials.STRANGE_DUST, probability = 20},
+                {itemId = Materials.LESSER_MAGIC_ESSENCE, probability = 80, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.STRANGE_DUST, probability = 20, minQuantity = 1, maxQuantity = 2},
             }, results)
         end)
 
