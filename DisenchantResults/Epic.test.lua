@@ -23,109 +23,109 @@ describe("GetMaterialsForEpicItem", function()
     it("should return correct results for level 5 items", function()
         local results = GetMaterialsForEpicItem(5)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 15 items", function()
         local results = GetMaterialsForEpicItem(15)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 16 items", function()
         local results = GetMaterialsForEpicItem(16)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 20 items", function()
         local results = GetMaterialsForEpicItem(20)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 21 items", function()
         local results = GetMaterialsForEpicItem(21)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 25 items", function()
         local results = GetMaterialsForEpicItem(25)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 26 items", function()
         local results = GetMaterialsForEpicItem(26)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 30 items", function()
         local results = GetMaterialsForEpicItem(30)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 31 items", function()
         local results = GetMaterialsForEpicItem(31)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 35 items", function()
         local results = GetMaterialsForEpicItem(35)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 36 items", function()
         local results = GetMaterialsForEpicItem(36)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 40 items", function()
         local results = GetMaterialsForEpicItem(40)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 41 items", function()
         local results = GetMaterialsForEpicItem(41)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 45 items", function()
         local results = GetMaterialsForEpicItem(45)
 
-        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 46 items", function()
         local results = GetMaterialsForEpicItem(46)
 
-        assert.are_same({{itemId = Materials.LARGE_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.LARGE_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 50 items", function()
         local results = GetMaterialsForEpicItem(50)
 
-        assert.are_same({{itemId = Materials.LARGE_RADIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.LARGE_RADIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 51 items", function()
         local results = GetMaterialsForEpicItem(51)
 
-        assert.are_same({{itemId = Materials.SMALL_BRILLIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_BRILLIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 55 items", function()
         local results = GetMaterialsForEpicItem(55)
 
-        assert.are_same({{itemId = Materials.SMALL_BRILLIANT_SHARD, probability = 100}}, results)
+        assert.are_same({{itemId = Materials.SMALL_BRILLIANT_SHARD, probability = 100, minQuantity = 2, maxQuantity = 4}}, results)
     end)
 
     it("should return correct results for level 56 items", function()
@@ -143,12 +143,12 @@ describe("GetMaterialsForEpicItem", function()
     it("should return correct results for level 61 items", function()
         local results = GetMaterialsForEpicItem(61)
 
-        assert.are_same({{itemId = Materials.NEXUS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 1}}, results)
+        assert.are_same({{itemId = Materials.NEXUS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2}}, results)
     end)
 
     it("should return correct results for level 65 items", function()
         local results = GetMaterialsForEpicItem(65)
 
-        assert.are_same({{itemId = Materials.NEXUS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 1}}, results)
+        assert.are_same({{itemId = Materials.NEXUS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2}}, results)
     end)
 end)
