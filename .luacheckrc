@@ -23,6 +23,7 @@ globals = {
     "GetCoinTextureString",
     "GetItemInfo",
     "GetItemQualityColor",
+    "HIGHLIGHT_FONT_COLOR_CODE",
     "Item",
     "ItemRefTooltip",
     "ITEM_DISENCHANT_NOT_DISENCHANTABLE",

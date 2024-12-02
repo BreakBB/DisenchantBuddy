@@ -55,7 +55,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
             if Auctionator then
                 local auctionValue = Auctionator.API.v1.GetAuctionPriceByItemID("DisenchantBuddy", result.itemId)
                 if auctionValue then
-                    rightSide = rightSide .. " " .. GetCoinTextureString(auctionValue, 12)
+                    rightSide = rightSide .. " " .. HIGHLIGHT_FONT_COLOR_CODE .. GetCoinTextureString(auctionValue, 12) .. "|r"
                 end
             end
             rightSide = rightSide .. ")"

@@ -8,6 +8,7 @@ local Colors = {
 }
 
 _G.ITEM_DISENCHANT_NOT_DISENCHANTABLE = "Cannot be disenchanted"
+_G.HIGHLIGHT_FONT_COLOR_CODE = Colors.STANDARD
 
 _G.GetItemQualityColor = function(quality)
     if quality == Enum.ItemQuality.Standard then
@@ -360,7 +361,9 @@ describe("DisenchantBuddy", function()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(_G.Auctionator.API.v1.GetAuctionPriceByItemID).was.called_with(_, 20725)
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
-            assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r", "100% (1x 1" .. GOLD_COIN_ICON .. " 23" .. SILVER_COIN_ICON .. " 45" .. COPPER_COIN_ICON .. ")")
+            local leftSide = "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r"
+            local rightSide = "100% (1x " .. _G.HIGHLIGHT_FONT_COLOR_CODE .. "1" .. GOLD_COIN_ICON .. " 23" .. SILVER_COIN_ICON .. " 45" .. COPPER_COIN_ICON .. "|r)"
+            assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, leftSide, rightSide)
         end)
 
         it("should not show auction price for materials when Auctionator is active but does not have a price", function()
