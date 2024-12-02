@@ -8,6 +8,16 @@ It helps players to quickly see what materials they can expect to receive from d
 
 When [Auctionator](https://github.com/Auctionator/Auctionator) is installed, then Disenchant Buddy will also show the auction prices for the materials.
 
+## Compatibility
+
+Disenchant Buddy is compatible with and available for the following World of Warcraft versions:
+
+- Classic Era/HC/Anniversary :white_check_mark:
+- Season of Discovery :white_check_mark:
+- Wrath of the Lich King :hourglass_flowing_sand: (will be added soon)
+- Cataclysm :hourglass_flowing_sand: (will be added soon)
+- Retail :x: (not planned)
+
 ## Installation
 
 I suggest you use an addon manager like the [CurseForge Client](https://curseforge.overwolf.com/) to ease the installation and update process. You will find
@@ -16,7 +26,7 @@ DisenchantBuddy [here on CurseForge](https://www.curseforge.com/wow/addons/disen
 Alternatively you can always use [the latest GitHub release](https://github.com/BreakBB/DisenchantBuddy/releases/latest) and manually install it:
 
 1. Extract the contents of the zip file to your World of Warcraft Interface\AddOns directory:
-    - Era/HC/Anniversary: `World of Warcraft\_classic_era_\Interface\AddOns\DisenchantBuddy`
+    - Era/HC/Anniversary/SoD: `World of Warcraft\_classic_era_\Interface\AddOns\DisenchantBuddy`
 2. Restart World of Warcraft or reload your UI
 
 ## Development
