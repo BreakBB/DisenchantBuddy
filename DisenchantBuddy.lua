@@ -1,6 +1,8 @@
 ---@class DisenchantBuddy
 local _, DisenchantBuddy = ...
 
+local L = DisenchantBuddy.L
+
 ---@param tooltip GameTooltip
 ---@param itemLink string
 local function AddDisenchantInfo(tooltip, itemLink)
@@ -68,7 +70,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
 
             itemsLoaded = itemsLoaded + 1
             if itemsLoaded == totalItems then
-                tooltip:AddLine("Disenchant results:") -- TODO: Localize
+                tooltip:AddLine(L["Disenchant results:"]) -- TODO: Localize
                 for j = 1, totalItems do
                     local line = lines[j]
                     tooltip:AddDoubleLine(line[1], line[2])

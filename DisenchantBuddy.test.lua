@@ -45,6 +45,9 @@ describe("DisenchantBuddy", function()
             RegisterEvent = spy.new(),
             SetScript = spy.new(),
         }
+        _G.GetLocale = function()
+            return "enUS"
+        end
         _G.CreateFrame = function()
             return frameMock
         end
@@ -89,6 +92,7 @@ describe("DisenchantBuddy", function()
         DisenchantBuddy = {}
         -- We use `loadfile` over `require` to be able to hand in our own environment
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
+        loadfile("Locales/enUS.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("DisenchantResults/Uncommon.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("DisenchantResults/Rare.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("DisenchantResults/Epic.lua")("DisenchantBuddy", DisenchantBuddy)
@@ -381,6 +385,21 @@ describe("DisenchantBuddy", function()
             assert.spy(_G.Auctionator.API.v1.GetAuctionPriceByItemID).was.called_with(_, 20725)
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
             assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r", "100% (1x)")
+        end)
+
+        it("should translate tooltip header line", function()
+            _G.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+            end)
+            _G.GetLocale = function()
+                return "deDE"
+            end
+            loadfile("Locales/deDE.lua")("DisenchantBuddy", DisenchantBuddy)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
+
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Entzauberungsergebnisse:")
         end)
     end)
 
