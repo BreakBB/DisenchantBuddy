@@ -70,7 +70,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
 
             itemsLoaded = itemsLoaded + 1
             if itemsLoaded == totalItems then
-                tooltip:AddLine(L["Disenchant results:"]) -- TODO: Localize
+                tooltip:AddLine(L["Disenchant results:"])
                 for j = 1, totalItems do
                     local line = lines[j]
                     tooltip:AddDoubleLine(line[1], line[2])
