@@ -92,6 +92,7 @@ describe("DisenchantBuddy", function()
         DisenchantBuddy = {}
         -- We use `loadfile` over `require` to be able to hand in our own environment
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
+        loadfile("GetTooltipLine.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("Locales/enUS.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("DisenchantResults/Uncommon.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("DisenchantResults/Rare.lua")("DisenchantBuddy", DisenchantBuddy)

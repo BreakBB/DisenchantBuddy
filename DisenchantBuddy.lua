@@ -2,6 +2,7 @@
 local _, DisenchantBuddy = ...
 
 local L = DisenchantBuddy.L
+local GetTooltipLine = DisenchantBuddy.GetTooltipLine
 
 ---@param tooltip GameTooltip
 ---@param itemLink string
@@ -42,31 +43,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
         local result = disenchantResults[i]
         local item = Item:CreateFromItemID(result.itemId)
         item:ContinueOnItemLoad(function()
-            local materialName = item:GetItemName()
-            local materialTexture = item:GetItemIcon()
-            local hex = item:GetItemQualityColor().hex
-
-            local leftSide = "  |T" .. materialTexture .. ":0|t " .. hex .. materialName .. "|r"
-            local rightSide = result.probability .. "%"
-            if result.minQuantity == result.maxQuantity then
-                rightSide = rightSide .. " (" .. result.minQuantity
-            else
-                rightSide = rightSide .. " (" .. result.minQuantity .. "-" .. result.maxQuantity
-            end
-
-            if Auctionator then
-                local auctionValue = Auctionator.API.v1.GetAuctionPriceByItemID("DisenchantBuddy", result.itemId)
-                if auctionValue then
-                    rightSide = rightSide .. " x " .. HIGHLIGHT_FONT_COLOR_CODE .. GetCoinTextureString(auctionValue, 12) .. "|r"
-                else
-                    rightSide = rightSide .. "x"
-                end
-            else
-                rightSide = rightSide .. "x"
-            end
-            rightSide = rightSide .. ")"
-
-            lines[i] = {leftSide, rightSide}
+            lines[i] = GetTooltipLine(item, result)
 
             itemsLoaded = itemsLoaded + 1
             if itemsLoaded == totalItems then

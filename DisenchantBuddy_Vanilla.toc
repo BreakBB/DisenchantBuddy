@@ -8,6 +8,7 @@
 ## X-Wago-ID: 56n9DdN9
 
 Materials.lua
+GetTooltipLine.lua
 Locales/Locales.xml
 DisenchantResults/Uncommon.lua
 DisenchantResults/Rare.lua
