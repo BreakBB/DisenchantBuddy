@@ -4,6 +4,25 @@ local _, DisenchantBuddy = ...
 local L = DisenchantBuddy.L
 local GetTooltipLine = DisenchantBuddy.GetTooltipLine
 
+---@param quality number
+---@param classId number
+---@param itemLevel number
+---@return DisenchantResult|nil
+local function GetDisenchantResults(quality, classId, itemLevel)
+    if quality == Enum.ItemQuality.Good then
+        if classId == Enum.ItemClass.Weapon then
+            return DisenchantBuddy.GetMaterialsForUncommonWeapons(itemLevel)
+        else
+            return DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
+        end
+    elseif quality == Enum.ItemQuality.Rare then
+        return DisenchantBuddy.GetMaterialsForRareItem(itemLevel)
+    elseif quality == Enum.ItemQuality.Epic then
+        return DisenchantBuddy.GetMaterialsForEpicItem(itemLevel)
+    end
+    return nil
+end
+
 ---@param tooltip GameTooltip
 ---@param itemLink string
 local function AddDisenchantInfo(tooltip, itemLink)
@@ -16,19 +35,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
         return
     end
 
-    local disenchantResults
-    if quality == Enum.ItemQuality.Good then
-        if classId == Enum.ItemClass.Weapon then
-            disenchantResults = DisenchantBuddy.GetMaterialsForUncommonWeapons(itemLevel)
-        else
-            disenchantResults = DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
-        end
-    elseif quality == Enum.ItemQuality.Rare then
-        disenchantResults = DisenchantBuddy.GetMaterialsForRareItem(itemLevel)
-    elseif quality == Enum.ItemQuality.Epic then
-        disenchantResults = DisenchantBuddy.GetMaterialsForEpicItem(itemLevel)
-    end
-
+    local disenchantResults = GetDisenchantResults(quality, classId, itemLevel)
     if (not disenchantResults) then
         -- No disenchant results for this item, e.g. itemLevel too high
         return
