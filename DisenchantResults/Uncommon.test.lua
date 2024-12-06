@@ -291,7 +291,7 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(21)
 
             assert.are_same({
-                {itemId = Materials.LESSER_ASTRAL_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.GREATER_MAGIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
                 {itemId = Materials.STRANGE_DUST, probability = 15, minQuantity = 4, maxQuantity = 6},
                 {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 10, minQuantity = 1, maxQuantity = 1}
             }, results)
@@ -301,7 +301,7 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(25)
 
             assert.are_same({
-                {itemId = Materials.LESSER_ASTRAL_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.GREATER_MAGIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
                 {itemId = Materials.STRANGE_DUST, probability = 15, minQuantity = 4, maxQuantity = 6},
                 {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 10, minQuantity = 1, maxQuantity = 1}
             }, results)
@@ -311,7 +311,7 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(26)
 
             assert.are_same({
-                {itemId = Materials.GREATER_ASTRAL_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.GREATER_MAGIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
                 {itemId = Materials.SOUL_DUST, probability = 20, minQuantity = 1, maxQuantity = 2},
                 {itemId = Materials.LARGE_GLIMMERING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
             }, results)
@@ -321,7 +321,7 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(30)
 
             assert.are_same({
-                {itemId = Materials.GREATER_ASTRAL_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.GREATER_MAGIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
                 {itemId = Materials.SOUL_DUST, probability = 20, minQuantity = 1, maxQuantity = 2},
                 {itemId = Materials.LARGE_GLIMMERING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
             }, results)

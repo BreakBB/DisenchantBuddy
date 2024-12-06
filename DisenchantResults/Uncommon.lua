@@ -92,13 +92,13 @@ function DisenchantBuddy.GetMaterialsForUncommonWeapons(itemLevel)
         }
     elseif itemLevel <= 25 then
         return {
-            {itemId = Materials.LESSER_ASTRAL_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+            {itemId = Materials.GREATER_MAGIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
             {itemId = Materials.STRANGE_DUST, probability = 15, minQuantity = 4, maxQuantity = 6},
             {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 10, minQuantity = 1, maxQuantity = 1}
         }
     elseif itemLevel <= 30 then
         return {
-            {itemId = Materials.GREATER_ASTRAL_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+            {itemId = Materials.GREATER_MAGIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
             {itemId = Materials.SOUL_DUST, probability = 20, minQuantity = 1, maxQuantity = 2},
             {itemId = Materials.LARGE_GLIMMERING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
         }
