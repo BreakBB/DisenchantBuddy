@@ -28,6 +28,8 @@ globals = {
     "Item",
     "ItemRefTooltip",
     "ITEM_DISENCHANT_NOT_DISENCHANTABLE",
+    "WOW_PROJECT_ID",
+    "WOW_PROJECT_BURNING_CRUSADE_CLASSIC",
     "assert.spy",
     "assert.are_same",
     "assert.is_nil",

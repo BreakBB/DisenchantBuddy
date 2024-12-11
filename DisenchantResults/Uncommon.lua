@@ -71,6 +71,24 @@ function DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
             {itemId = Materials.GREATER_ETERNAL_ESSENCE, probability = 20, minQuantity = 2, maxQuantity = 3},
             {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
         }
+    elseif itemLevel == 79 then
+        return {
+            {itemId = Materials.ARCANE_DUST, probability = 75, minQuantity = 1, maxQuantity = 2},
+            {itemId = Materials.LESSER_PLANAR_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
+            {itemId = Materials.SMALL_PRISMATIC_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+        }
+    elseif itemLevel <= 99 then
+        return {
+            {itemId = Materials.ARCANE_DUST, probability = 75, minQuantity = 2, maxQuantity = 3},
+            {itemId = Materials.LESSER_PLANAR_ESSENCE, probability = 22, minQuantity = 2, maxQuantity = 3},
+            {itemId = Materials.SMALL_PRISMATIC_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+        }
+    elseif itemLevel <= 120 then
+        return {
+            {itemId = Materials.ARCANE_DUST, probability = 75, minQuantity = 2, maxQuantity = 5},
+            {itemId = Materials.GREATER_PLANAR_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
+            {itemId = Materials.LARGE_PRISMATIC_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+        }
     else
         return nil
     end
@@ -143,6 +161,18 @@ function DisenchantBuddy.GetMaterialsForUncommonWeapons(itemLevel)
             {itemId = Materials.GREATER_ETERNAL_ESSENCE, probability = 75, minQuantity = 2, maxQuantity = 3},
             {itemId = Materials.ILLUSION_DUST, probability = 20, minQuantity = 2, maxQuantity = 5},
             {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
+        }
+    elseif itemLevel <= 99 then
+        return {
+            {itemId = Materials.LESSER_PLANAR_ESSENCE, probability = 75, minQuantity = 2, maxQuantity = 3},
+            {itemId = Materials.ARCANE_DUST, probability = 22, minQuantity = 2, maxQuantity = 3},
+            {itemId = Materials.SMALL_PRISMATIC_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+        }
+    elseif itemLevel <= 120 then
+        return {
+            {itemId = Materials.GREATER_PLANAR_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+            {itemId = Materials.ARCANE_DUST, probability = 22, minQuantity = 2, maxQuantity = 5},
+            {itemId = Materials.LARGE_PRISMATIC_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
         }
     else
         return nil

@@ -19,6 +19,13 @@ function DisenchantBuddy.GetMaterialsForEpicItem(itemLevel)
             {itemId = Materials.NEXUS_CRYSTAL, probability = 33, minQuantity = 1, maxQuantity = 1},
             {itemId = Materials.NEXUS_CRYSTAL, probability = 67, minQuantity = 2, maxQuantity = 2},
         }
+    elseif itemLevel <= 100 then
+        return {{itemId = Materials.VOID_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2}}
+    elseif itemLevel <= 164 then
+        return {
+            {itemId = Materials.VOID_CRYSTAL, probability = 33, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.VOID_CRYSTAL, probability = 67, minQuantity = 2, maxQuantity = 2},
+        }
     else
         return nil
     end

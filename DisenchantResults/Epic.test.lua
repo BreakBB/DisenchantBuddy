@@ -15,7 +15,7 @@ describe("GetMaterialsForEpicItem", function()
     end)
 
     it("should return nil for unhandled item level", function()
-        local results = GetMaterialsForEpicItem(100)
+        local results = GetMaterialsForEpicItem(165)
 
         assert.is_nil(results)
     end)
@@ -164,6 +164,36 @@ describe("GetMaterialsForEpicItem", function()
         assert.are_same({
             {itemId = Materials.NEXUS_CRYSTAL, probability = 33, minQuantity = 1, maxQuantity = 1},
             {itemId = Materials.NEXUS_CRYSTAL, probability = 67, minQuantity = 2, maxQuantity = 2},
+        }, results)
+    end)
+
+    it("should return correct results for level 93 items", function()
+        local results = GetMaterialsForEpicItem(93)
+
+        assert.are_same({{itemId = Materials.VOID_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2}}, results)
+    end)
+
+    it("should return correct results for level 100 items", function()
+        local results = GetMaterialsForEpicItem(100)
+
+        assert.are_same({{itemId = Materials.VOID_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2}}, results)
+    end)
+
+    it("should return correct results for level 105 items", function()
+        local results = GetMaterialsForEpicItem(105)
+
+        assert.are_same({
+            {itemId = Materials.VOID_CRYSTAL, probability = 33, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.VOID_CRYSTAL, probability = 67, minQuantity = 2, maxQuantity = 2},
+        }, results)
+    end)
+
+    it("should return correct results for level 164 items", function()
+        local results = GetMaterialsForEpicItem(164)
+
+        assert.are_same({
+            {itemId = Materials.VOID_CRYSTAL, probability = 33, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.VOID_CRYSTAL, probability = 67, minQuantity = 2, maxQuantity = 2},
         }, results)
     end)
 end)

@@ -26,5 +26,14 @@ DisenchantBuddy.Materials = {
     LARGE_RADIANT_SHARD = 11178,
     SMALL_BRILLIANT_SHARD = 14343,
     LARGE_BRILLIANT_SHARD = 14344,
-    NEXUS_CRYSTAL = 20725,
+    NEXUS_CRYSTAL = 20725
 }
+
+if DisenchantBuddy.IsTBC then
+    DisenchantBuddy.Materials.ARCANE_DUST = 22445
+    DisenchantBuddy.Materials.GREATER_PLANAR_ESSENCE = 22446
+    DisenchantBuddy.Materials.LESSER_PLANAR_ESSENCE = 22447
+    DisenchantBuddy.Materials.SMALL_PRISMATIC_SHARD = 22448
+    DisenchantBuddy.Materials.LARGE_PRISMATIC_SHARD = 22449
+    DisenchantBuddy.Materials.VOID_CRYSTAL = 22450
+end

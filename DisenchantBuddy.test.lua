@@ -129,12 +129,23 @@ describe("DisenchantBuddy", function()
             assert.spy(_G.ItemRefTooltip.HookScript).was_not.called()
         end)
 
-        it("should trigger material caching on login", function()
+        it("should trigger Classic material caching on login", function()
             _G.GetItemInfo = spy.new()
+            DisenchantBuddy.IsTBC = false
 
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
             assert.spy(_G.GetItemInfo).was.called(24)
+        end)
+
+        it("should trigger TBC material caching on login", function()
+            _G.GetItemInfo = spy.new()
+            DisenchantBuddy.IsTBC = true
+            loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
+
+            DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
+
+            assert.spy(_G.GetItemInfo).was.called(30)
         end)
     end)
 
@@ -225,7 +236,7 @@ describe("DisenchantBuddy", function()
 
         it("should not show tooltip for unhandled rare item level", function()
             _G.GetItemInfo = spy.new(function()
-                return nil, nil, Enum.ItemQuality.Rare, 66, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                return nil, nil, Enum.ItemQuality.Rare, 116, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)

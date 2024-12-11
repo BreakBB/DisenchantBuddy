@@ -7,6 +7,7 @@
 ## X-Curse-Project-ID: 1149594
 ## X-Wago-ID: 56n9DdN9
 
+GameVersions.lua
 Materials.lua
 GetTooltipLine.lua
 Locales/Locales.xml

@@ -15,7 +15,7 @@ describe("GetMaterialsForRareItem", function()
     end)
 
     it("should return nil for unhandled item level", function()
-        local results = GetMaterialsForRareItem(66)
+        local results = GetMaterialsForRareItem(116)
 
         assert.is_nil(results)
     end)
@@ -161,6 +161,42 @@ describe("GetMaterialsForRareItem", function()
         assert.are_same({
             {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
             {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 66 items", function()
+        local results = GetMaterialsForRareItem(66)
+
+        assert.are_same({
+            {itemId = Materials.SMALL_PRISMATIC_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 99 items", function()
+        local results = GetMaterialsForRareItem(99)
+
+        assert.are_same({
+            {itemId = Materials.SMALL_PRISMATIC_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 100 items", function()
+        local results = GetMaterialsForRareItem(100)
+
+        assert.are_same({
+            {itemId = Materials.LARGE_PRISMATIC_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.VOID_CRYSTAL, probability = 0.5, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 115 items", function()
+        local results = GetMaterialsForRareItem(115)
+
+        assert.are_same({
+            {itemId = Materials.LARGE_PRISMATIC_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.VOID_CRYSTAL, probability = 0.5, minQuantity = 1, maxQuantity = 1},
         }, results)
     end)
 end)
