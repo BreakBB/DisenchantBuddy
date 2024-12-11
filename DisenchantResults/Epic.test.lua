@@ -143,18 +143,27 @@ describe("GetMaterialsForEpicItem", function()
     it("should return correct results for level 61 items", function()
         local results = GetMaterialsForEpicItem(61)
 
-        assert.are_same({{itemId = Materials.NEXUS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2}}, results)
+        assert.are_same({
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 33, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 67, minQuantity = 2, maxQuantity = 2},
+        }, results)
     end)
 
     it("should return correct results for level 65 items", function()
         local results = GetMaterialsForEpicItem(65)
 
-        assert.are_same({{itemId = Materials.NEXUS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2}}, results)
+        assert.are_same({
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 33, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 67, minQuantity = 2, maxQuantity = 2},
+        }, results)
     end)
 
     it("should return correct results for level 92 items", function()
         local results = GetMaterialsForEpicItem(92)
 
-        assert.are_same({{itemId = Materials.NEXUS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2}}, results)
+        assert.are_same({
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 33, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 67, minQuantity = 2, maxQuantity = 2},
+        }, results)
     end)
 end)
