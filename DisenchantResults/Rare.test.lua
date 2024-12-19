@@ -155,8 +155,8 @@ describe("GetMaterialsForRareItem", function()
         }, results)
     end)
 
-    it("should return correct results for level 65 items", function()
-        local results = GetMaterialsForRareItem(65)
+    it("should return correct results for level 74 items", function()
+        local results = GetMaterialsForRareItem(74)
 
         assert.are_same({
             {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
@@ -164,8 +164,8 @@ describe("GetMaterialsForRareItem", function()
         }, results)
     end)
 
-    it("should return correct results for level 66 items", function()
-        local results = GetMaterialsForRareItem(66)
+    it("should return correct results for level 75 items", function()
+        local results = GetMaterialsForRareItem(75)
 
         assert.are_same({
             {itemId = Materials.SMALL_PRISMATIC_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
