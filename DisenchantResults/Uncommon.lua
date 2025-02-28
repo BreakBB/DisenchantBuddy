@@ -99,7 +99,7 @@ function DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
         return {
             {itemId = Materials.INFINITE_DUST, probability = 75, minQuantity = 4, maxQuantity = 7},
             {itemId = Materials.GREATER_COSMIC_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
-            {itemId = Materials.SMALL_DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+            {itemId = Materials.DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
         }
     else
         return nil
