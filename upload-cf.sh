@@ -24,7 +24,7 @@ CF_METADATA=$(cat <<-EOF
     "releaseType": "$RELEASE_TYPE",
     "changelog": $CHANGELOG,
     "changelogType": "markdown",
-    "gameVersions": [12345]
+    "gameVersions": [10272, 12345]
 }
 EOF
 )

@@ -38,7 +38,7 @@ This program accepts optional command line options:
 addonDir = 'DisenchantBuddy'
 includedExpansions = []
 # tocs = ['', 'DisenchantBuddy-Classic.toc', 'DisenchantBuddy-BCC.toc', 'DisenchantBuddy-WOTLKC.toc', 'DisenchantBuddy-Cata.toc']
-tocs = ['', 'DisenchantBuddy_Vanilla.toc']
+tocs = ['', 'DisenchantBuddy_Vanilla.toc', '', 'DisenchantBuddy_Wrath.toc']
 
 
 def main():
@@ -60,8 +60,8 @@ def main():
                     includedExpansions.append(1)
                 # if 2 not in includedExpansions:
                 #     includedExpansions.append(2)
-                # if 3 not in includedExpansions:
-                #     includedExpansions.append(3)
+                if 3 not in includedExpansions:
+                    includedExpansions.append(3)
                 # if 4 not in includedExpansions:
                 #     includedExpansions.append(4)
             elif arg in ['-c', '--classic'] and 1 not in includedExpansions:
@@ -75,7 +75,7 @@ def main():
     if len(includedExpansions) == 0:
         # If expansions go online/offline their major version needs to be added/removed here
         includedExpansions.append(1)
-        # includedExpansions.append(3)
+        includedExpansions.append(3)
         # includedExpansions.append(4)
 
     release_dir = get_version_dir(isReleaseBuild, versionOverride)
@@ -105,7 +105,7 @@ def main():
 
     interface_classic = get_interface_version()
     # interface_bcc = get_interface_version('BCC')
-    # interface_wotlk = get_interface_version('WOTLKC')
+    interface_wotlk = get_interface_version('Wrath')
     # interface_cata = get_interface_version('Cata')
 
     flavorString = ""
@@ -121,12 +121,12 @@ def main():
     #                 "flavor": "bcc",
     #                 "interface": %s
     #             },""" % interface_bcc
-    # if 3 in includedExpansions:
-    #     flavorString += """
-    #             {
-    #                 "flavor": "wrath",
-    #                 "interface": %s
-    #             },""" % interface_wotlk
+    if 3 in includedExpansions:
+        flavorString += """
+                {
+                    "flavor": "wrath",
+                    "interface": %s
+                },""" % interface_wotlk
     # if 4 in includedExpansions:
     #     flavorString += """
     #             {
