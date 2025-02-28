@@ -311,6 +311,26 @@ describe("GetMaterialsForUncommonItem", function()
                 {itemId = Materials.SMALL_DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
             }, results)
         end)
+
+        it("should return correct results for level 152 items", function()
+            local results = GetMaterialsForUncommonArmor(152)
+
+            assert.are_same({
+                {itemId = Materials.INFINITE_DUST, probability = 75, minQuantity = 4, maxQuantity = 7},
+                {itemId = Materials.GREATER_COSMIC_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.SMALL_DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
+        it("should return correct results for level 200 items", function()
+            local results = GetMaterialsForUncommonArmor(200)
+
+            assert.are_same({
+                {itemId = Materials.INFINITE_DUST, probability = 75, minQuantity = 4, maxQuantity = 7},
+                {itemId = Materials.GREATER_COSMIC_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.SMALL_DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
     end)
 
     describe("GetMaterialsForUncommonWeapons", function()
