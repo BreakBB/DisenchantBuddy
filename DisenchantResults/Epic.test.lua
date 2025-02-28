@@ -8,6 +8,8 @@ describe("GetMaterialsForEpicItem", function()
         -- We use `loadfile` over `require` to be able to hand in our own environment
         ---@type DisenchantBuddy
         local DisenchantBuddy = {}
+        DisenchantBuddy.IsTBC = true
+        DisenchantBuddy.IsWotLK = true
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
         Materials = DisenchantBuddy.Materials
         loadfile("DisenchantResults/Epic.lua")("DisenchantBuddy", DisenchantBuddy)
@@ -15,7 +17,7 @@ describe("GetMaterialsForEpicItem", function()
     end)
 
     it("should return nil for unhandled item level", function()
-        local results = GetMaterialsForEpicItem(165)
+        local results = GetMaterialsForEpicItem(500)
 
         assert.is_nil(results)
     end)
@@ -194,6 +196,22 @@ describe("GetMaterialsForEpicItem", function()
         assert.are_same({
             {itemId = Materials.VOID_CRYSTAL, probability = 33, minQuantity = 1, maxQuantity = 1},
             {itemId = Materials.VOID_CRYSTAL, probability = 67, minQuantity = 2, maxQuantity = 2},
+        }, results)
+    end)
+
+    it("should return correct results for level 185 items", function()
+        local results = GetMaterialsForEpicItem(185)
+
+        assert.are_same({
+            {itemId = Materials.ABYSS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2},
+        }, results)
+    end)
+
+    it("should return correct results for level 199 items", function()
+        local results = GetMaterialsForEpicItem(199)
+
+        assert.are_same({
+            {itemId = Materials.ABYSS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2},
         }, results)
     end)
 end)
