@@ -132,6 +132,7 @@ describe("DisenchantBuddy", function()
         it("should trigger Classic material caching on login", function()
             _G.GetItemInfo = spy.new()
             DisenchantBuddy.IsTBC = false
+            DisenchantBuddy.IsWotLK = false
 
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
@@ -141,11 +142,22 @@ describe("DisenchantBuddy", function()
         it("should trigger TBC material caching on login", function()
             _G.GetItemInfo = spy.new()
             DisenchantBuddy.IsTBC = true
+            DisenchantBuddy.IsWotLK = false
             loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
             assert.spy(_G.GetItemInfo).was.called(30)
+        end)
+
+        it("should trigger WotLK material caching on login", function()
+            _G.GetItemInfo = spy.new()
+            DisenchantBuddy.IsWotLK = true
+            loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
+
+            DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
+
+            assert.spy(_G.GetItemInfo).was.called(36)
         end)
     end)
 
