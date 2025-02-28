@@ -10,6 +10,7 @@ describe("GetMaterialsForUncommonItem", function()
         ---@type DisenchantBuddy
         local DisenchantBuddy = {}
         DisenchantBuddy.IsTBC = true
+        DisenchantBuddy.IsWotLK = true
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
         Materials = DisenchantBuddy.Materials
         loadfile("DisenchantResults/Uncommon.lua")("DisenchantBuddy", DisenchantBuddy)
@@ -615,6 +616,26 @@ describe("GetMaterialsForUncommonItem", function()
                 {itemId = Materials.LESSER_COSMIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
                 {itemId = Materials.INFINITE_DUST, probability = 22, minQuantity = 2, maxQuantity = 3},
                 {itemId = Materials.SMALL_DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
+        it("should return correct results for level 152 items", function()
+            local results = GetMaterialsForUncommonWeapons(152)
+
+            assert.are_same({
+                {itemId = Materials.GREATER_COSMIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.INFINITE_DUST, probability = 22, minQuantity = 4, maxQuantity = 7},
+                {itemId = Materials.DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
+        it("should return correct results for level 200 items", function()
+            local results = GetMaterialsForUncommonWeapons(200)
+
+            assert.are_same({
+                {itemId = Materials.GREATER_COSMIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.INFINITE_DUST, probability = 22, minQuantity = 4, maxQuantity = 7},
+                {itemId = Materials.DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
             }, results)
         end)
     end)
