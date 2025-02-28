@@ -19,7 +19,7 @@ describe("GetMaterialsForUncommonItem", function()
 
     describe("GetMaterialsForUncommonArmor", function()
         it("should return nil for unhandled item level", function()
-            local results = GetMaterialsForUncommonArmor(121)
+            local results = GetMaterialsForUncommonArmor(334)
 
             assert.is_nil(results)
         end)
@@ -289,6 +289,26 @@ describe("GetMaterialsForUncommonItem", function()
                 {itemId = Materials.ARCANE_DUST, probability = 75, minQuantity = 2, maxQuantity = 5},
                 {itemId = Materials.GREATER_PLANAR_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
                 {itemId = Materials.LARGE_PRISMATIC_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
+        it("should return correct results for level 130 items", function()
+            local results = GetMaterialsForUncommonArmor(130)
+
+            assert.are_same({
+                {itemId = Materials.INFINITE_DUST, probability = 75, minQuantity = 2, maxQuantity = 3},
+                {itemId = Materials.LESSER_COSMIC_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.SMALL_DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
+        it("should return correct results for level 151 items", function()
+            local results = GetMaterialsForUncommonArmor(151)
+
+            assert.are_same({
+                {itemId = Materials.INFINITE_DUST, probability = 75, minQuantity = 2, maxQuantity = 3},
+                {itemId = Materials.LESSER_COSMIC_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.SMALL_DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
             }, results)
         end)
     end)

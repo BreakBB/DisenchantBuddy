@@ -29,11 +29,20 @@ DisenchantBuddy.Materials = {
     NEXUS_CRYSTAL = 20725
 }
 
-if DisenchantBuddy.IsTBC then
+if DisenchantBuddy.IsTBC or DisenchantBuddy.IsWotLK then
     DisenchantBuddy.Materials.ARCANE_DUST = 22445
     DisenchantBuddy.Materials.GREATER_PLANAR_ESSENCE = 22446
     DisenchantBuddy.Materials.LESSER_PLANAR_ESSENCE = 22447
     DisenchantBuddy.Materials.SMALL_PRISMATIC_SHARD = 22448
     DisenchantBuddy.Materials.LARGE_PRISMATIC_SHARD = 22449
     DisenchantBuddy.Materials.VOID_CRYSTAL = 22450
+end
+
+if DisenchantBuddy.IsWotLK then
+    DisenchantBuddy.Materials.INFINITE_DUST = 34054
+    DisenchantBuddy.Materials.LESSER_COSMIC_ESSENCE = 34056
+    DisenchantBuddy.Materials.GREATER_COSMIC_ESSENCE = 34055
+    DisenchantBuddy.Materials.SMALL_DREAM_SHARD = 34053
+    DisenchantBuddy.Materials.DREAM_SHARD = 34052
+    DisenchantBuddy.Materials.ABYSS_CRYSTAL = 34057
 end
