@@ -28,6 +28,8 @@ function DisenchantBuddy.GetMaterialsForEpicItem(itemLevel)
         }
     elseif itemLevel <= 199 then
         return {{itemId = Materials.ABYSS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2}}
+    elseif itemLevel <= 284 then
+        return {{itemId = Materials.ABYSS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 1}}
     else
         return nil
     end

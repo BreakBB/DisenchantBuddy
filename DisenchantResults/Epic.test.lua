@@ -214,4 +214,20 @@ describe("GetMaterialsForEpicItem", function()
             {itemId = Materials.ABYSS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2},
         }, results)
     end)
+
+    it("should return correct results for level 200 items", function()
+        local results = GetMaterialsForEpicItem(200)
+
+        assert.are_same({
+            {itemId = Materials.ABYSS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 284 items", function()
+        local results = GetMaterialsForEpicItem(284)
+
+        assert.are_same({
+            {itemId = Materials.ABYSS_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
 end)
