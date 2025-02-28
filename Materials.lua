@@ -31,8 +31,8 @@ DisenchantBuddy.Materials = {
 
 if DisenchantBuddy.IsTBC or DisenchantBuddy.IsWotLK then
     DisenchantBuddy.Materials.ARCANE_DUST = 22445
-    DisenchantBuddy.Materials.GREATER_PLANAR_ESSENCE = 22446
     DisenchantBuddy.Materials.LESSER_PLANAR_ESSENCE = 22447
+    DisenchantBuddy.Materials.GREATER_PLANAR_ESSENCE = 22446
     DisenchantBuddy.Materials.SMALL_PRISMATIC_SHARD = 22448
     DisenchantBuddy.Materials.LARGE_PRISMATIC_SHARD = 22449
     DisenchantBuddy.Materials.VOID_CRYSTAL = 22450
