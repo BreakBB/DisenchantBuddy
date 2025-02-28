@@ -8,6 +8,8 @@ describe("GetMaterialsForRareItem", function()
         -- We use `loadfile` over `require` to be able to hand in our own environment
         ---@type DisenchantBuddy
         local DisenchantBuddy = {}
+        DisenchantBuddy.IsTBC = true
+        DisenchantBuddy.IsWotLK = true
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
         Materials = DisenchantBuddy.Materials
         loadfile("DisenchantResults/Rare.lua")("DisenchantBuddy", DisenchantBuddy)
@@ -15,7 +17,7 @@ describe("GetMaterialsForRareItem", function()
     end)
 
     it("should return nil for unhandled item level", function()
-        local results = GetMaterialsForRareItem(116)
+        local results = GetMaterialsForRareItem(353)
 
         assert.is_nil(results)
     end)
@@ -197,6 +199,38 @@ describe("GetMaterialsForRareItem", function()
         assert.are_same({
             {itemId = Materials.LARGE_PRISMATIC_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
             {itemId = Materials.VOID_CRYSTAL, probability = 0.5, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 130 items", function()
+        local results = GetMaterialsForRareItem(130)
+
+        assert.are_same({
+            {itemId = Materials.SMALL_DREAM_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 166 items", function()
+        local results = GetMaterialsForRareItem(166)
+
+        assert.are_same({
+            {itemId = Materials.SMALL_DREAM_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 167 items", function()
+        local results = GetMaterialsForRareItem(167)
+
+        assert.are_same({
+            {itemId = Materials.DREAM_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 200 items", function()
+        local results = GetMaterialsForRareItem(200)
+
+        assert.are_same({
+            {itemId = Materials.DREAM_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1},
         }, results)
     end)
 end)
