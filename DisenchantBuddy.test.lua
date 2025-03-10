@@ -159,6 +159,16 @@ describe("DisenchantBuddy", function()
 
             assert.spy(_G.GetItemInfo).was.called(36)
         end)
+
+        it("should trigger Cata material caching on login", function()
+            _G.GetItemInfo = spy.new()
+            DisenchantBuddy.IsCata = true
+            loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
+
+            DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
+
+            assert.spy(_G.GetItemInfo).was.called(42)
+        end)
     end)
 
     describe("OnTooltipSetItem", function()
