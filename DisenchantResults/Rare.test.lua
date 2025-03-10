@@ -233,4 +233,36 @@ describe("GetMaterialsForRareItem", function()
             {itemId = Materials.DREAM_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1},
         }, results)
     end)
+
+    it("should return correct results for level 288 items", function()
+        local results = GetMaterialsForRareItem(288)
+
+        assert.are_same({
+            {itemId = Materials.SMALL_HEAVENLY_SHARD, probability = 100, minQuantity = 1, maxQuantity = 2},
+        }, results)
+    end)
+
+    it("should return correct results for level 316 items", function()
+        local results = GetMaterialsForRareItem(316)
+
+        assert.are_same({
+            {itemId = Materials.SMALL_HEAVENLY_SHARD, probability = 100, minQuantity = 1, maxQuantity = 2},
+        }, results)
+    end)
+
+    it("should return correct results for level 318 items", function()
+        local results = GetMaterialsForRareItem(318)
+
+        assert.are_same({
+            {itemId = Materials.HEAVENLY_SHARD, probability = 100, minQuantity = 1, maxQuantity = 2},
+        }, results)
+    end)
+
+    it("should return correct results for level 346 items", function()
+        local results = GetMaterialsForRareItem(346)
+
+        assert.are_same({
+            {itemId = Materials.HEAVENLY_SHARD, probability = 100, minQuantity = 1, maxQuantity = 2},
+        }, results)
+    end)
 end)
