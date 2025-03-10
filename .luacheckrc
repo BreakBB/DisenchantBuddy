@@ -30,6 +30,8 @@ globals = {
     "ITEM_DISENCHANT_NOT_DISENCHANTABLE",
     "WOW_PROJECT_ID",
     "WOW_PROJECT_BURNING_CRUSADE_CLASSIC",
+    "WOW_PROJECT_WRATH_CLASSIC",
+    "WOW_PROJECT_CATACLYSM_CLASSIC",
     "assert.spy",
     "assert.are_same",
     "assert.is_nil",
