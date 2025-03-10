@@ -1,0 +1,17 @@
+## Interface: 40402
+## Title: Disenchant Buddy v1.3.2
+## Author: BreakBB
+## Notes: A lightweight addon to show disenchant results on item tooltips.
+## Version: 1.3.2
+## OptionalDeps: Auctionator
+## X-Curse-Project-ID: 1149594
+## X-Wago-ID: 56n9DdN9
+
+GameVersions.lua
+Materials.lua
+GetTooltipLine.lua
+Locales/Locales.xml
+DisenchantResults/Uncommon.lua
+DisenchantResults/Rare.lua
+DisenchantResults/Epic.lua
+DisenchantBuddy.lua
