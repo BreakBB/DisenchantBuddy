@@ -258,7 +258,7 @@ describe("DisenchantBuddy", function()
 
         it("should not show tooltip for unhandled rare item level", function()
             _G.GetItemInfo = spy.new(function()
-                return nil, nil, Enum.ItemQuality.Rare, 353, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                return nil, nil, Enum.ItemQuality.Rare, 378, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)

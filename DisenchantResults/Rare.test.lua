@@ -17,7 +17,7 @@ describe("GetMaterialsForRareItem", function()
     end)
 
     it("should return nil for unhandled item level", function()
-        local results = GetMaterialsForRareItem(353)
+        local results = GetMaterialsForRareItem(378)
 
         assert.is_nil(results)
     end)
