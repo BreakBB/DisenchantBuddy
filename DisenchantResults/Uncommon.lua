@@ -101,6 +101,11 @@ function DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
             {itemId = Materials.GREATER_COSMIC_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
             {itemId = Materials.DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
         }
+    elseif itemLevel <= 333 then
+        return {
+            {itemId = Materials.HYPNOTIC_DUST, probability = 75, minQuantity = 1, maxQuantity = 5},
+            {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 3}
+        }
     else
         return nil
     end
@@ -197,6 +202,26 @@ function DisenchantBuddy.GetMaterialsForUncommonWeapons(itemLevel)
             {itemId = Materials.GREATER_COSMIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
             {itemId = Materials.INFINITE_DUST, probability = 22, minQuantity = 4, maxQuantity = 7},
             {itemId = Materials.DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+        }
+    elseif itemLevel <= 289 then
+        return {
+            {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 5},
+            {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 1, maxQuantity = 5},
+        }
+    elseif itemLevel <= 305 then
+        return {
+            {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 2, maxQuantity = 7},
+            {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 1, maxQuantity = 6},
+        }
+    elseif itemLevel <= 317 then
+        return {
+            {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 6},
+            {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 2, maxQuantity = 8},
+        }
+    elseif itemLevel == 318 then
+        return {
+            {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 2, maxQuantity = 6},
+            {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 2, maxQuantity = 8},
         }
     else
         return nil

@@ -11,6 +11,7 @@ describe("GetMaterialsForUncommonItem", function()
         local DisenchantBuddy = {}
         DisenchantBuddy.IsTBC = true
         DisenchantBuddy.IsWotLK = true
+        DisenchantBuddy.IsCata = true
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
         Materials = DisenchantBuddy.Materials
         loadfile("DisenchantResults/Uncommon.lua")("DisenchantBuddy", DisenchantBuddy)
@@ -332,11 +333,29 @@ describe("GetMaterialsForUncommonItem", function()
                 {itemId = Materials.DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
             }, results)
         end)
+
+        it("should return correct results for level 272 items", function()
+            local results = GetMaterialsForUncommonArmor(272)
+
+            assert.are_same({
+                {itemId = Materials.HYPNOTIC_DUST, probability = 75, minQuantity = 1, maxQuantity = 5},
+                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 3},
+            }, results)
+        end)
+
+        it("should return correct results for level 333 items", function()
+            local results = GetMaterialsForUncommonArmor(333)
+
+            assert.are_same({
+                {itemId = Materials.HYPNOTIC_DUST, probability = 75, minQuantity = 1, maxQuantity = 5},
+                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 3},
+            }, results)
+        end)
     end)
 
     describe("GetMaterialsForUncommonWeapons", function()
         it("should return nil for unhandled item level", function()
-            local results = GetMaterialsForUncommonWeapons(307)
+            local results = GetMaterialsForUncommonWeapons(319)
 
             assert.is_nil(results)
         end)
@@ -636,6 +655,69 @@ describe("GetMaterialsForUncommonItem", function()
                 {itemId = Materials.GREATER_COSMIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
                 {itemId = Materials.INFINITE_DUST, probability = 22, minQuantity = 4, maxQuantity = 7},
                 {itemId = Materials.DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
+        it("should return correct results for level 272 items", function()
+            local results = GetMaterialsForUncommonWeapons(272)
+
+            assert.are_same({
+                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 5},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 1, maxQuantity = 5},
+            }, results)
+        end)
+
+        it("should return correct results for level 289 items", function()
+            local results = GetMaterialsForUncommonWeapons(289)
+
+            assert.are_same({
+                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 5},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 1, maxQuantity = 5},
+            }, results)
+        end)
+
+        it("should return correct results for level 295 items", function()
+            local results = GetMaterialsForUncommonWeapons(295)
+
+            assert.are_same({
+                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 2, maxQuantity = 7},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 1, maxQuantity = 6},
+            }, results)
+        end)
+
+        it("should return correct results for level 305 items", function()
+            local results = GetMaterialsForUncommonWeapons(305)
+
+            assert.are_same({
+                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 2, maxQuantity = 7},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 1, maxQuantity = 6},
+            }, results)
+        end)
+
+        it("should return correct results for level 306 items", function()
+            local results = GetMaterialsForUncommonWeapons(306)
+
+            assert.are_same({
+                {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 6},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 2, maxQuantity = 8},
+            }, results)
+        end)
+
+        it("should return correct results for level 317 items", function()
+            local results = GetMaterialsForUncommonWeapons(317)
+
+            assert.are_same({
+                {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 6},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 2, maxQuantity = 8},
+            }, results)
+        end)
+
+        it("should return correct results for level 318 items", function()
+            local results = GetMaterialsForUncommonWeapons(318)
+
+            assert.are_same({
+                {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 2, maxQuantity = 6},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 2, maxQuantity = 8},
             }, results)
         end)
     end)
