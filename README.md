@@ -14,8 +14,8 @@ Disenchant Buddy is compatible with and available for the following World of War
 
 - Classic Era/HC/Anniversary :white_check_mark:
 - Season of Discovery :white_check_mark:
-- Wrath of the Lich King :hourglass_flowing_sand: (will be added soon)
-- Cataclysm :hourglass_flowing_sand: (will be added soon)
+- Wrath of the Lich King :white_check_mark:
+- Cataclysm :white_check_mark:
 - Retail :x: (not planned)
 
 ## Installation
