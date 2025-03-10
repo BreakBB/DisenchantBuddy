@@ -41,7 +41,7 @@ function DisenchantBuddy.GetMaterialsForRareItem(itemLevel)
         return {{itemId = Materials.DREAM_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1}}
     elseif itemLevel <= 316 then
         return {{itemId = Materials.SMALL_HEAVENLY_SHARD, probability = 100, minQuantity = 1, maxQuantity = 2}}
-    elseif itemLevel <= 346 then
+    elseif itemLevel <= 377 then
         return {{itemId = Materials.HEAVENLY_SHARD, probability = 100, minQuantity = 1, maxQuantity = 2}}
     else
         return nil

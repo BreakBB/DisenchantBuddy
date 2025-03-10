@@ -258,8 +258,8 @@ describe("GetMaterialsForRareItem", function()
         }, results)
     end)
 
-    it("should return correct results for level 346 items", function()
-        local results = GetMaterialsForRareItem(346)
+    it("should return correct results for level 377 items", function()
+        local results = GetMaterialsForRareItem(377)
 
         assert.are_same({
             {itemId = Materials.HEAVENLY_SHARD, probability = 100, minQuantity = 1, maxQuantity = 2},
