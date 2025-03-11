@@ -239,8 +239,8 @@ describe("GetMaterialsForEpicItem", function()
         }, results)
     end)
 
-    it("should return correct results for level 410 items", function()
-        local results = GetMaterialsForEpicItem(410)
+    it("should return correct results for level 416 items", function()
+        local results = GetMaterialsForEpicItem(416)
 
         assert.are_same({
             {itemId = Materials.MAELSTROM_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2},
