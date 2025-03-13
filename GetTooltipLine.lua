@@ -1,9 +1,14 @@
 ---@type DisenchantBuddy
 local _, DisenchantBuddy = ...
 
+---@class TooltipLineData
+---@field left string
+---@field right string
+---@field price number
+
 ---@param item ItemMixin
 ---@param result DisenchantResult
----@return table<string, string>
+---@return TooltipLineData
 function DisenchantBuddy.GetTooltipLine(item, result)
     local materialName = item:GetItemName()
     local materialTexture = item:GetItemIcon()
@@ -29,5 +34,8 @@ function DisenchantBuddy.GetTooltipLine(item, result)
     end
     rightSide = rightSide .. ")"
 
-    return {leftSide, rightSide}
+    return {
+        left = leftSide,
+        right = rightSide,
+    }
 end

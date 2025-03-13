@@ -43,6 +43,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
 
     local itemsLoaded = 0
     local totalItems = #disenchantResults
+    ---@type TooltipLineData[]
     local lines = {}
 
     for i = 1, totalItems do
@@ -57,7 +58,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
                 tooltip:AddLine(L["Disenchant results:"])
                 for j = 1, totalItems do
                     local line = lines[j]
-                    tooltip:AddDoubleLine(line[1], line[2])
+                    tooltip:AddDoubleLine(line.left, line.right)
                 end
                 tooltip:Show()
             end
