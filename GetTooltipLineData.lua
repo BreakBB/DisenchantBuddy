@@ -22,8 +22,9 @@ function DisenchantBuddy.GetTooltipLineData(item, result)
         rightSide = rightSide .. " (" .. result.minQuantity .. "-" .. result.maxQuantity
     end
 
+    local auctionValue = 0
     if Auctionator then
-        local auctionValue = Auctionator.API.v1.GetAuctionPriceByItemID("DisenchantBuddy", result.itemId)
+        auctionValue = Auctionator.API.v1.GetAuctionPriceByItemID("DisenchantBuddy", result.itemId)
         if auctionValue then
             rightSide = rightSide .. " x " .. HIGHLIGHT_FONT_COLOR_CODE .. GetCoinTextureString(auctionValue, 12) .. "|r"
         else
@@ -37,5 +38,6 @@ function DisenchantBuddy.GetTooltipLineData(item, result)
     return {
         left = leftSide,
         right = rightSide,
+        auctionValue = auctionValue,
     }
 end
