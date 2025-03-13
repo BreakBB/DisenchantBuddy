@@ -9,7 +9,7 @@
 
 GameVersions.lua
 Materials.lua
-GetTooltipLine.lua
+GetTooltipLineData.lua
 Locales/Locales.xml
 DisenchantResults/Uncommon.lua
 DisenchantResults/Rare.lua

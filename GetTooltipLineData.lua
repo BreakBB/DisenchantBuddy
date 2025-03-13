@@ -9,7 +9,7 @@ local _, DisenchantBuddy = ...
 ---@param item ItemMixin
 ---@param result DisenchantResult
 ---@return TooltipLineData
-function DisenchantBuddy.GetTooltipLine(item, result)
+function DisenchantBuddy.GetTooltipLineData(item, result)
     local materialName = item:GetItemName()
     local materialTexture = item:GetItemIcon()
     local hex = item:GetItemQualityColor().hex

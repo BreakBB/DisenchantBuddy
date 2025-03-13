@@ -2,7 +2,7 @@
 local _, DisenchantBuddy = ...
 
 local L = DisenchantBuddy.L
-local GetTooltipLine = DisenchantBuddy.GetTooltipLine
+local GetTooltipLineData = DisenchantBuddy.GetTooltipLineData
 
 ---@param quality number
 ---@param classId number
@@ -51,7 +51,7 @@ local function AddDisenchantInfo(tooltip, itemLink)
         local result = disenchantResults[i]
         local item = Item:CreateFromItemID(result.itemId)
         item:ContinueOnItemLoad(function()
-            lines[i] = GetTooltipLine(item, result)
+            lines[i] = GetTooltipLineData(item, result)
 
             itemsLoaded = itemsLoaded + 1
             if itemsLoaded == totalItems then
