@@ -41,7 +41,7 @@ describe("GetTooltipLineData", function()
 
         local lineData = DisenchantBuddy.GetTooltipLineData(mockedItem, disenchantResult)
 
-        assert.same({
+        assert.are_same({
             left = "  |T132858:0|t |cffffffffStrange Dust|r",
             right = "100% (1-2x)",
             auctionValue = 0,
@@ -79,7 +79,7 @@ describe("GetTooltipLineData", function()
 
         local lineData = DisenchantBuddy.GetTooltipLineData(mockedItem, disenchantResult)
 
-        assert.same({
+        assert.are_same({
             left = "  |T132858:0|t |cffffffffStrange Dust|r",
             right = '100% (1-2 x |cffffffff1|TInterface\\MoneyFrame\\UI-GoldIcon:12:12:2:0|t 0|TInterface\\MoneyFrame\\UI-SilverIcon:12:12:2:0|t 0|TInterface\\MoneyFrame\\UI-CopperIcon:12:12:2:0|t|r)',
             auctionValue = 10000,
