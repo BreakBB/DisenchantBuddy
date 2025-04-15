@@ -18,6 +18,7 @@ ignore = {
 globals = {
     "Auctionator",
     "CreateFrame",
+    "C_Seasons",
     "Enum",
     "GameTooltip",
     "GetCoinTextureString",
@@ -29,6 +30,7 @@ globals = {
     "ItemRefTooltip",
     "ITEM_DISENCHANT_NOT_DISENCHANTABLE",
     "WOW_PROJECT_ID",
+    "WOW_PROJECT_CLASSIC",
     "WOW_PROJECT_BURNING_CRUSADE_CLASSIC",
     "WOW_PROJECT_WRATH_CLASSIC",
     "WOW_PROJECT_CATACLYSM_CLASSIC",
