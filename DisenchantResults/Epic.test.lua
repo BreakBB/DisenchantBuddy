@@ -4,12 +4,14 @@ describe("GetMaterialsForEpicItem", function()
     local Materials
     local GetMaterialsForEpicItem
 
+    -- We use `loadfile` over `require` to be able to hand in our own environment
+    ---@type DisenchantBuddy
+    local DisenchantBuddy = {}
+
     before_each(function()
-        -- We use `loadfile` over `require` to be able to hand in our own environment
-        ---@type DisenchantBuddy
-        local DisenchantBuddy = {}
         DisenchantBuddy.IsTBC = true
         DisenchantBuddy.IsWotLK = true
+        DisenchantBuddy.IsSoD = false
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
         Materials = DisenchantBuddy.Materials
         loadfile("DisenchantResults/Epic.lua")("DisenchantBuddy", DisenchantBuddy)
@@ -160,8 +162,8 @@ describe("GetMaterialsForEpicItem", function()
         }, results)
     end)
 
-    it("should return correct results for level 98 items", function()
-        local results = GetMaterialsForEpicItem(98)
+    it("should return correct results for level 92 items", function()
+        local results = GetMaterialsForEpicItem(92)
 
         assert.are_same({
             {itemId = Materials.NEXUS_CRYSTAL, probability = 33, minQuantity = 1, maxQuantity = 1},
@@ -173,6 +175,16 @@ describe("GetMaterialsForEpicItem", function()
         local results = GetMaterialsForEpicItem(99)
 
         assert.are_same({{itemId = Materials.VOID_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2}}, results)
+    end)
+
+    it("should return correct results for level 100 SoD items", function()
+        DisenchantBuddy.IsSoD = true
+        local results = GetMaterialsForEpicItem(100)
+
+        assert.are_same({
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 33, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 67, minQuantity = 2, maxQuantity = 2},
+        }, results)
     end)
 
     it("should return correct results for level 100 items", function()
