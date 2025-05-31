@@ -104,7 +104,7 @@ function DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
     elseif itemLevel <= 333 then
         return {
             {itemId = Materials.HYPNOTIC_DUST, probability = 75, minQuantity = 1, maxQuantity = 5},
-            {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 3}
+            {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 25, minQuantity = 1, maxQuantity = 3}
         }
     else
         return nil
