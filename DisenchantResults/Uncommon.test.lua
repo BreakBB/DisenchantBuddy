@@ -662,8 +662,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(272)
 
             assert.are_same({
-                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 5},
-                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 1, maxQuantity = 5},
+                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 80, minQuantity = 1, maxQuantity = 5},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 20, minQuantity = 1, maxQuantity = 5},
             }, results)
         end)
 
@@ -671,8 +671,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(289)
 
             assert.are_same({
-                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 5},
-                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 1, maxQuantity = 5},
+                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 80, minQuantity = 1, maxQuantity = 5},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 20, minQuantity = 1, maxQuantity = 5},
             }, results)
         end)
 
@@ -680,8 +680,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(295)
 
             assert.are_same({
-                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 2, maxQuantity = 7},
-                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 1, maxQuantity = 6},
+                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 80, minQuantity = 2, maxQuantity = 7},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 20, minQuantity = 1, maxQuantity = 6},
             }, results)
         end)
 
@@ -689,8 +689,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(305)
 
             assert.are_same({
-                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 2, maxQuantity = 7},
-                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 1, maxQuantity = 6},
+                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 80, minQuantity = 2, maxQuantity = 7},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 20, minQuantity = 1, maxQuantity = 6},
             }, results)
         end)
 
@@ -698,8 +698,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(306)
 
             assert.are_same({
-                {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 6},
-                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 2, maxQuantity = 8},
+                {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 80, minQuantity = 1, maxQuantity = 6},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 20, minQuantity = 2, maxQuantity = 8},
             }, results)
         end)
 
@@ -707,8 +707,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(317)
 
             assert.are_same({
-                {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 6},
-                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 2, maxQuantity = 8},
+                {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 80, minQuantity = 1, maxQuantity = 6},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 20, minQuantity = 2, maxQuantity = 8},
             }, results)
         end)
 
@@ -716,8 +716,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonWeapons(318)
 
             assert.are_same({
-                {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 20, minQuantity = 2, maxQuantity = 6},
-                {itemId = Materials.HYPNOTIC_DUST, probability = 80, minQuantity = 2, maxQuantity = 8},
+                {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 80, minQuantity = 2, maxQuantity = 6},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 20, minQuantity = 2, maxQuantity = 8},
             }, results)
         end)
     end)
