@@ -55,3 +55,14 @@ if DisenchantBuddy.IsCata or DisenchantBuddy.IsMoP then
     DisenchantBuddy.Materials.HEAVENLY_SHARD = 52721
     DisenchantBuddy.Materials.MAELSTROM_CRYSTAL = 52722
 end
+
+if DisenchantBuddy.IsMoP then
+    DisenchantBuddy.Materials.ETHEREAL_SHARD = 74247
+    DisenchantBuddy.Materials.SHA_CRYSTAL = 74248
+    DisenchantBuddy.Materials.SPIRIT_DUST = 74249
+    DisenchantBuddy.Materials.MYSTERIOUS_ESSENCE = 74250
+    DisenchantBuddy.Materials.SMALL_ETHEREAL_SHARD = 74252
+    DisenchantBuddy.Materials.BLOOD_SPIRIT = 80433
+    DisenchantBuddy.Materials.HAUNTING_SPIRIT = 94289
+    DisenchantBuddy.Materials.SPIRIT_OF_WAR = 102218
+end

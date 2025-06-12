@@ -98,6 +98,11 @@ describe("DisenchantBuddy", function()
         loadfile("DisenchantResults/Rare.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("DisenchantResults/Epic.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
+
+        DisenchantBuddy.IsTBC = false
+        DisenchantBuddy.IsWotLK = false
+        DisenchantBuddy.IsCata = false
+        DisenchantBuddy.IsMoP = false
     end)
 
     it("should hook PLAYER_ENTERING_WORLD event", function()
@@ -131,8 +136,6 @@ describe("DisenchantBuddy", function()
 
         it("should trigger Classic material caching on login", function()
             _G.GetItemInfo = spy.new()
-            DisenchantBuddy.IsTBC = false
-            DisenchantBuddy.IsWotLK = false
 
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
@@ -142,7 +145,6 @@ describe("DisenchantBuddy", function()
         it("should trigger TBC material caching on login", function()
             _G.GetItemInfo = spy.new()
             DisenchantBuddy.IsTBC = true
-            DisenchantBuddy.IsWotLK = false
             loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
@@ -168,6 +170,16 @@ describe("DisenchantBuddy", function()
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
             assert.spy(_G.GetItemInfo).was.called(42)
+        end)
+
+        it("should trigger MoP material caching on login", function()
+            _G.GetItemInfo = spy.new()
+            DisenchantBuddy.IsMoP = true
+            loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
+
+            DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
+
+            assert.spy(_G.GetItemInfo).was.called(50)
         end)
     end)
 
