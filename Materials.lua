@@ -29,7 +29,7 @@ DisenchantBuddy.Materials = {
     NEXUS_CRYSTAL = 20725
 }
 
-if DisenchantBuddy.IsTBC or DisenchantBuddy.IsWotLK or DisenchantBuddy.IsCata then
+if DisenchantBuddy.IsTBC or DisenchantBuddy.IsWotLK or DisenchantBuddy.IsCata or DisenchantBuddy.IsMoP then
     DisenchantBuddy.Materials.ARCANE_DUST = 22445
     DisenchantBuddy.Materials.LESSER_PLANAR_ESSENCE = 22447
     DisenchantBuddy.Materials.GREATER_PLANAR_ESSENCE = 22446
@@ -38,7 +38,7 @@ if DisenchantBuddy.IsTBC or DisenchantBuddy.IsWotLK or DisenchantBuddy.IsCata th
     DisenchantBuddy.Materials.VOID_CRYSTAL = 22450
 end
 
-if DisenchantBuddy.IsWotLK or DisenchantBuddy.IsCata then
+if DisenchantBuddy.IsWotLK or DisenchantBuddy.IsCata or DisenchantBuddy.IsMoP then
     DisenchantBuddy.Materials.INFINITE_DUST = 34054
     DisenchantBuddy.Materials.LESSER_COSMIC_ESSENCE = 34056
     DisenchantBuddy.Materials.GREATER_COSMIC_ESSENCE = 34055
@@ -47,7 +47,7 @@ if DisenchantBuddy.IsWotLK or DisenchantBuddy.IsCata then
     DisenchantBuddy.Materials.ABYSS_CRYSTAL = 34057
 end
 
-if DisenchantBuddy.IsCata then
+if DisenchantBuddy.IsCata or DisenchantBuddy.IsMoP then
     DisenchantBuddy.Materials.HYPNOTIC_DUST = 52555
     DisenchantBuddy.Materials.LESSER_CELESTIAL_ESSENCE = 52718
     DisenchantBuddy.Materials.GREATER_CELESTIAL_ESSENCE = 52719
