@@ -17,7 +17,7 @@ describe("GetMaterialsForRareItem", function()
     end)
 
     it("should return nil for unhandled item level", function()
-        local results = GetMaterialsForRareItem(378)
+        local results = GetMaterialsForRareItem(477)
 
         assert.is_nil(results)
     end)
@@ -263,6 +263,38 @@ describe("GetMaterialsForRareItem", function()
 
         assert.are_same({
             {itemId = Materials.HEAVENLY_SHARD, probability = 100, minQuantity = 1, maxQuantity = 2},
+        }, results)
+    end)
+
+    it("should return correct results for level 393 items", function()
+        local results = GetMaterialsForRareItem(393)
+
+        assert.are_same({
+            {itemId = Materials.SMALL_ETHEREAL_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 424 items", function()
+        local results = GetMaterialsForRareItem(424)
+
+        assert.are_same({
+            {itemId = Materials.SMALL_ETHEREAL_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 425 items", function()
+        local results = GetMaterialsForRareItem(425)
+
+        assert.are_same({
+            {itemId = Materials.ETHEREAL_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 476 items", function()
+        local results = GetMaterialsForRareItem(476)
+
+        assert.are_same({
+            {itemId = Materials.ETHEREAL_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1},
         }, results)
     end)
 end)

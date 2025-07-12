@@ -270,7 +270,7 @@ describe("DisenchantBuddy", function()
 
         it("should not show tooltip for unhandled rare item level", function()
             _G.C_Item.GetItemInfo = spy.new(function()
-                return nil, nil, Enum.ItemQuality.Rare, 378, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+                return nil, nil, Enum.ItemQuality.Rare, 477, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
             loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
