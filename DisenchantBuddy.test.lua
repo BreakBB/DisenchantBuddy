@@ -45,6 +45,9 @@ describe("DisenchantBuddy", function()
             RegisterEvent = spy.new(),
             SetScript = spy.new(),
         }
+        _G.C_Item = {
+            GetItemInfo = spy.new()
+        }
         _G.GetLocale = function()
             return "enUS"
         end
@@ -112,8 +115,6 @@ describe("DisenchantBuddy", function()
 
     describe("OnPlayerEnteringWorld", function()
         it("should hook OnTooltipSetItem when isLogin is true", function()
-            _G.GetItemInfo = spy.new()
-
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
             assert.spy(_G.GameTooltip.HookScript).was.called_with(_G.GameTooltip, "OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)
@@ -135,51 +136,45 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should trigger Classic material caching on login", function()
-            _G.GetItemInfo = spy.new()
-
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
-            assert.spy(_G.GetItemInfo).was.called(24)
+            assert.spy(_G.C_Item.GetItemInfo).was.called(24)
         end)
 
         it("should trigger TBC material caching on login", function()
-            _G.GetItemInfo = spy.new()
             DisenchantBuddy.IsTBC = true
             loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
-            assert.spy(_G.GetItemInfo).was.called(30)
+            assert.spy(_G.C_Item.GetItemInfo).was.called(30)
         end)
 
         it("should trigger WotLK material caching on login", function()
-            _G.GetItemInfo = spy.new()
             DisenchantBuddy.IsWotLK = true
             loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
-            assert.spy(_G.GetItemInfo).was.called(36)
+            assert.spy(_G.C_Item.GetItemInfo).was.called(36)
         end)
 
         it("should trigger Cata material caching on login", function()
-            _G.GetItemInfo = spy.new()
             DisenchantBuddy.IsCata = true
             loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
-            assert.spy(_G.GetItemInfo).was.called(42)
+            assert.spy(_G.C_Item.GetItemInfo).was.called(42)
         end)
 
         it("should trigger MoP material caching on login", function()
-            _G.GetItemInfo = spy.new()
             DisenchantBuddy.IsMoP = true
             loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
-            assert.spy(_G.GetItemInfo).was.called(50)
+            assert.spy(_G.C_Item.GetItemInfo).was.called(50)
         end)
     end)
 
@@ -212,6 +207,7 @@ describe("DisenchantBuddy", function()
             _G.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Poor, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -221,9 +217,10 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should not show tooltip for common quality items", function()
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Standard, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -233,9 +230,10 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should not show tooltip for legendary quality items", function()
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Legendary, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -245,9 +243,10 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should not show tooltip for item types other than armor and weapon", function()
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Container
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -257,9 +256,10 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should not show tooltip for unhandled uncommon item level", function()
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Good, 334, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -269,9 +269,10 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should not show tooltip for unhandled rare item level", function()
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Rare, 378, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -284,9 +285,10 @@ describe("DisenchantBuddy", function()
             gameTooltipMock.GetItem = spy.new(function()
                 return nil, "|cff1eff00|Hitem:11287::::::::21::::::::|h[Lesser Magic Wand]|h|r"
             end)
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -299,9 +301,10 @@ describe("DisenchantBuddy", function()
             gameTooltipMock.GetItem = spy.new(function()
                 return nil, "|cff1eff00|Hitem:11288::::::::21::::::::|h[Greater Magic Wand]|h|r"
             end)
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -314,9 +317,10 @@ describe("DisenchantBuddy", function()
             gameTooltipMock.GetItem = spy.new(function()
                 return nil, "|cff1eff00|Hitem:11289::::::::21::::::::|h[Lesser Mystic Wand]|h|r"
             end)
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -329,9 +333,10 @@ describe("DisenchantBuddy", function()
             gameTooltipMock.GetItem = spy.new(function()
                 return nil, "|cff1eff00|Hitem:11290::::::::21::::::::|h[Greater Mystic Wand]|h|r"
             end)
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -341,9 +346,10 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should show tooltip for uncommon level 5 armor", function()
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -355,9 +361,10 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should show tooltip for uncommon level 5 weapons", function()
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Weapon
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -369,9 +376,10 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should show tooltip for rare level 5 items", function()
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Rare, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -382,9 +390,10 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should show tooltip for epic level 60 items", function()
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Epic, 60, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -398,12 +407,13 @@ describe("DisenchantBuddy", function()
             _G.Auctionator = {API = {v1 = {GetAuctionPriceByItemID = spy.new(function()
                 return 12345
             end)}}}
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Epic, 60, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
             _G.GetCoinTextureString = function(amount)
                 return math.floor((amount / 10000)) .. GOLD_COIN_ICON .. " " .. math.floor(((amount % 10000) / 100)) .. SILVER_COIN_ICON .. " " .. math.floor((amount % 100)) .. COPPER_COIN_ICON
             end
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -420,9 +430,10 @@ describe("DisenchantBuddy", function()
             _G.Auctionator = {API = {v1 = {GetAuctionPriceByItemID = spy.new(function()
                 return nil
             end)}}}
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Epic, 60, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
@@ -434,7 +445,7 @@ describe("DisenchantBuddy", function()
         end)
 
         it("should translate tooltip header line", function()
-            _G.GetItemInfo = spy.new(function()
+            _G.C_Item.GetItemInfo = spy.new(function()
                 return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
             end)
             _G.GetLocale = function()

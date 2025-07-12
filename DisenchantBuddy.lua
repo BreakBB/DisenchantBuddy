@@ -4,6 +4,8 @@ local _, DisenchantBuddy = ...
 local L = DisenchantBuddy.L
 local GetTooltipLineData = DisenchantBuddy.GetTooltipLineData
 
+local GetItemInfo = C_Item.GetItemInfo or GetItemInfo
+
 ---@param quality number
 ---@param classId number
 ---@param itemLevel number
