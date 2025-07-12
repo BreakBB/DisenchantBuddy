@@ -19,7 +19,7 @@ describe("GetMaterialsForEpicItem", function()
     end)
 
     it("should return nil for unhandled item level", function()
-        local results = GetMaterialsForEpicItem(500)
+        local results = GetMaterialsForEpicItem(573)
 
         assert.is_nil(results)
     end)
@@ -256,6 +256,22 @@ describe("GetMaterialsForEpicItem", function()
 
         assert.are_same({
             {itemId = Materials.MAELSTROM_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 2},
+        }, results)
+    end)
+
+    it("should return correct results for level 420 items", function()
+        local results = GetMaterialsForEpicItem(420)
+
+        assert.are_same({
+            {itemId = Materials.SHA_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
+    it("should return correct results for level 572 items", function()
+        local results = GetMaterialsForEpicItem(572)
+
+        assert.are_same({
+            {itemId = Materials.SHA_CRYSTAL, probability = 100, minQuantity = 1, maxQuantity = 1},
         }, results)
     end)
 end)
