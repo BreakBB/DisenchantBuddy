@@ -106,6 +106,16 @@ function DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
             {itemId = Materials.HYPNOTIC_DUST, probability = 75, minQuantity = 1, maxQuantity = 5},
             {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 25, minQuantity = 1, maxQuantity = 3}
         }
+    elseif itemLevel <= 413 then
+        return {
+            {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 3},
+            {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 1},
+        }
+    elseif itemLevel <= 437 then
+        return {
+            {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 5},
+            {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 2},
+        }
     else
         return nil
     end
@@ -222,6 +232,21 @@ function DisenchantBuddy.GetMaterialsForUncommonWeapons(itemLevel)
         return {
             {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 80, minQuantity = 2, maxQuantity = 6},
             {itemId = Materials.HYPNOTIC_DUST, probability = 20, minQuantity = 2, maxQuantity = 8},
+        }
+    elseif itemLevel <= 398 then
+        return {
+            {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 3},
+            {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 1},
+        }
+    elseif itemLevel <= 428 then
+        return {
+            {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 4},
+            {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 2},
+        }
+    elseif itemLevel <= 437 then
+        return {
+            {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 6},
+            {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 3},
         }
     else
         return nil

@@ -21,7 +21,7 @@ describe("GetMaterialsForUncommonItem", function()
 
     describe("GetMaterialsForUncommonArmor", function()
         it("should return nil for unhandled item level", function()
-            local results = GetMaterialsForUncommonArmor(334)
+            local results = GetMaterialsForUncommonArmor(484)
 
             assert.is_nil(results)
         end)
@@ -351,11 +351,47 @@ describe("GetMaterialsForUncommonItem", function()
                 {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 25, minQuantity = 1, maxQuantity = 3},
             }, results)
         end)
+
+        it("should return correct results for level 364 items", function()
+            local results = GetMaterialsForUncommonArmor(364)
+
+            assert.are_same({
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 3},
+                {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 1},
+            }, results)
+        end)
+
+        it("should return correct results for level 413 items", function()
+            local results = GetMaterialsForUncommonArmor(413)
+
+            assert.are_same({
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 3},
+                {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 1},
+            }, results)
+        end)
+
+        it("should return correct results for level 414 items", function()
+            local results = GetMaterialsForUncommonArmor(414)
+
+            assert.are_same({
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 5},
+                {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 2},
+            }, results)
+        end)
+
+        it("should return correct results for level 437 items", function()
+            local results = GetMaterialsForUncommonArmor(437)
+
+            assert.are_same({
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 5},
+                {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 2},
+            }, results)
+        end)
     end)
 
     describe("GetMaterialsForUncommonWeapons", function()
         it("should return nil for unhandled item level", function()
-            local results = GetMaterialsForUncommonWeapons(319)
+            local results = GetMaterialsForUncommonWeapons(484)
 
             assert.is_nil(results)
         end)
@@ -718,6 +754,60 @@ describe("GetMaterialsForUncommonItem", function()
             assert.are_same({
                 {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 80, minQuantity = 2, maxQuantity = 6},
                 {itemId = Materials.HYPNOTIC_DUST, probability = 20, minQuantity = 2, maxQuantity = 8},
+            }, results)
+        end)
+
+        it("should return correct results for level 364 items", function()
+            local results = GetMaterialsForUncommonWeapons(364)
+
+            assert.are_same({
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 3},
+                {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 1},
+            }, results)
+        end)
+
+        it("should return correct results for level 398 items", function()
+            local results = GetMaterialsForUncommonWeapons(398)
+
+            assert.are_same({
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 3},
+                {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 1},
+            }, results)
+        end)
+
+        it("should return correct results for level 399 items", function()
+            local results = GetMaterialsForUncommonWeapons(399)
+
+            assert.are_same({
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 4},
+                {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 2},
+            }, results)
+        end)
+
+        it("should return correct results for level 428 items", function()
+            local results = GetMaterialsForUncommonWeapons(428)
+
+            assert.are_same({
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 4},
+                {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 2},
+            }, results)
+        end)
+
+        it("should return correct results for level 429 items", function()
+            local results = GetMaterialsForUncommonWeapons(429)
+
+            assert.are_same({
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 6},
+                {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 3},
+            }, results)
+        end)
+
+        it("should return correct results for level 437 items", function()
+            local results = GetMaterialsForUncommonWeapons(437)
+
+            assert.are_same({
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 6},
+                {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 3},
             }, results)
         end)
     end)
