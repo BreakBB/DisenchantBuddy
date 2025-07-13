@@ -16,6 +16,7 @@ Disenchant Buddy is compatible with and available for the following World of War
 - Season of Discovery :white_check_mark:
 - Wrath of the Lich King :white_check_mark:
 - Cataclysm :white_check_mark:
+- Mists of Pandaria :white_check_mark:
 - Retail :x: (not planned)
 
 ## Installation
