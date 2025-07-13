@@ -28,6 +28,7 @@ Alternatively you can always use [the latest GitHub release](https://github.com/
 
 1. Extract the contents of the zip file to your World of Warcraft Interface\AddOns directory:
     - Era/HC/Anniversary/SoD: `World of Warcraft\_classic_era_\Interface\AddOns\DisenchantBuddy`
+    - Cata and beyond: `World of Warcraft\_classic_\Interface\AddOns\DisenchantBuddy`
 2. Restart World of Warcraft or reload your UI
 
 ## Development
