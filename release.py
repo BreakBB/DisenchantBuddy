@@ -15,7 +15,7 @@ if version[0] == "v":
     print('Please omit the "v" prefix. The script will add it')
     exit()
 
-tocs = ['DisenchantBuddy_Vanilla.toc', 'DisenchantBuddy_Wrath.toc', 'DisenchantBuddy_Cata.toc']
+tocs = ['DisenchantBuddy_Vanilla.toc', 'DisenchantBuddy_Wrath.toc', 'DisenchantBuddy_Cata.toc', 'DisenchantBuddy_Mists.toc']
 
 for toc in tocs:
     with fileinput.FileInput(toc, inplace=True) as file:
