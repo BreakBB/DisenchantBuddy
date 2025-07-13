@@ -18,6 +18,7 @@ ignore = {
 globals = {
     "Auctionator",
     "CreateFrame",
+    "C_Item",
     "C_Seasons",
     "Enum",
     "GameTooltip",
