@@ -29,6 +29,10 @@ This program accepts optional command line options:
     -ca
     --cata
         Include Cata files
+        
+    -m
+    --mop
+        Include MoP files
 
     -v <versionString>
     --version <versionString>
@@ -37,8 +41,8 @@ This program accepts optional command line options:
 '''
 addonDir = 'DisenchantBuddy'
 includedExpansions = []
-# tocs = ['', 'DisenchantBuddy-Classic.toc', 'DisenchantBuddy-BCC.toc', 'DisenchantBuddy-WOTLKC.toc', 'DisenchantBuddy-Cata.toc']
-tocs = ['', 'DisenchantBuddy_Vanilla.toc', '', 'DisenchantBuddy_Wrath.toc', 'DisenchantBuddy_Cata.toc']
+# tocs = ['', 'DisenchantBuddy-Classic.toc', 'DisenchantBuddy-BCC.toc', 'DisenchantBuddy-WOTLKC.toc', 'DisenchantBuddy-Cata.toc', 'DisenchantBuddy_Mists.toc]
+tocs = ['', 'DisenchantBuddy_Vanilla.toc', '', 'DisenchantBuddy_Wrath.toc', '', 'DisenchantBuddy_Mists.toc']
 
 
 def main():
@@ -62,8 +66,10 @@ def main():
                 #     includedExpansions.append(2)
                 if 3 not in includedExpansions:
                     includedExpansions.append(3)
-                if 4 not in includedExpansions:
-                    includedExpansions.append(4)
+                # if 4 not in includedExpansions:
+                #     includedExpansions.append(4)
+                if 5 not in includedExpansions:
+                    includedExpansions.append(5)
             elif arg in ['-c', '--classic'] and 1 not in includedExpansions:
                 includedExpansions.append(1)
             elif arg in ['-t', '--tbc'] and 2 not in includedExpansions:
@@ -72,11 +78,13 @@ def main():
                 includedExpansions.append(3)
             elif arg in ['-ca', '--cata'] and 4 not in includedExpansions:
                 includedExpansions.append(4)
+            elif arg in ['-m', '--mop'] and 5 not in includedExpansions:
+                includedExpansions.append(5)
     if len(includedExpansions) == 0:
         # If expansions go online/offline their major version needs to be added/removed here
         includedExpansions.append(1)
         includedExpansions.append(3)
-        includedExpansions.append(4)
+        includedExpansions.append(5)
 
     release_dir = get_version_dir(isReleaseBuild, versionOverride)
 
@@ -107,6 +115,7 @@ def main():
     # interface_bcc = get_interface_version('BCC')
     interface_wotlk = get_interface_version('Wrath')
     interface_cata = get_interface_version('Cata')
+    interface_mop = get_interface_version('Mists')
 
     flavorString = ""
     if 1 in includedExpansions:
@@ -133,6 +142,12 @@ def main():
                     "flavor": "cata",
                     "interface": %s
                 },""" % interface_cata
+    if 5 in includedExpansions:
+        flavorString += """
+                {
+                    "flavor": "mists",
+                    "interface": %s
+                },""" % interface_mop
 
     with open(release_folder_path + '/release.json', 'w') as rf:
         rf.write('''{
@@ -175,7 +190,7 @@ ignorePatterns = ["*.test.lua"]
 
 
 def copy_content_to(release_folder_path):
-    for i in [1, 2, 3, 4]:
+    for i in [1, 2, 3, 4, 5]:
         if i in includedExpansions:
             filesToInclude.append(tocs[i])
 
