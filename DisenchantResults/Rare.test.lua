@@ -286,7 +286,7 @@ describe("GetMaterialsForRareItem", function()
         local results = GetMaterialsForRareItem(425)
 
         assert.are_same({
-            {itemId = Materials.ETHEREAL_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.ETHEREAL_SHARD, probability = 100, minQuantity = 1, maxQuantity = 2},
         }, results)
     end)
 
@@ -294,7 +294,7 @@ describe("GetMaterialsForRareItem", function()
         local results = GetMaterialsForRareItem(476)
 
         assert.are_same({
-            {itemId = Materials.ETHEREAL_SHARD, probability = 100, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.ETHEREAL_SHARD, probability = 100, minQuantity = 1, maxQuantity = 2},
         }, results)
     end)
 end)
