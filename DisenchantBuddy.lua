@@ -68,6 +68,13 @@ local function AddDisenchantInfo(tooltip, itemLink)
     end
 end
 
+local notDisenchantableItems = {
+    [11287] = true, -- Lesser Magic Wand
+    [11288] = true, -- Greater Magic Wand
+    [11289] = true, -- Lesser Mystic Wand
+    [11290] = true, -- Greater Mystic Wand
+}
+
 ---@param tooltip GameTooltip
 function DisenchantBuddy.OnTooltipSetItem(tooltip)
     local _, link = tooltip:GetItem()
@@ -78,7 +85,7 @@ function DisenchantBuddy.OnTooltipSetItem(tooltip)
 
     -- crafted wands Cannot be disenchanted
     local itemId = tonumber(string.match(link, "item:(%d+)"))
-    if itemId == 11287 or itemId == 11288 or itemId == 11289 or itemId == 11290 then
+    if notDisenchantableItems[itemId] then
         tooltip:AddLine(ITEM_DISENCHANT_NOT_DISENCHANTABLE)
         tooltip:Show()
         return
