@@ -128,8 +128,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonArmor(36)
 
             assert.are_same({
-                {itemId = Materials.VISION_DUST, probability = 75, minQuantity = 1, maxQuantity = 2},
-                {itemId = Materials.GREATER_MYSTIC_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.VISION_DUST, probability = 75, minQuantity = 1, maxQuantity = 4},
+                {itemId = Materials.GREATER_MYSTIC_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 3},
                 {itemId = Materials.LARGE_GLOWING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
             }, results)
         end)
@@ -138,8 +138,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonArmor(40)
 
             assert.are_same({
-                {itemId = Materials.VISION_DUST, probability = 75, minQuantity = 1, maxQuantity = 2},
-                {itemId = Materials.GREATER_MYSTIC_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.VISION_DUST, probability = 75, minQuantity = 1, maxQuantity = 4},
+                {itemId = Materials.GREATER_MYSTIC_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 3},
                 {itemId = Materials.LARGE_GLOWING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
             }, results)
         end)
