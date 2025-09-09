@@ -343,6 +343,15 @@ describe("GetMaterialsForUncommonItem", function()
             }, results)
         end)
 
+        it("should return correct results for level 289 items", function()
+            local results = GetMaterialsForUncommonArmor(289)
+
+            assert.are_same({
+                {itemId = Materials.HYPNOTIC_DUST, probability = 75, minQuantity = 1, maxQuantity = 5},
+                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 25, minQuantity = 1, maxQuantity = 3},
+            }, results)
+        end)
+
         it("should return correct results for level 333 items", function()
             local results = GetMaterialsForUncommonArmor(333)
 

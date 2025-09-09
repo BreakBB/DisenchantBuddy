@@ -101,6 +101,11 @@ function DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
             {itemId = Materials.GREATER_COSMIC_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
             {itemId = Materials.DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
         }
+    elseif itemLevel <= 289 then
+        return {
+            {itemId = Materials.HYPNOTIC_DUST, probability = 75, minQuantity = 1, maxQuantity = 5},
+            {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 25, minQuantity = 1, maxQuantity = 3}
+        }
     elseif itemLevel <= 333 then
         return {
             {itemId = Materials.HYPNOTIC_DUST, probability = 75, minQuantity = 1, maxQuantity = 5},
