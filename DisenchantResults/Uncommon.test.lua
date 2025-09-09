@@ -365,7 +365,7 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonArmor(364)
 
             assert.are_same({
-                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 3},
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 5},
                 {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 1},
             }, results)
         end)
@@ -374,7 +374,7 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonArmor(413)
 
             assert.are_same({
-                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 3},
+                {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 5},
                 {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 1},
             }, results)
         end)

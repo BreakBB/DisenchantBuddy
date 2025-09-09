@@ -113,7 +113,7 @@ function DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
         }
     elseif itemLevel <= 413 then
         return {
-            {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 3},
+            {itemId = Materials.SPIRIT_DUST, probability = 85, minQuantity = 1, maxQuantity = 5},
             {itemId = Materials.MYSTERIOUS_ESSENCE, probability = 15, minQuantity = 1, maxQuantity = 1},
         }
     elseif itemLevel <= 437 then
