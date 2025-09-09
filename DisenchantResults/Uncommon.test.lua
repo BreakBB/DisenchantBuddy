@@ -298,8 +298,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonArmor(130)
 
             assert.are_same({
-                {itemId = Materials.INFINITE_DUST, probability = 75, minQuantity = 2, maxQuantity = 3},
-                {itemId = Materials.LESSER_COSMIC_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.INFINITE_DUST, probability = 75, minQuantity = 2, maxQuantity = 6},
+                {itemId = Materials.LESSER_COSMIC_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 3},
                 {itemId = Materials.SMALL_DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
             }, results)
         end)
@@ -308,8 +308,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonArmor(151)
 
             assert.are_same({
-                {itemId = Materials.INFINITE_DUST, probability = 75, minQuantity = 2, maxQuantity = 3},
-                {itemId = Materials.LESSER_COSMIC_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.INFINITE_DUST, probability = 75, minQuantity = 2, maxQuantity = 6},
+                {itemId = Materials.LESSER_COSMIC_ESSENCE, probability = 22, minQuantity = 1, maxQuantity = 3},
                 {itemId = Materials.SMALL_DREAM_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
             }, results)
         end)
