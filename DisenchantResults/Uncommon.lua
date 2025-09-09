@@ -55,7 +55,7 @@ function DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
         }
     elseif itemLevel <= 55 then
         return {
-            {itemId = Materials.DREAM_DUST, probability = 75, minQuantity = 2, maxQuantity = 5},
+            {itemId = Materials.DREAM_DUST, probability = 75, minQuantity = 2, maxQuantity = 6},
             {itemId = Materials.LESSER_ETERNAL_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 2},
             {itemId = Materials.SMALL_BRILLIANT_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
         }
