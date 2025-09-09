@@ -356,8 +356,8 @@ describe("GetMaterialsForUncommonItem", function()
             local results = GetMaterialsForUncommonArmor(333)
 
             assert.are_same({
-                {itemId = Materials.HYPNOTIC_DUST, probability = 75, minQuantity = 1, maxQuantity = 5},
-                {itemId = Materials.LESSER_CELESTIAL_ESSENCE, probability = 25, minQuantity = 1, maxQuantity = 3},
+                {itemId = Materials.HYPNOTIC_DUST, probability = 75, minQuantity = 2, maxQuantity = 4},
+                {itemId = Materials.GREATER_CELESTIAL_ESSENCE, probability = 25, minQuantity = 1, maxQuantity = 3},
             }, results)
         end)
 
