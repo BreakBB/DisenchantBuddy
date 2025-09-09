@@ -79,8 +79,8 @@ function DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
         }
     elseif itemLevel <= 99 then
         return {
-            {itemId = Materials.ARCANE_DUST, probability = 75, minQuantity = 2, maxQuantity = 3},
-            {itemId = Materials.LESSER_PLANAR_ESSENCE, probability = 22, minQuantity = 2, maxQuantity = 3},
+            {itemId = Materials.ARCANE_DUST, probability = 75, minQuantity = 2, maxQuantity = 4},
+            {itemId = Materials.LESSER_PLANAR_ESSENCE, probability = 22, minQuantity = 2, maxQuantity = 4},
             {itemId = Materials.SMALL_PRISMATIC_SHARD, probability = 3, minQuantity = 1, maxQuantity = 1}
         }
     elseif itemLevel <= 120 then
