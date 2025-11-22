@@ -22,6 +22,7 @@ globals = {
     "C_Seasons",
     "Enum",
     "GameTooltip",
+    "GetBuildInfo",
     "GetCoinTextureString",
     "GetItemInfo",
     "GetItemQualityColor",
