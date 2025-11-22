@@ -4,6 +4,7 @@
 ## Notes: A lightweight addon to show disenchant results on item tooltips.
 ## Version: 2.1.5
 ## OptionalDeps: Auctionator
+## IconTexture: Interface\AddOns\DisenchantBuddy\logo.png
 ## X-Curse-Project-ID: 1149594
 ## X-Wago-ID: 56n9DdN9
 
