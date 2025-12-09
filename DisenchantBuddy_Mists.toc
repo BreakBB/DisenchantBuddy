@@ -1,4 +1,4 @@
-## Interface: 50502
+## Interface: 50503
 ## Title: Disenchant Buddy v2.2.0
 ## Author: BreakBB
 ## Notes: A lightweight addon to show disenchant results on item tooltips.
