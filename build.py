@@ -42,7 +42,7 @@ This program accepts optional command line options:
 addonDir = 'DisenchantBuddy'
 includedExpansions = []
 # tocs = ['', 'DisenchantBuddy-Classic.toc', 'DisenchantBuddy-BCC.toc', 'DisenchantBuddy-WOTLKC.toc', 'DisenchantBuddy-Cata.toc', 'DisenchantBuddy_Mists.toc]
-tocs = ['', 'DisenchantBuddy_Vanilla.toc', '', 'DisenchantBuddy_Wrath.toc', '', 'DisenchantBuddy_Mists.toc']
+tocs = ['', 'DisenchantBuddy_Vanilla.toc', 'DisenchantBuddy_TBC.toc', 'DisenchantBuddy_Wrath.toc', '', 'DisenchantBuddy_Mists.toc']
 
 
 def main():
