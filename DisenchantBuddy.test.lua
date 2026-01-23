@@ -1,12 +1,5 @@
 dofile(".types/wow-api/library/Data/Enum.lua")
 
-local Colors = {
-    STANDARD = "|cffffffff",
-    GOOD = "|cff1eff00",
-    RARE = "|cff0070dd",
-    EPIC = "|cffa335ee",
-}
-
 _G.ITEM_DISENCHANT_NOT_DISENCHANTABLE = "Cannot be disenchanted"
 
 local match = require("luassert.match")
