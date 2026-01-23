@@ -44,6 +44,7 @@ describe("DisenchantBuddy", function()
         -- We use `loadfile` over `require` to be able to hand in our own environment
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
         DisenchantBuddy.AddDisenchantInfo = spy.new(function() end)
+        DisenchantBuddy.AddMaterialInfo = spy.new(function() end)
         loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
         DisenchantBuddy.IsTBC = false
@@ -135,6 +136,7 @@ describe("DisenchantBuddy", function()
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
             assert.spy(DisenchantBuddy.AddDisenchantInfo).was.not_called()
+            assert.spy(DisenchantBuddy.AddMaterialInfo).was.not_called()
             assert.spy(gameTooltipMock.Show).was_not.called()
             assert.spy(gameTooltipMock.AddLine).was_not.called()
         end)
@@ -147,8 +149,25 @@ describe("DisenchantBuddy", function()
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
             assert.spy(DisenchantBuddy.AddDisenchantInfo).was.not_called()
+            assert.spy(DisenchantBuddy.AddMaterialInfo).was.not_called()
             assert.spy(gameTooltipMock.Show).was_not.called()
             assert.spy(gameTooltipMock.AddLine).was_not.called()
+        end)
+
+        it("should add tooltip information", function()
+            gameTooltipMock.GetItem = spy.new(function()
+                return nil, "|cff1eff00|Hitem:1234::::::::21::::::::|h[Some Item]|h|r"
+            end)
+            _G.C_Item.GetItemInfo = spy.new(function()
+                return nil, nil, Enum.ItemQuality.Good, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+            end)
+
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
+            DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
+
+            assert.spy(DisenchantBuddy.AddMaterialInfo).was.called_with(gameTooltipMock, 1234)
+            assert.spy(DisenchantBuddy.AddDisenchantInfo)
+                .was.called_with(gameTooltipMock, "|cff1eff00|Hitem:1234::::::::21::::::::|h[Some Item]|h|r")
         end)
 
         it("should not show tooltip for Lesser Magic Wand", function()
@@ -163,6 +182,7 @@ describe("DisenchantBuddy", function()
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
             assert.spy(DisenchantBuddy.AddDisenchantInfo).was.not_called()
+            assert.spy(DisenchantBuddy.AddMaterialInfo).was.not_called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Cannot be disenchanted")
         end)
@@ -179,6 +199,7 @@ describe("DisenchantBuddy", function()
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
             assert.spy(DisenchantBuddy.AddDisenchantInfo).was.not_called()
+            assert.spy(DisenchantBuddy.AddMaterialInfo).was.not_called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Cannot be disenchanted")
         end)
@@ -195,6 +216,7 @@ describe("DisenchantBuddy", function()
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
             assert.spy(DisenchantBuddy.AddDisenchantInfo).was.not_called()
+            assert.spy(DisenchantBuddy.AddMaterialInfo).was.not_called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Cannot be disenchanted")
         end)
@@ -211,6 +233,7 @@ describe("DisenchantBuddy", function()
             DisenchantBuddy.OnTooltipSetItem(gameTooltipMock)
 
             assert.spy(DisenchantBuddy.AddDisenchantInfo).was.not_called()
+            assert.spy(DisenchantBuddy.AddMaterialInfo).was.not_called()
             assert.spy(gameTooltipMock.Show).was.called()
             assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Cannot be disenchanted")
         end)

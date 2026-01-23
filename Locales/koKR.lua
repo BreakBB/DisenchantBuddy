@@ -7,4 +7,5 @@ end
 
 DisenchantBuddy.L = {
     ["Disenchant results:"] = "마력 추출 결과:",
+    ["Disenchanted from:"] = "다음에서 마력 추출:",
 }
