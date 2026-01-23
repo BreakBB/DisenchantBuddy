@@ -3,6 +3,7 @@ local DisenchantBuddy = select(2, ...)
 
 local GetItemInfo = C_Item.GetItemInfo or GetItemInfo
 local AddDisenchantInfo = DisenchantBuddy.AddDisenchantInfo
+local AddMaterialInfo = DisenchantBuddy.AddMaterialInfo
 
 local notDisenchantableItems = {
     [11287] = true, -- Lesser Magic Wand
@@ -27,6 +28,7 @@ function DisenchantBuddy.OnTooltipSetItem(tooltip)
         return
     end
 
+    AddMaterialInfo(tooltip, itemId)
     AddDisenchantInfo(tooltip, link)
 end
 

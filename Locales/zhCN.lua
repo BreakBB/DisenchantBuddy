@@ -7,4 +7,5 @@ end
 
 DisenchantBuddy.L = {
     ["Disenchant results:"] = "分解结果：",
+    ["Disenchanted from:"] = "分解自：",
 }

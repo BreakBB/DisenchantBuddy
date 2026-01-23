@@ -7,4 +7,5 @@ end
 
 DisenchantBuddy.L = {
     ["Disenchant results:"] = "Resultados de desencantar:",
+    ["Disenchanted from:"] = "Desencantado de:",
 }
