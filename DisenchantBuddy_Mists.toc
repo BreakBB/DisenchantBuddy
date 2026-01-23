@@ -22,6 +22,7 @@
 GameVersions.lua
 Materials.lua
 GetTooltipLineData.lua
+AddDisenchantInfo.lua
 Locales/Locales.xml
 DisenchantResults/Uncommon.lua
 DisenchantResults/Rare.lua
