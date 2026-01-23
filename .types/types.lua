@@ -5,6 +5,8 @@
 ---@class DisenchantResult
 ---@field itemId ItemId
 ---@field probability number @Probability of getting this item (0-100)
+---@field minQuantity number @Minimum quantity of this item obtained
+---@field maxQuantity number @Maximum quantity of this item obtained
 
 ---@param callerId string
 ---@param itemID ItemId
