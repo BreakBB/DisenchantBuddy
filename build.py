@@ -41,7 +41,6 @@ This program accepts optional command line options:
 '''
 addonDir = 'DisenchantBuddy'
 includedExpansions = []
-# tocs = ['', 'DisenchantBuddy-Classic.toc', 'DisenchantBuddy-BCC.toc', 'DisenchantBuddy-WOTLKC.toc', 'DisenchantBuddy-Cata.toc', 'DisenchantBuddy_Mists.toc]
 tocs = ['', 'DisenchantBuddy_Vanilla.toc', 'DisenchantBuddy_TBC.toc', 'DisenchantBuddy_Wrath.toc', '', 'DisenchantBuddy_Mists.toc']
 
 
@@ -62,8 +61,8 @@ def main():
             elif arg in ['-a', '--all']:
                 if 1 not in includedExpansions:
                     includedExpansions.append(1)
-                # if 2 not in includedExpansions:
-                #     includedExpansions.append(2)
+                if 2 not in includedExpansions:
+                    includedExpansions.append(2)
                 if 3 not in includedExpansions:
                     includedExpansions.append(3)
                 # if 4 not in includedExpansions:
@@ -113,7 +112,7 @@ def main():
     zip_release_folder(zip_name, release_dir, addonDir)
 
     interface_classic = get_interface_version()
-    # interface_bcc = get_interface_version('BCC')
+    interface_bcc = get_interface_version('TBC')
     interface_wotlk = get_interface_version('Wrath')
     interface_cata = get_interface_version('Cata')
     interface_mop = get_interface_version('Mists')
@@ -125,12 +124,12 @@ def main():
                     "flavor": "classic",
                     "interface": %s
                 },""" % interface_classic
-    # if 2 in includedExpansions:
-    #     flavorString += """
-    #             {
-    #                 "flavor": "bcc",
-    #                 "interface": %s
-    #             },""" % interface_bcc
+    if 2 in includedExpansions:
+        flavorString += """
+                {
+                    "flavor": "bcc",
+                    "interface": %s
+                },""" % interface_bcc
     if 3 in includedExpansions:
         flavorString += """
                 {
