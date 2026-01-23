@@ -43,7 +43,7 @@ describe("DisenchantBuddy", function()
         DisenchantBuddy = {}
         -- We use `loadfile` over `require` to be able to hand in our own environment
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
-        DisenchantBuddy.AddDisenchantInfo = spy.new(function(tooltip, itemLink) end)
+        DisenchantBuddy.AddDisenchantInfo = spy.new(function() end)
         loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
 
         DisenchantBuddy.IsTBC = false
