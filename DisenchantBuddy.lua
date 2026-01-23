@@ -31,9 +31,9 @@ local function AddDisenchantInfo(tooltip, itemLink)
     local _, _, quality, itemLevel, _, _, _, _, _, _, _, classId = GetItemInfo(itemLink)
 
     if quality == Enum.ItemQuality.Poor or
-            quality == Enum.ItemQuality.Standard or
-            quality == Enum.ItemQuality.Legendary or
-            (classId ~= Enum.ItemClass.Armor and classId ~= Enum.ItemClass.Weapon) then
+        quality == Enum.ItemQuality.Standard or
+        quality == Enum.ItemQuality.Legendary or
+        (classId ~= Enum.ItemClass.Armor and classId ~= Enum.ItemClass.Weapon) then
         return
     end
 
@@ -105,7 +105,7 @@ function DisenchantBuddy.OnPlayerEnteringWorld(_, _, isLogin, isReload)
     end
 
     if isLogin or isReload then
-        GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- hovering over an item
+        GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)    -- hovering over an item
         ItemRefTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- clicking an item link
     end
 end
