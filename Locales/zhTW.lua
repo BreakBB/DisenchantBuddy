@@ -1,5 +1,5 @@
----@type DisenchantBuddy
-local _, DisenchantBuddy = ...
+---@class DisenchantBuddy
+local DisenchantBuddy = select(2, ...)
 
 if GetLocale() ~= "zhTW" then
     return

@@ -1,5 +1,5 @@
----@type DisenchantBuddy
-local _, DisenchantBuddy = ...
+---@class DisenchantBuddy
+local DisenchantBuddy = select(2, ...)
 
 local Materials = DisenchantBuddy.Materials
 

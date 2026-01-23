@@ -1,5 +1,5 @@
----@type DisenchantBuddy
-local _, DisenchantBuddy = ...
+---@class DisenchantBuddy
+local DisenchantBuddy = select(2, ...)
 
 --- Addon is running on Classic "Vanilla" client: Means Classic Era and its seasons like SoM
 ---@type boolean

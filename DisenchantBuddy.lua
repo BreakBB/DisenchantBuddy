@@ -1,5 +1,5 @@
 ---@class DisenchantBuddy
-local _, DisenchantBuddy = ...
+local DisenchantBuddy = select(2, ...)
 
 local GetItemInfo = C_Item.GetItemInfo or GetItemInfo
 local AddDisenchantInfo = DisenchantBuddy.AddDisenchantInfo
