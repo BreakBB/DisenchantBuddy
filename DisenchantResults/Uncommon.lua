@@ -37,8 +37,8 @@ function DisenchantBuddy.GetMaterialsForUncommonArmor(itemLevel)
         }
     elseif itemLevel <= 40 then
         return {
-            {itemId = Materials.VISION_DUST, probability = 75, minQuantity = 1, maxQuantity = 4},
-            {itemId = Materials.GREATER_MYSTIC_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 3},
+            {itemId = Materials.VISION_DUST, probability = 75, minQuantity = 1, maxQuantity = DisenchantBuddy.IsMoP and 4 or 2},
+            {itemId = Materials.GREATER_MYSTIC_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = DisenchantBuddy.IsMoP and 3 or 2},
             {itemId = Materials.LARGE_GLOWING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
         }
     elseif itemLevel <= 45 then

@@ -1,17 +1,18 @@
 describe("GetMaterialsForUncommonItem", function()
-
     ---@type Materials
     local Materials
     local GetMaterialsForUncommonArmor
     local GetMaterialsForUncommonWeapons
+    ---@type DisenchantBuddy
+    local DisenchantBuddy
 
     before_each(function()
         -- We use `loadfile` over `require` to be able to hand in our own environment
-        ---@type DisenchantBuddy
-        local DisenchantBuddy = {}
+        DisenchantBuddy = {}
         DisenchantBuddy.IsTBC = true
         DisenchantBuddy.IsWotLK = true
         DisenchantBuddy.IsCata = true
+        DisenchantBuddy.IsMoP = true
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
         Materials = DisenchantBuddy.Materials
         loadfile("DisenchantResults/Uncommon.lua")("DisenchantBuddy", DisenchantBuddy)
@@ -125,6 +126,30 @@ describe("GetMaterialsForUncommonItem", function()
         end)
 
         it("should return correct results for level 36 items", function()
+            DisenchantBuddy.IsMoP = false
+
+            local results = GetMaterialsForUncommonArmor(36)
+
+            assert.are_same({
+                {itemId = Materials.VISION_DUST, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.GREATER_MYSTIC_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.LARGE_GLOWING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
+        it("should return correct results for level 40 items", function()
+            DisenchantBuddy.IsMoP = false
+
+            local results = GetMaterialsForUncommonArmor(40)
+
+            assert.are_same({
+                {itemId = Materials.VISION_DUST, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.GREATER_MYSTIC_ESSENCE, probability = 20, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.LARGE_GLOWING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
+        it("should return correct results for level 36 items for MoP", function()
             local results = GetMaterialsForUncommonArmor(36)
 
             assert.are_same({
@@ -134,7 +159,7 @@ describe("GetMaterialsForUncommonItem", function()
             }, results)
         end)
 
-        it("should return correct results for level 40 items", function()
+        it("should return correct results for level 40 items for MoP", function()
             local results = GetMaterialsForUncommonArmor(40)
 
             assert.are_same({
