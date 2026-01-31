@@ -24,7 +24,7 @@ end
 local match = require("luassert.match")
 local _ = match._ -- any match
 _.name = "any"
-_.arguments = { n = 0 }
+_.arguments = {n = 0}
 
 local GOLD_COIN_ICON = "|TInterface\\MoneyFrame\\UI-GoldIcon:12:12:2:0|t"
 local SILVER_COIN_ICON = "|TInterface\\MoneyFrame\\UI-SilverIcon:12:12:2:0|t"
@@ -70,6 +70,7 @@ describe("AddDisenchantInfo", function()
                 }
             end,
         }
+        _G.Auctionator = nil
 
         DisenchantBuddy = {}
         -- We use `loadfile` over `require` to be able to hand in our own environment
@@ -251,6 +252,48 @@ describe("AddDisenchantInfo", function()
             _G.HIGHLIGHT_FONT_COLOR_CODE ..
             "1" .. GOLD_COIN_ICON .. " 23" .. SILVER_COIN_ICON .. " 45" .. COPPER_COIN_ICON .. "|r)"
         assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, leftSide, rightSide)
+    end)
+
+    it("should show average disenchant value when Auctionator is active", function()
+        local Materials = DisenchantBuddy.Materials
+        _G.Auctionator = {
+            API = {
+                v1 = {
+                    GetAuctionPriceByItemID = spy.new(function(_, itemId)
+                        if itemId == Materials.STRANGE_DUST then
+                            return 1000 -- 10 silver
+                        elseif itemId == Materials.GREATER_MAGIC_ESSENCE then
+                            return 1500 -- 15 silver
+                        elseif itemId == Materials.SMALL_GLIMMERING_SHARD then
+                            return 2500 -- 25 silver
+                        end
+                        return 0
+                    end)
+                }
+            }
+        }
+        _G.C_Item.GetItemInfo = spy.new(function()
+            return nil, nil, Enum.ItemQuality.Good, 20, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+        end)
+        _G.GetCoinTextureString = function(amount)
+            return math.floor((amount / 10000)) ..
+                GOLD_COIN_ICON ..
+                " " ..
+                math.floor(((amount % 10000) / 100)) ..
+                SILVER_COIN_ICON .. " " .. math.floor((amount % 100)) .. COPPER_COIN_ICON
+        end
+
+        loadfile("AddDisenchantInfo.lua")("DisenchantBuddy", DisenchantBuddy)
+        DisenchantBuddy.AddDisenchantInfo(gameTooltipMock, "itemLink")
+
+        assert.spy(gameTooltipMock.Show).was.called()
+        assert.spy(_G.Auctionator.API.v1.GetAuctionPriceByItemID).was.called_with(_, Materials.STRANGE_DUST)
+        assert.spy(_G.Auctionator.API.v1.GetAuctionPriceByItemID).was.called_with(_, Materials.GREATER_MAGIC_ESSENCE)
+        assert.spy(_G.Auctionator.API.v1.GetAuctionPriceByItemID).was.called_with(_, Materials.SMALL_GLIMMERING_SHARD)
+        local rightSide = "Ø " ..
+            _G.HIGHLIGHT_FONT_COLOR_CODE ..
+            "0" .. GOLD_COIN_ICON .. " 24" .. SILVER_COIN_ICON .. " 50" .. COPPER_COIN_ICON .. "|r"
+        assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, " ", rightSide)
     end)
 
     it("should not show auction price for materials when Auctionator is active but does not have a price", function()

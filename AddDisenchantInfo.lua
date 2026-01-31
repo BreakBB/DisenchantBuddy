@@ -48,12 +48,16 @@ function DisenchantBuddy.AddDisenchantInfo(tooltip, itemLink)
     ---@type TooltipLineData[]
     local lines = {}
 
+    local averageValue = 0
     for i = 1, totalItems do
         ---@type DisenchantResult
         local result = disenchantResults[i]
         local item = Item:CreateFromItemID(result.itemId)
         item:ContinueOnItemLoad(function()
             lines[i] = GetTooltipLineData(item, result)
+            if lines[i].auctionValue then
+                averageValue = averageValue + (lines[i].auctionValue * result.probability / 100 * ((result.minQuantity + result.maxQuantity) / 2))
+            end
 
             itemsLoaded = itemsLoaded + 1
             if itemsLoaded == totalItems then
@@ -61,6 +65,11 @@ function DisenchantBuddy.AddDisenchantInfo(tooltip, itemLink)
                 for j = 1, totalItems do
                     local line = lines[j]
                     tooltip:AddDoubleLine(line.left, line.right)
+                end
+
+                if averageValue > 0 then
+                    averageValue = math.floor(averageValue + 0.5) -- Round to nearest copper, because GetCoinTextureString does not handle fractions
+                    tooltip:AddDoubleLine(" ", "Ø " .. HIGHLIGHT_FONT_COLOR_CODE .. GetCoinTextureString(averageValue, 12) .. "|r")
                 end
                 tooltip:Show()
             end
