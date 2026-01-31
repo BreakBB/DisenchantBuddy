@@ -4,7 +4,7 @@ local DisenchantBuddy = select(2, ...)
 ---@class TooltipLineData
 ---@field left string
 ---@field right string
----@field price number
+---@field auctionValue number
 
 ---@param item ItemMixin
 ---@param result DisenchantResult
