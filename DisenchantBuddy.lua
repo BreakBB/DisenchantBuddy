@@ -10,6 +10,9 @@ local notDisenchantableItems = {
     [11288] = true, -- Greater Magic Wand
     [11289] = true, -- Lesser Mystic Wand
     [11290] = true, -- Greater Mystic Wand
+    [20406] = true, -- Twilight Cultist Mantle
+    [20407] = true, -- Twilight Cultist Robe
+    [20408] = true, -- Twilight Cultist Cowl
 }
 
 ---@param tooltip GameTooltip
@@ -43,7 +46,7 @@ function DisenchantBuddy.OnPlayerEnteringWorld(_, _, isLogin, isReload)
     end
 
     if isLogin or isReload then
-        GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem)    -- hovering over an item
+        GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- hovering over an item
         ItemRefTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- clicking an item link
     end
 end
