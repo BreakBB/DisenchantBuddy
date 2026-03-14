@@ -534,6 +534,44 @@ describe("GetMaterialsForUncommonItem", function()
         end)
 
         it("should return correct results for level 26 items", function()
+            DisenchantBuddy.IsClassic = false
+            DisenchantBuddy.IsTBC = true
+            DisenchantBuddy.IsWotLK = false
+            DisenchantBuddy.IsCata = false
+            DisenchantBuddy.IsMoP = false
+
+            local results = GetMaterialsForUncommonWeapons(26)
+
+            assert.are_same({
+                {itemId = Materials.GREATER_ASTRAL_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.SOUL_DUST, probability = 20, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.LARGE_GLIMMERING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
+        it("should return correct results for level 30 items", function()
+            DisenchantBuddy.IsClassic = false
+            DisenchantBuddy.IsTBC = true
+            DisenchantBuddy.IsWotLK = false
+            DisenchantBuddy.IsCata = false
+            DisenchantBuddy.IsMoP = false
+
+            local results = GetMaterialsForUncommonWeapons(30)
+
+            assert.are_same({
+                {itemId = Materials.GREATER_ASTRAL_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.SOUL_DUST, probability = 20, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.LARGE_GLIMMERING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
+        it("should return correct results for level 26 items for pre-TBC", function()
+            DisenchantBuddy.IsClassic = true
+            DisenchantBuddy.IsTBC = false
+            DisenchantBuddy.IsWotLK = false
+            DisenchantBuddy.IsCata = false
+            DisenchantBuddy.IsMoP = false
+
             local results = GetMaterialsForUncommonWeapons(26)
 
             assert.are_same({
@@ -543,7 +581,13 @@ describe("GetMaterialsForUncommonItem", function()
             }, results)
         end)
 
-        it("should return correct results for level 30 items", function()
+        it("should return correct results for level 30 items for pre-TBC", function()
+            DisenchantBuddy.IsClassic = true
+            DisenchantBuddy.IsTBC = false
+            DisenchantBuddy.IsWotLK = false
+            DisenchantBuddy.IsCata = false
+            DisenchantBuddy.IsMoP = false
+
             local results = GetMaterialsForUncommonWeapons(30)
 
             assert.are_same({
