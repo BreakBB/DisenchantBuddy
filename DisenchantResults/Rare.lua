@@ -30,7 +30,7 @@ function DisenchantBuddy.GetMaterialsForRareItem(itemLevel)
             {itemId = Materials.SMALL_PRISMATIC_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
             {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5, minQuantity = 1, maxQuantity = 1},
         }
-    elseif itemLevel <= 115 then
+    elseif itemLevel <= 117 then
         return {
             {itemId = Materials.LARGE_PRISMATIC_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
             {itemId = Materials.VOID_CRYSTAL, probability = 0.5, minQuantity = 1, maxQuantity = 1},

@@ -1,5 +1,4 @@
 describe("GetMaterialsForRareItem", function()
-
     ---@type Materials
     local Materials
     local GetMaterialsForRareItem
@@ -193,8 +192,8 @@ describe("GetMaterialsForRareItem", function()
         }, results)
     end)
 
-    it("should return correct results for level 115 items", function()
-        local results = GetMaterialsForRareItem(115)
+    it("should return correct results for level 117 items", function()
+        local results = GetMaterialsForRareItem(117)
 
         assert.are_same({
             {itemId = Materials.LARGE_PRISMATIC_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
