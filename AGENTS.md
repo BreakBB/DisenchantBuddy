@@ -134,6 +134,7 @@ Custom types (`DisenchantResult`, `TooltipLineData`, `ItemId`) are declared in `
   if (not x) then   -- correct
   if not x then     -- incorrect
   ```
+- When adding new production files, make sure to also add them to the build.py > filesToInclude list to be included in the final addon bundle.
 
 ---
 
