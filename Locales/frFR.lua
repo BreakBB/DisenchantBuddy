@@ -6,6 +6,8 @@ if GetLocale() ~= "frFR" then
 end
 
 DisenchantBuddy.L = {
-    ["Disenchant results:"] = "Résultats de désenchantement:",
-    ["Disenchanted from:"] = "Désenchanté de:",
+    ["Disenchant results:"] = "Résultats de désenchantement :",
+    ["Disenchanted from:"] = "Désenchanté de :",
+    ["Modifier is now: %s"] = "Modificateur maintenant : %s",
+    ["Syntax:"] = "Syntaxe :",
 }

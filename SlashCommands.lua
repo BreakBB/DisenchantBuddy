@@ -1,6 +1,8 @@
 ---@class DisenchantBuddy
 local DisenchantBuddy = select(2, ...)
 
+local L = DisenchantBuddy.L
+
 SLASH_DisenchantBuddy1 = "/disenchantbuddy"
 
 ---@param msg string
@@ -16,9 +18,9 @@ function DisenchantBuddy.ProcessCommand(msg)
         else
             DisenchantBuddy_Profile.Modifier = "OFF"
         end
-        print("Modifier is now: " .. DisenchantBuddy_Profile.Modifier)
+        print(string.format(L["Modifier is now: %s"], DisenchantBuddy_Profile.Modifier))
     else
-        print("Syntax: " .. SLASH_DisenchantBuddy1 .. " modifier ( shift | alt | control | off )")
+        print(L["Syntax:"] .. " " .. SLASH_DisenchantBuddy1 .. " modifier ( shift | alt | control | off )")
     end
 end
 

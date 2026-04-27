@@ -12,7 +12,12 @@ describe("SlashCommands", function()
         _G.print = spy.new(function() end)
         _G.DisenchantBuddy_Profile = {}
 
-        DisenchantBuddy = {}
+        DisenchantBuddy = {
+            L = {
+                ["Modifier is now: %s"] = "Modifier is now: %s",
+                ["Syntax:"] = "Syntax:",
+            }
+        }
         loadfile("SlashCommands.lua")("DisenchantBuddy", DisenchantBuddy)
     end)
 
@@ -45,6 +50,24 @@ describe("SlashCommands", function()
             DisenchantBuddy.ProcessCommand("modifier banana")
 
             assert.are.equal("OFF", _G.DisenchantBuddy_Profile.Modifier)
+        end)
+
+        it("should print translated modifier confirmation", function()
+            DisenchantBuddy.L["Modifier is now: %s"] = "Modifier ist jetzt: %s"
+            loadfile("SlashCommands.lua")("DisenchantBuddy", DisenchantBuddy)
+
+            DisenchantBuddy.ProcessCommand("modifier shift")
+
+            assert.spy(_G.print).was.called_with("Modifier ist jetzt: SHIFT")
+        end)
+
+        it("should print translated syntax help for unknown command", function()
+            DisenchantBuddy.L["Syntax:"] = "Syntaxe:"
+            loadfile("SlashCommands.lua")("DisenchantBuddy", DisenchantBuddy)
+
+            DisenchantBuddy.ProcessCommand("test")
+
+            assert.spy(_G.print).was.called_with("Syntaxe: /disenchantbuddy modifier ( shift | alt | control | off )")
         end)
 
         it("should print syntax help for unknown command", function()

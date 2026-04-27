@@ -8,4 +8,6 @@ end
 DisenchantBuddy.L = {
     ["Disenchant results:"] = "Disenchant results:",
     ["Disenchanted from:"] = "Disenchanted from:",
+    ["Modifier is now: %s"] = "Modifier is now: %s",
+    ["Syntax:"] = "Syntax:",
 }
