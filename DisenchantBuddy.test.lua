@@ -2,6 +2,8 @@ dofile(".types/wow-api/library/Data/Enum.lua")
 
 _G.ITEM_DISENCHANT_NOT_DISENCHANTABLE = "Cannot be disenchanted"
 
+_G.SlashCmdList = {}
+
 local match = require("luassert.match")
 local _ = match._ -- any match
 _.name = "any"
