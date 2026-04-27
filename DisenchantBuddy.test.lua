@@ -7,7 +7,7 @@ _G.SlashCmdList = {}
 local match = require("luassert.match")
 local _ = match._ -- any match
 _.name = "any"
-_.arguments = { n = 0 }
+_.arguments = {n = 0}
 
 describe("DisenchantBuddy", function()
     ---@type DisenchantBuddy
@@ -44,6 +44,7 @@ describe("DisenchantBuddy", function()
 
         DisenchantBuddy = {}
         -- We use `loadfile` over `require` to be able to hand in our own environment
+        loadfile("SlashCommands.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
         DisenchantBuddy.AddDisenchantInfo = spy.new(function() end)
         DisenchantBuddy.AddMaterialInfo = spy.new(function() end)
