@@ -40,6 +40,7 @@ globals = {
     "assert.spy",
     "assert.are_same",
     "assert.is_nil",
+    "assert.is_true",
     "describe",
     "before_each",
     "it",

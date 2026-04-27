@@ -25,31 +25,31 @@ describe("SlashCommands", function()
         it("should set modifier to SHIFT", function()
             DisenchantBuddy.ProcessCommand("modifier shift")
 
-            assert.are.equal("SHIFT", _G.DisenchantBuddy_Profile.Modifier)
+            assert.are_same("SHIFT", _G.DisenchantBuddy_Profile.Modifier)
         end)
 
         it("should set modifier to ALT", function()
             DisenchantBuddy.ProcessCommand("modifier alt")
 
-            assert.are.equal("ALT", _G.DisenchantBuddy_Profile.Modifier)
+            assert.are_same("ALT", _G.DisenchantBuddy_Profile.Modifier)
         end)
 
         it("should set modifier to CONTROL", function()
             DisenchantBuddy.ProcessCommand("modifier control")
 
-            assert.are.equal("CONTROL", _G.DisenchantBuddy_Profile.Modifier)
+            assert.are_same("CONTROL", _G.DisenchantBuddy_Profile.Modifier)
         end)
 
         it("should set modifier to OFF when off is passed", function()
             DisenchantBuddy.ProcessCommand("modifier off")
 
-            assert.are.equal("OFF", _G.DisenchantBuddy_Profile.Modifier)
+            assert.are_same("OFF", _G.DisenchantBuddy_Profile.Modifier)
         end)
 
         it("should set modifier to OFF for unknown value", function()
             DisenchantBuddy.ProcessCommand("modifier banana")
 
-            assert.are.equal("OFF", _G.DisenchantBuddy_Profile.Modifier)
+            assert.are_same("OFF", _G.DisenchantBuddy_Profile.Modifier)
         end)
 
         it("should print translated modifier confirmation", function()
