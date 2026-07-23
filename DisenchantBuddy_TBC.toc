@@ -1,9 +1,9 @@
 ## Interface: 20506
-## Title: Disenchant Buddy v2.6.3
+## Title: Disenchant Buddy v2.6.4
 ## Author: BreakBB
 ## Notes: A lightweight addon to show disenchant results on item tooltips.
 ## SavedVariables: DisenchantBuddy_Profile
-## Version: 2.6.3
+## Version: 2.6.4
 ## OptionalDeps: Auctionator
 ## IconTexture: Interface\AddOns\DisenchantBuddy\logo.png
 ## Category: Professions
