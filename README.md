@@ -61,3 +61,9 @@ This project uses `busted` for unit testing. To run the tests, execute the follo
 ```sh
 busted -p ".test.lua" .
 ```
+
+### Releasing
+
+Releases are created via GitHub Actions: **Actions → Release → Run workflow** on `main`, with the new version without "v" prefix (e.g. `2.8.0` or `2.8.0-b1` for a beta).
+
+The workflow runs the tests, bumps the version, creates and pushes the tag and then triggers the Publish workflow, which uploads the release to GitHub, CurseForge and Wago.
