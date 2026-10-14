@@ -1,0 +1,33 @@
+## Interface: 16001
+## Title: Disenchant Buddy v2.6.5
+## Author: BreakBB
+## Notes: A lightweight addon to show disenchant results on item tooltips.
+## SavedVariables: DisenchantBuddy_Profile
+## Version: 2.6.5
+## OptionalDeps: Auctionator
+## IconTexture: Interface\AddOns\DisenchantBuddy\logo.png
+## Category: Professions
+## Category-deDE: Berufe
+## Category-esES: Profesiones
+## Category-esMX: Profesiones
+## Category-frFR: Métiers
+## Category-itIT: Professioni
+## Category-koKR: 전문 기술
+## Category-ptBR: Profissões
+## Category-ruRU: Профессии
+## Category-zhCN: 专业
+## Category-zhTW: 專業技能
+## X-Curse-Project-ID: 1149594
+## X-Wago-ID: 56n9DdN9
+
+GameVersions.lua
+Materials.lua
+Locales/Locales.xml
+GetTooltipLineData.lua
+AddDisenchantInfo.lua
+DisenchantResults/Uncommon.lua
+DisenchantResults/Rare.lua
+DisenchantResults/Epic.lua
+AddMaterialInfo.lua
+SlashCommands.lua
+DisenchantBuddy.lua

@@ -1,6 +1,8 @@
 ---@class DisenchantBuddy
 local DisenchantBuddy = select(2, ...)
 
+DisenchantBuddy.FormatCoin = GetCoinTextureString or (C_CurrencyInfo and C_CurrencyInfo.GetCoinTextureString)
+
 ---@class TooltipLineData
 ---@field left string
 ---@field right string
@@ -26,7 +28,7 @@ function DisenchantBuddy.GetTooltipLineData(item, result)
     if Auctionator then
         auctionValue = Auctionator.API.v1.GetAuctionPriceByItemID("DisenchantBuddy", result.itemId)
         if auctionValue then
-            rightSide = rightSide .. " x " .. HIGHLIGHT_FONT_COLOR_CODE .. GetCoinTextureString(auctionValue, 12) .. "|r"
+            rightSide = rightSide .. " x " .. HIGHLIGHT_FONT_COLOR_CODE .. DisenchantBuddy.FormatCoin(auctionValue, 12) .. "|r"
         else
             rightSide = rightSide .. "x"
         end

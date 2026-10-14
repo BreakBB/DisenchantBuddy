@@ -19,6 +19,12 @@ local notDisenchantableItems = {
 
 ---@param tooltip GameTooltip
 function DisenchantBuddy.OnTooltipSetItem(tooltip)
+    if (not tooltip.GetItem) then
+        -- TooltipDataProcessor fires for every item tooltip, including comparison
+        -- tooltips that don't implement the legacy GameTooltip mixin.
+        return
+    end
+
     local _, link = tooltip:GetItem()
 	local modifier = DisenchantBuddy_Profile and DisenchantBuddy_Profile.Modifier
 
@@ -49,8 +55,13 @@ function DisenchantBuddy.OnPlayerEnteringWorld(_, _, isLogin, isReload)
     end
 
     if isLogin or isReload then
-        GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- hovering over an item
-        ItemRefTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- clicking an item link
+        -- HasScript is the reliable way to detect the old OnTooltipSetItem hook; TooltipDataProcessor is the newer callback-based replacement.
+        if GameTooltip.HasScript and GameTooltip:HasScript("OnTooltipSetItem") then
+            GameTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- hovering over an item
+            ItemRefTooltip:HookScript("OnTooltipSetItem", DisenchantBuddy.OnTooltipSetItem) -- clicking an item link
+        elseif TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall then
+            TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, DisenchantBuddy.OnTooltipSetItem)
+        end
 		DisenchantBuddy_Profile = DisenchantBuddy_Profile or {}
     end
 end

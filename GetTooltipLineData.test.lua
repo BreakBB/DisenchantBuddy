@@ -85,4 +85,53 @@ describe("GetTooltipLineData", function()
             auctionValue = 10000,
         }, lineData)
     end)
+
+    it("should use C_CurrencyInfo.GetCoinTextureString when the plain global is unavailable", function()
+        _G.GetCoinTextureString = nil
+        _G.C_CurrencyInfo = {
+            GetCoinTextureString = function(amount)
+                return "C_CurrencyInfo:" .. amount
+            end
+        }
+        _G.Auctionator = {
+            API = {
+                v1 = {
+                    GetAuctionPriceByItemID = function()
+                        return 12345
+                    end
+                }
+            }
+        }
+        local mockedItem = {
+            GetItemName = function()
+                return "Strange Dust"
+            end,
+            GetItemIcon = function()
+                return 132858
+            end,
+            GetItemQualityColor = function()
+                return {hex = "|cffffffff"}
+            end
+        }
+        local disenchantResult = {
+            probability = 100,
+            minQuantity = 1,
+            maxQuantity = 2,
+            itemId = 10940
+        }
+
+        loadfile("GetTooltipLineData.lua")("DisenchantBuddy", DisenchantBuddy)
+        local lineData = DisenchantBuddy.GetTooltipLineData(mockedItem, disenchantResult)
+
+        assert.are_same({
+            left = "  |T132858:0|t |cffffffffStrange Dust|r",
+            right = "100% (1-2 x |cffffffffC_CurrencyInfo:12345|r)",
+            auctionValue = 12345,
+        }, lineData)
+
+        _G.GetCoinTextureString = function(amount)
+            return math.floor((amount / 10000)) .. GOLD_COIN_ICON .. " " .. math.floor(((amount % 10000) / 100)) .. SILVER_COIN_ICON .. " " .. math.floor((amount % 100)) .. COPPER_COIN_ICON
+        end
+        _G.C_CurrencyInfo = nil
+    end)
 end)

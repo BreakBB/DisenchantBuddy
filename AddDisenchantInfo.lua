@@ -6,12 +6,17 @@ local GetItemInfo = C_Item.GetItemInfo or GetItemInfo
 local L = DisenchantBuddy.L
 local GetTooltipLineData = DisenchantBuddy.GetTooltipLineData
 
+-- "Standard"/"Good" are Classic-only aliases for quality 1/2; clients that identify as
+-- WOW_PROJECT_MAINLINE only define the retail names "Common"/"Uncommon" for the same values.
+local QUALITY_STANDARD = Enum.ItemQuality.Standard or Enum.ItemQuality.Common
+local QUALITY_GOOD = Enum.ItemQuality.Good or Enum.ItemQuality.Uncommon
+
 ---@param quality number
 ---@param classId number
 ---@param itemLevel number
 ---@return DisenchantResult|nil
 function DisenchantBuddy.GetDisenchantResults(quality, classId, itemLevel)
-    if quality == Enum.ItemQuality.Good then
+    if quality == QUALITY_GOOD then
         if classId == Enum.ItemClass.Weapon then
             return DisenchantBuddy.GetMaterialsForUncommonWeapons(itemLevel)
         else
@@ -31,13 +36,14 @@ function DisenchantBuddy.AddDisenchantInfo(tooltip, itemLink)
     local _, _, quality, itemLevel, _, _, _, _, _, _, _, classId = GetItemInfo(itemLink)
 
     if quality == Enum.ItemQuality.Poor or
-        quality == Enum.ItemQuality.Standard or
+        quality == QUALITY_STANDARD or
         quality == Enum.ItemQuality.Legendary or
         (classId ~= Enum.ItemClass.Armor and classId ~= Enum.ItemClass.Weapon) then
         return
     end
 
     local disenchantResults = DisenchantBuddy.GetDisenchantResults(quality, classId, itemLevel)
+
     if (not disenchantResults) then
         -- No disenchant results for this item, e.g. itemLevel too high
         return
@@ -69,7 +75,7 @@ function DisenchantBuddy.AddDisenchantInfo(tooltip, itemLink)
 
                 if averageValue > 0 then
                     averageValue = math.floor(averageValue + 0.5) -- Round to nearest copper, because GetCoinTextureString does not handle fractions
-                    tooltip:AddDoubleLine(" ", "Ø " .. HIGHLIGHT_FONT_COLOR_CODE .. GetCoinTextureString(averageValue, 12) .. "|r")
+                    tooltip:AddDoubleLine(" ", "Ø " .. HIGHLIGHT_FONT_COLOR_CODE .. DisenchantBuddy.FormatCoin(averageValue, 12) .. "|r")
                 end
                 tooltip:Show()
             end

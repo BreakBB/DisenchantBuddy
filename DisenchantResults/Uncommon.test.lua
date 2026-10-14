@@ -533,6 +533,23 @@ describe("GetMaterialsForUncommonItem", function()
             }, results)
         end)
 
+        it("should return correct results for level 25 items for WoW: Forever", function()
+            DisenchantBuddy.IsClassic = false
+            DisenchantBuddy.IsForever = true
+            DisenchantBuddy.IsTBC = false
+            DisenchantBuddy.IsWotLK = false
+            DisenchantBuddy.IsCata = false
+            DisenchantBuddy.IsMoP = false
+
+            local results = GetMaterialsForUncommonWeapons(25)
+
+            assert.are_same({
+                {itemId = Materials.GREATER_MAGIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.STRANGE_DUST, probability = 15, minQuantity = 4, maxQuantity = 6},
+                {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 10, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
         it("should return correct results for level 26 items", function()
             DisenchantBuddy.IsClassic = false
             DisenchantBuddy.IsTBC = true
@@ -583,6 +600,23 @@ describe("GetMaterialsForUncommonItem", function()
 
         it("should return correct results for level 30 items for pre-TBC", function()
             DisenchantBuddy.IsClassic = true
+            DisenchantBuddy.IsTBC = false
+            DisenchantBuddy.IsWotLK = false
+            DisenchantBuddy.IsCata = false
+            DisenchantBuddy.IsMoP = false
+
+            local results = GetMaterialsForUncommonWeapons(30)
+
+            assert.are_same({
+                {itemId = Materials.GREATER_MAGIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.SOUL_DUST, probability = 20, minQuantity = 1, maxQuantity = 2},
+                {itemId = Materials.LARGE_GLIMMERING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
+            }, results)
+        end)
+
+        it("should return correct results for level 30 items for WoW: Forever", function()
+            DisenchantBuddy.IsClassic = false
+            DisenchantBuddy.IsForever = true
             DisenchantBuddy.IsTBC = false
             DisenchantBuddy.IsWotLK = false
             DisenchantBuddy.IsCata = false

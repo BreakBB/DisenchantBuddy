@@ -28,6 +28,7 @@ describe("DisenchantBuddy", function()
         end
         _G.GameTooltip = {
             HookScript = spy.new(function() end),
+            HasScript = function() return true end,
             IsForbidden = function()
                 return false
             end,
@@ -40,6 +41,7 @@ describe("DisenchantBuddy", function()
         _G.ItemRefTooltip = {
             HookScript = spy.new(function() end),
         }
+        _G.TooltipDataProcessor = nil
         gameTooltipMock = _G.GameTooltip
 
         DisenchantBuddy = {}
@@ -87,6 +89,23 @@ describe("DisenchantBuddy", function()
             assert.spy(_G.ItemRefTooltip.HookScript).was_not.called()
         end)
 
+        it("should use TooltipDataProcessor when the legacy script handle is gone (e.g. WoW: Forever)", function()
+            _G.GameTooltip.HasScript = function() return false end
+            _G.TooltipDataProcessor = {
+                AddTooltipPostCall = spy.new(function() end)
+            }
+            loadfile("DisenchantBuddy.lua")("DisenchantBuddy", DisenchantBuddy)
+
+            DisenchantBuddy.OnPlayerEnteringWorld(_, _, false, true)
+
+            assert.spy(_G.TooltipDataProcessor.AddTooltipPostCall)
+                .was.called_with(Enum.TooltipDataType.Item, DisenchantBuddy.OnTooltipSetItem)
+            assert.spy(_G.GameTooltip.HookScript).was_not.called()
+            assert.spy(_G.ItemRefTooltip.HookScript).was_not.called()
+
+            _G.TooltipDataProcessor = nil
+        end)
+
         it("should trigger Classic material caching on login", function()
             DisenchantBuddy.OnPlayerEnteringWorld(_, _, true, false)
 
@@ -131,6 +150,17 @@ describe("DisenchantBuddy", function()
     end)
 
     describe("OnTooltipSetItem", function()
+        it("should not show when tooltip has no GetItem method", function()
+            local shoppingTooltipMock = {
+                IsForbidden = function() return false end,
+            }
+
+            DisenchantBuddy.OnTooltipSetItem(shoppingTooltipMock)
+
+            assert.spy(DisenchantBuddy.AddDisenchantInfo).was.not_called()
+            assert.spy(DisenchantBuddy.AddMaterialInfo).was.not_called()
+        end)
+
         it("should not show when itemLink is nil", function()
             gameTooltipMock.GetItem = spy.new(function()
                 return nil, nil

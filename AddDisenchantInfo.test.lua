@@ -241,6 +241,7 @@ describe("AddDisenchantInfo", function()
                 SILVER_COIN_ICON .. " " .. math.floor((amount % 100)) .. COPPER_COIN_ICON
         end
 
+        loadfile("GetTooltipLineData.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("AddDisenchantInfo.lua")("DisenchantBuddy", DisenchantBuddy)
         DisenchantBuddy.AddDisenchantInfo(gameTooltipMock, "itemLink")
 
@@ -283,6 +284,7 @@ describe("AddDisenchantInfo", function()
                 SILVER_COIN_ICON .. " " .. math.floor((amount % 100)) .. COPPER_COIN_ICON
         end
 
+        loadfile("GetTooltipLineData.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("AddDisenchantInfo.lua")("DisenchantBuddy", DisenchantBuddy)
         DisenchantBuddy.AddDisenchantInfo(gameTooltipMock, "itemLink")
 

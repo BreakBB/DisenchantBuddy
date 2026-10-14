@@ -25,7 +25,7 @@ function DisenchantBuddy.GetMaterialsForRareItem(itemLevel)
             {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
             {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5, minQuantity = 1, maxQuantity = 1},
         }
-    elseif DisenchantBuddy.IsClassic and itemLevel <= 86 then
+    elseif (DisenchantBuddy.IsClassic or DisenchantBuddy.IsForever) and itemLevel <= 86 then
         return {
             {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
             {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5, minQuantity = 1, maxQuantity = 1},

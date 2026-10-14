@@ -141,7 +141,7 @@ function DisenchantBuddy.GetMaterialsForUncommonWeapons(itemLevel)
             {itemId = Materials.SMALL_GLIMMERING_SHARD, probability = 5, minQuantity = 1, maxQuantity = 1}
         }
     elseif itemLevel <= 25 then
-        if DisenchantBuddy.IsClassic then
+        if DisenchantBuddy.IsClassic or DisenchantBuddy.IsForever then
             return {
                 {itemId = Materials.GREATER_MAGIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
                 {itemId = Materials.STRANGE_DUST, probability = 15, minQuantity = 4, maxQuantity = 6},
@@ -155,7 +155,7 @@ function DisenchantBuddy.GetMaterialsForUncommonWeapons(itemLevel)
             }
         end
     elseif itemLevel <= 30 then
-        if DisenchantBuddy.IsClassic then
+        if DisenchantBuddy.IsClassic or DisenchantBuddy.IsForever then
             return {
                 {itemId = Materials.GREATER_MAGIC_ESSENCE, probability = 75, minQuantity = 1, maxQuantity = 2},
                 {itemId = Materials.SOUL_DUST, probability = 20, minQuantity = 1, maxQuantity = 2},

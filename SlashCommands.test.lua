@@ -1,5 +1,6 @@
 _G.SlashCmdList = {}
 _G.SLASH_DisenchantBuddy1 = nil
+_G.SLASH_DisenchantBuddy2 = nil
 
 describe("SlashCommands", function()
     ---@type DisenchantBuddy
@@ -19,6 +20,11 @@ describe("SlashCommands", function()
             }
         }
         loadfile("SlashCommands.lua")("DisenchantBuddy", DisenchantBuddy)
+    end)
+
+    it("should register /disenchantbuddy and /debuddy as slash commands", function()
+        assert.are_same("/disenchantbuddy", _G.SLASH_DisenchantBuddy1)
+        assert.are_same("/debuddy", _G.SLASH_DisenchantBuddy2)
     end)
 
     describe("ProcessCommand", function()

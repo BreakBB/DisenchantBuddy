@@ -4,6 +4,7 @@ local DisenchantBuddy = select(2, ...)
 local L = DisenchantBuddy.L
 
 SLASH_DisenchantBuddy1 = "/disenchantbuddy"
+SLASH_DisenchantBuddy2 = "/debuddy"
 
 ---@param msg string
 function DisenchantBuddy.ProcessCommand(msg)

@@ -200,6 +200,23 @@ describe("GetMaterialsForRareItem", function()
         }, results)
     end)
 
+    it("should return correct results for level 86 items on WoW: Forever", function()
+        DisenchantBuddy.IsClassic = false
+        DisenchantBuddy.IsForever = true
+        DisenchantBuddy.IsTBC = false
+        DisenchantBuddy.IsWotLK = false
+        DisenchantBuddy.IsCata = false
+        DisenchantBuddy.IsMoP = false
+        DisenchantBuddy.IsSoD = false
+
+        local results = GetMaterialsForRareItem(86)
+
+        assert.are_same({
+            {itemId = Materials.LARGE_BRILLIANT_SHARD, probability = 99.5, minQuantity = 1, maxQuantity = 1},
+            {itemId = Materials.NEXUS_CRYSTAL, probability = 0.5, minQuantity = 1, maxQuantity = 1},
+        }, results)
+    end)
+
     it("should return correct results for level 86 items on TBC", function()
         DisenchantBuddy.IsClassic = false
         DisenchantBuddy.IsTBC = true

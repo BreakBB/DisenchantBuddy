@@ -5,6 +5,12 @@ local DisenchantBuddy = select(2, ...)
 ---@type boolean
 DisenchantBuddy.IsClassic = WOW_PROJECT_ID == WOW_PROJECT_CLASSIC
 
+--- Addon is running on "WoW: Forever".
+--- Detect by the build version, because Forever currently shares retail's (MAINLINE) project ID.
+---@type boolean
+local build = select(4, GetBuildInfo())
+DisenchantBuddy.IsForever = build >= 16000 and build < 20000
+
 --- Addon is running on Classic TBC client
 DisenchantBuddy.IsTBC = WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
 
