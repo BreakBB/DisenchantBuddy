@@ -34,6 +34,10 @@ This program accepts optional command line options:
     --mop
         Include MoP files
 
+    -f
+    --forever
+        Include WoW Forever files
+
     -v <versionString>
     --version <versionString>
         Disregard git and toc versions, and use <versionString> instead
@@ -41,7 +45,8 @@ This program accepts optional command line options:
 '''
 addonDir = 'DisenchantBuddy'
 includedExpansions = []
-tocs = ['', 'DisenchantBuddy_Vanilla.toc', 'DisenchantBuddy_TBC.toc', 'DisenchantBuddy_Wrath.toc', '', 'DisenchantBuddy_Mists.toc']
+tocs = ['', 'DisenchantBuddy_Vanilla.toc', 'DisenchantBuddy_TBC.toc', 'DisenchantBuddy_Wrath.toc', '', 'DisenchantBuddy_Mists.toc', 'DisenchantBuddy_Camelot.toc',
+        'DisenchantBuddy_Forever.toc']
 
 
 def main():
@@ -69,6 +74,8 @@ def main():
                 #     includedExpansions.append(4)
                 if 5 not in includedExpansions:
                     includedExpansions.append(5)
+                if 6 not in includedExpansions:
+                    includedExpansions.append(6)
             elif arg in ['-c', '--classic'] and 1 not in includedExpansions:
                 includedExpansions.append(1)
             elif arg in ['-t', '--tbc'] and 2 not in includedExpansions:
@@ -79,12 +86,15 @@ def main():
                 includedExpansions.append(4)
             elif arg in ['-m', '--mop'] and 5 not in includedExpansions:
                 includedExpansions.append(5)
+            elif arg in ['-f', '--forever'] and 6 not in includedExpansions:
+                includedExpansions.append(6)
     if len(includedExpansions) == 0:
         # If expansions go online/offline their major version needs to be added/removed here
         includedExpansions.append(1)
         includedExpansions.append(2)
         includedExpansions.append(3)
         includedExpansions.append(5)
+        includedExpansions.append(6)
 
     release_dir = get_version_dir(isReleaseBuild, versionOverride)
 
@@ -100,7 +110,7 @@ def main():
     if versionOverride != '':
         for tocN in includedExpansions:
             toc = tocs[tocN]
-            toc_path = release_addon_folder_path + toc
+            toc_path = release_addon_folder_path + '/' + toc
             with fileinput.FileInput(toc_path, inplace=True) as file:
                 for line in file:
                     if line[:10] == '## Version':
@@ -116,6 +126,7 @@ def main():
     interface_wotlk = get_interface_versions('Wrath')
     interface_cata = get_interface_versions('Cata')
     interface_mop = get_interface_versions('Mists')
+    interface_forever = get_interface_versions('Forever')
 
     def flavor_entries(flavor, versions):
         result = ""
@@ -138,6 +149,8 @@ def main():
         flavorString += flavor_entries("cata", interface_cata)
     if 5 in includedExpansions:
         flavorString += flavor_entries("mists", interface_mop)
+    if 6 in includedExpansions:
+        flavorString += flavor_entries("forever", interface_forever)
 
     with open(release_folder_path + '/release.json', 'w') as rf:
         rf.write('''{
@@ -181,7 +194,7 @@ ignorePatterns = ["*.test.lua"]
 
 
 def copy_content_to(release_folder_path):
-    for i in [1, 2, 3, 4, 5]:
+    for i in [1, 2, 3, 4, 5, 6]:
         if i in includedExpansions:
             filesToInclude.append(tocs[i])
 
