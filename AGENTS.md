@@ -35,7 +35,7 @@ Keep changes as small as possible.
 DisenchantBuddy/
 ├── .types/                    # LuaLS type stubs (wow-api, busted, luassert, custom types)
 │   └── types.lua              # Custom types: DisenchantResult, TooltipLineData, ItemId
-├── .github/workflows/         # CI (luacheck + busted) and publish workflows
+├── .github/workflows/         # CI (luacheck + busted), release and publish workflows
 ├── DisenchantResults/         # Drop tables per quality (Uncommon, Rare, Epic) + tests
 ├── Locales/                   # Translation files (enUS, deDE, frFR, …)
 ├── DisenchantBuddy.lua        # Main entry point: event hooks, slash command
