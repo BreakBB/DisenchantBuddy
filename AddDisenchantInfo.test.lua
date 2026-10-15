@@ -8,6 +8,7 @@ local Colors = {
 }
 
 _G.HIGHLIGHT_FONT_COLOR_CODE = Colors.STANDARD
+_G.ITEM_DISENCHANT_NOT_DISENCHANTABLE = "Cannot be disenchanted"
 
 _G.GetItemQualityColor = function(quality)
     if quality == Enum.ItemQuality.Standard then
@@ -112,9 +113,33 @@ describe("AddDisenchantInfo", function()
         assert.spy(gameTooltipMock.AddLine).was_not.called()
     end)
 
-    it("should not show tooltip for legendary quality items", function()
+    it("should show not disenchantable for legendary weapons", function()
+        _G.C_Item.GetItemInfo = spy.new(function()
+            return nil, nil, Enum.ItemQuality.Legendary, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Weapon
+        end)
+
+        loadfile("AddDisenchantInfo.lua")("DisenchantBuddy", DisenchantBuddy)
+        DisenchantBuddy.AddDisenchantInfo(gameTooltipMock, "itemLink")
+
+        assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Cannot be disenchanted")
+        assert.spy(gameTooltipMock.Show).was.called()
+    end)
+
+    it("should show not disenchantable for legendary armor", function()
         _G.C_Item.GetItemInfo = spy.new(function()
             return nil, nil, Enum.ItemQuality.Legendary, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+        end)
+
+        loadfile("AddDisenchantInfo.lua")("DisenchantBuddy", DisenchantBuddy)
+        DisenchantBuddy.AddDisenchantInfo(gameTooltipMock, "itemLink")
+
+        assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Cannot be disenchanted")
+        assert.spy(gameTooltipMock.Show).was.called()
+    end)
+
+    it("should not show tooltip for legendary items other than armor and weapon", function()
+        _G.C_Item.GetItemInfo = spy.new(function()
+            return nil, nil, Enum.ItemQuality.Legendary, 5, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Container
         end)
 
         loadfile("AddDisenchantInfo.lua")("DisenchantBuddy", DisenchantBuddy)

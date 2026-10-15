@@ -37,8 +37,13 @@ function DisenchantBuddy.AddDisenchantInfo(tooltip, itemLink)
 
     if quality == Enum.ItemQuality.Poor or
         quality == QUALITY_STANDARD or
-        quality == Enum.ItemQuality.Legendary or
         (classId ~= Enum.ItemClass.Armor and classId ~= Enum.ItemClass.Weapon) then
+        return
+    end
+
+    if quality == Enum.ItemQuality.Legendary then
+        tooltip:AddLine(ITEM_DISENCHANT_NOT_DISENCHANTABLE)
+        tooltip:Show()
         return
     end
 
