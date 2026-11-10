@@ -46,7 +46,7 @@ describe("DisenchantBuddy", function()
 
         DisenchantBuddy = {}
         -- We use `loadfile` over `require` to be able to hand in our own environment
-        loadfile("SlashCommands.lua")("DisenchantBuddy", DisenchantBuddy)
+        loadfile("Settings.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("Materials.lua")("DisenchantBuddy", DisenchantBuddy)
         DisenchantBuddy.AddDisenchantInfo = spy.new(function() end)
         DisenchantBuddy.AddMaterialInfo = spy.new(function() end)

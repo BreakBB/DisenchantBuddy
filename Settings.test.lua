@@ -24,6 +24,9 @@ describe("Settings", function()
         _G.ALT_KEY_TEXT = "Alt"
         _G.CTRL_KEY_TEXT = "Ctrl"
         _G.DisenchantBuddy_Profile = {}
+        _G.IsShiftKeyDown = spy.new(function() return false end)
+        _G.IsAltKeyDown = spy.new(function() return false end)
+        _G.IsControlKeyDown = spy.new(function() return false end)
         _G.Settings = {
             VarType = { String = "string" },
             RegisterVerticalLayoutCategory = spy.new(function() return category end),
@@ -82,5 +85,37 @@ describe("Settings", function()
 
         assert.are_same("ALT", _G.DisenchantBuddy_Profile.Modifier)
         assert.are_same("ALT", getValue())
+    end)
+
+    describe("IsModifierDown", function()
+        before_each(load)
+
+        it("should return true when no modifier is set", function()
+            assert.is_true(DisenchantBuddy.IsModifierDown("INVALID"))
+        end)
+
+        it("should check shift key when modifier is SHIFT", function()
+            _G.IsShiftKeyDown = spy.new(function() return true end)
+
+            local result = DisenchantBuddy.IsModifierDown("SHIFT")
+
+            assert.is_true(result)
+        end)
+
+        it("should check alt key when modifier is ALT", function()
+            _G.IsAltKeyDown = spy.new(function() return true end)
+
+            local result = DisenchantBuddy.IsModifierDown("ALT")
+
+            assert.is_true(result)
+        end)
+
+        it("should check control key when modifier is CONTROL", function()
+            _G.IsControlKeyDown = spy.new(function() return true end)
+
+            local result = DisenchantBuddy.IsModifierDown("CONTROL")
+
+            assert.is_true(result)
+        end)
     end)
 end)
