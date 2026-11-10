@@ -22,6 +22,18 @@ local function GetModifierOptions()
     return container:GetData()
 end
 
+---@param mod string
+function DisenchantBuddy.IsModifierDown(mod)
+    if mod == "SHIFT" then
+        return IsShiftKeyDown()
+    elseif mod == "ALT" then
+        return IsAltKeyDown()
+    elseif mod == "CONTROL" then
+        return IsControlKeyDown()
+    end
+    return true
+end
+
 function DisenchantBuddy.RegisterSettings()
     if (not (Settings and Settings.RegisterAddOnCategory)) then
         return

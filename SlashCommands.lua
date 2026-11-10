@@ -14,16 +14,4 @@ function DisenchantBuddy.ProcessCommand()
     Settings.OpenToCategory(DisenchantBuddy.SettingsCategoryID)
 end
 
----@param mod string
-function DisenchantBuddy.IsModifierDown(mod)
-    if mod == "SHIFT" then
-        return IsShiftKeyDown()
-    elseif mod == "ALT" then
-        return IsAltKeyDown()
-    elseif mod == "CONTROL" then
-        return IsControlKeyDown()
-    end
-    return true
-end
-
 SlashCmdList["DisenchantBuddy"] = DisenchantBuddy.ProcessCommand
