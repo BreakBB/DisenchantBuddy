@@ -188,7 +188,7 @@ def get_version_dir(is_release_build, versionOverride):
 
 
 directoriesToInclude = ['DisenchantResults', 'Locales']
-filesToInclude = ['AddDisenchantInfo.lua', 'AddMaterialInfo.lua', 'Materials.lua', 'GameVersions.lua', 'GetTooltipLineData.lua', 'SlashCommands.lua', 'DisenchantBuddy.lua',
+filesToInclude = ['AddDisenchantInfo.lua', 'AddMaterialInfo.lua', 'Materials.lua', 'GameVersions.lua', 'GetTooltipLineData.lua', 'Settings.lua', 'SlashCommands.lua', 'DisenchantBuddy.lua',
                   'DisenchantBuddy.toc', 'DisenchantBuddy_Camelot.toc', 'DisenchantBuddy_Forever.toc', 'logo.png', 'LICENSE']
 ignorePatterns = ["*.test.lua"]
 
