@@ -53,14 +53,6 @@ describe("Settings", function()
         assert.are_same(42, DisenchantBuddy.SettingsCategoryID)
     end)
 
-    it("should not fail when the settings api is missing", function()
-        _G.Settings = nil
-
-        load()
-
-        assert.is_nil(DisenchantBuddy.SettingsCategoryID)
-    end)
-
     it("should offer all modifier options", function()
         load()
 

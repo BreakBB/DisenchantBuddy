@@ -35,10 +35,6 @@ function DisenchantBuddy.IsModifierDown(mod)
 end
 
 function DisenchantBuddy.RegisterSettings()
-    if (not (Settings and Settings.RegisterAddOnCategory)) then
-        return
-    end
-
     local category = Settings.RegisterVerticalLayoutCategory("Disenchant Buddy")
     local setting = Settings.RegisterProxySetting(category, "DISENCHANTBUDDY_MODIFIER", Settings.VarType.String, L["Modifier"], "OFF", GetModifier, SetModifier)
     Settings.CreateDropdown(category, setting, GetModifierOptions, L["Only show disenchant info while this key is held down."])

@@ -7,14 +7,7 @@ describe("SlashCommands", function()
     local DisenchantBuddy
 
     before_each(function()
-        _G.print = spy.new(function() end)
-        _G.DisenchantBuddy_Profile = {}
-
-        DisenchantBuddy = {
-            L = {
-                ["Settings are not available on this client."] = "Settings are not available",
-            }
-        }
+        DisenchantBuddy = {}
         loadfile("SlashCommands.lua")("DisenchantBuddy", DisenchantBuddy)
     end)
 
@@ -31,12 +24,6 @@ describe("SlashCommands", function()
             DisenchantBuddy.ProcessCommand("")
 
             assert.spy(_G.Settings.OpenToCategory).was.called_with(42)
-        end)
-
-        it("should print a message when settings are not available", function()
-            DisenchantBuddy.ProcessCommand("")
-
-            assert.spy(_G.print).was.called_with("Settings are not available")
         end)
     end)
 end)
