@@ -10,5 +10,4 @@ DisenchantBuddy.L = {
     ["Disenchanted from:"] = "Desencantado de:",
     ["Modifier"] = "Modificador",
     ["Only show disenchant info while this key is held down."] = "Mostrar la información de desencantamiento solo mientras se mantiene pulsada esta tecla.",
-    ["Settings are not available on this client."] = "Los ajustes no están disponibles en este cliente.",
 }
