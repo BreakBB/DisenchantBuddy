@@ -60,6 +60,18 @@ describe("MaterialsOverview", function()
         end)
     end)
 
+    describe("GetColumnOffsets", function()
+        it("should place each column after the widest text of the previous one plus the padding", function()
+            local offsets = DisenchantBuddy.GetColumnOffsets(100, {50, 80, 30}, 10)
+
+            assert.are_same({100, 160, 250}, offsets)
+        end)
+
+        it("should return no offsets without columns", function()
+            assert.are_same({}, DisenchantBuddy.GetColumnOffsets(100, {}, 10))
+        end)
+    end)
+
     describe("IsLowChanceExcluded", function()
         it("should exclude low chance results by default", function()
             assert.is_true(DisenchantBuddy.IsLowChanceExcluded())

@@ -21,3 +21,13 @@
 ---@param itemID ItemId
 ---@return number @The price of the item in copper
 function Auctionator.API.v1.GetAuctionPriceByItemID(callerId, itemID) end
+
+---@param callerId string
+---@param term table @Auctionator.Search.SearchTerm
+---@return string
+function Auctionator.API.v1.ConvertToSearchString(callerId, term) end
+
+---@param callerId string
+---@param name string
+---@param searchStrings string[]
+function Auctionator.API.v1.CreateShoppingList(callerId, name, searchStrings) end
