@@ -25,5 +25,15 @@ describe("SlashCommands", function()
 
             assert.spy(_G.Settings.OpenToCategory).was.called_with(42)
         end)
+
+        it("should open the materials overview", function()
+            _G.Settings = { OpenToCategory = spy.new(function() end) }
+            DisenchantBuddy.SettingsCategoryID = 42
+            DisenchantBuddy.MaterialsCategoryID = 43
+
+            DisenchantBuddy.ProcessCommand("materials")
+
+            assert.spy(_G.Settings.OpenToCategory).was.called_with(43)
+        end)
     end)
 end)
