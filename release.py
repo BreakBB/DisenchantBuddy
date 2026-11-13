@@ -13,7 +13,7 @@ version = sys.argv[1]
 
 if not shutil.which('git-cliff'):
     print('git-cliff is needed to generate the changelog. See https://git-cliff.org/docs/installation')
-    exit()
+    sys.exit(1)
 
 if version[0] == "v":
     print('Please omit the "v" prefix. The script will add it')
@@ -41,7 +41,7 @@ with fileinput.FileInput('README.md', inplace=True) as file:
             print(line, end='')
 
 changelogString = subprocess.run(
-    ['git-cliff', '--latest', '--tag', 'v' + version, '--ignore-tags=-b'],
+    ['git-cliff', '--unreleased', '--tag', 'v' + version, '--tag-pattern', r'^v[0-9]+\.[0-9]+\.[0-9]+$'],
     capture_output=True, text=True, check=True
 ).stdout
 
