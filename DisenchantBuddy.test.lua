@@ -44,12 +44,13 @@ describe("DisenchantBuddy", function()
         _G.TooltipDataProcessor = nil
         gameTooltipMock = _G.GameTooltip
 
-        DisenchantBuddy = {L = {}}
+        DisenchantBuddy = {L = {}, CreateMaterialsOverviewFrame = function() return {} end}
         _G.Settings = {
             VarType = {String = "string"},
             RegisterVerticalLayoutCategory = function() return {GetID = function() return 1 end} end,
             RegisterProxySetting = function() end,
             CreateDropdown = function() end,
+            RegisterCanvasLayoutSubcategory = function() return {GetID = function() return 2 end} end,
             RegisterAddOnCategory = function() end,
         }
         -- We use `loadfile` over `require` to be able to hand in our own environment

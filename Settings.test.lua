@@ -2,14 +2,18 @@ describe("Settings", function()
     ---@type DisenchantBuddy
     local DisenchantBuddy
     local category
+    local subcategory
+    local overviewFrame = {}
     local getValue
     local setValue
     local options
 
     local function load()
         DisenchantBuddy = {
+            CreateMaterialsOverviewFrame = function() return overviewFrame end,
             L = {
                 ["Modifier"] = "Modifier",
+                ["Materials"] = "Materials",
                 ["Only show disenchant info while this key is held down."] = "Tooltip",
             }
         }
@@ -18,6 +22,7 @@ describe("Settings", function()
 
     before_each(function()
         category = { GetID = function() return 42 end }
+        subcategory = { GetID = function() return 43 end }
         options = {}
         _G.OFF = "Off"
         _G.SHIFT_KEY_TEXT = "Shift"
@@ -43,6 +48,7 @@ describe("Settings", function()
             end,
             CreateDropdown = spy.new(function(_, _, getOptions) getOptions() end),
             RegisterAddOnCategory = spy.new(function() end),
+            RegisterCanvasLayoutSubcategory = spy.new(function() return subcategory end),
         }
     end)
 
@@ -51,6 +57,13 @@ describe("Settings", function()
 
         assert.spy(_G.Settings.RegisterAddOnCategory).was.called_with(category)
         assert.are_same(42, DisenchantBuddy.SettingsCategoryID)
+    end)
+
+    it("should register the materials overview as subcategory", function()
+        load()
+
+        assert.spy(_G.Settings.RegisterCanvasLayoutSubcategory).was.called_with(category, overviewFrame, "Materials")
+        assert.are_same(43, DisenchantBuddy.MaterialsCategoryID)
     end)
 
     it("should offer all modifier options", function()

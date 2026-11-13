@@ -30,6 +30,7 @@ DisenchantResults/Rare.lua
 DisenchantResults/Epic.lua
 MaterialSources.lua
 AddMaterialInfo.lua
+MaterialsOverview.lua
 Settings.lua
 SlashCommands.lua
 DisenchantBuddy.lua
