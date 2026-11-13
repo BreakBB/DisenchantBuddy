@@ -1,0 +1,27 @@
+# git-cliff configuration: https://git-cliff.org/docs/configuration
+# Only "feat", "fix" and "fix(locale)" commits end up in the changelog.
+
+[changelog]
+body = """
+{% for group, commits in commits | group_by(attribute="group") %}
+## {{ group | striptags | trim }}
+
+{% for commit in commits | sort(attribute="message") -%}
+* {{ commit.message | upper_first }}
+{% endfor %}
+{% endfor %}
+"""
+trim = true
+
+[git]
+conventional_commits = true
+filter_unconventional = true
+filter_commits = true
+tag_pattern = "v[0-9].*"
+# The leading HTML comments only define the order of the groups, they are stripped in the template.
+commit_parsers = [
+    { message = "^feat", group = "<!-- 0 -->New Features" },
+    { message = "^fix\\(locale\\)", group = "<!-- 2 -->Localization Fixes" },
+    { message = "^fix", group = "<!-- 1 -->General Fixes" },
+    { message = ".*", skip = true },
+]

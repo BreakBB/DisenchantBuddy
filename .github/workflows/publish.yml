@@ -32,7 +32,12 @@ jobs:
 
       - name: Generate Changelog
         id: changelog
-        run: python changelog.py >> CHANGELOG.md
+        uses: orhun/git-cliff-action@v4.9.1
+        with:
+          config: cliff.toml
+          args: --current ${{ !contains(github.ref_name, '-b') && '--ignore-tags=-b' || '' }}
+        env:
+          OUTPUT: CHANGELOG.md
 
       - name: Build ZIP
         run: python build.py -r

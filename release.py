@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import changelog  # Our own changelog.py
 import fileinput
+import shutil
 import subprocess
 import sys
 
@@ -10,6 +10,10 @@ if not len(sys.argv) > 1:
     exit()
 
 version = sys.argv[1]
+
+if not shutil.which('git-cliff'):
+    print('git-cliff is needed to generate the changelog. See https://git-cliff.org/docs/installation')
+    exit()
 
 if version[0] == "v":
     print('Please omit the "v" prefix. The script will add it')
@@ -36,7 +40,10 @@ with fileinput.FileInput('README.md', inplace=True) as file:
         else:
             print(line, end='')
 
-changelogString = changelog.get_commit_changelog()
+changelogString = subprocess.run(
+    ['git-cliff', '--latest', '--tag', 'v' + version, '--ignore-tags=-b'],
+    capture_output=True, text=True
+).stdout
 
 print('######### START CHANGELOG')
 print('# Disenchant Buddy v' + version + '\n\n' + changelogString)
@@ -44,5 +51,5 @@ print('######### END CHANGELOG')
 
 subprocess.run(['git', 'add', 'README.md'])
 subprocess.run(['git', 'add', '*.toc'])
-subprocess.run(['git', 'commit', '-mBump version to v' + version])
+subprocess.run(['git', 'commit', '-mchore: bump version to v' + version])
 subprocess.run(['git', 'tag', 'v' + version])
