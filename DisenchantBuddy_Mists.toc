@@ -28,6 +28,7 @@ AddDisenchantInfo.lua
 DisenchantResults/Uncommon.lua
 DisenchantResults/Rare.lua
 DisenchantResults/Epic.lua
+MaterialSources.lua
 AddMaterialInfo.lua
 Settings.lua
 SlashCommands.lua

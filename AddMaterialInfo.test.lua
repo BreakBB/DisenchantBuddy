@@ -39,6 +39,7 @@ describe("AddMaterialInfo", function()
         loadfile("DisenchantResults/Uncommon.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("DisenchantResults/Rare.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("DisenchantResults/Epic.lua")("DisenchantBuddy", DisenchantBuddy)
+        loadfile("MaterialSources.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("AddMaterialInfo.lua")("DisenchantBuddy", DisenchantBuddy)
     end)
 
@@ -79,6 +80,7 @@ describe("AddMaterialInfo", function()
 
     it("should add correct Void Crystal epic item ranges for SoD to material tooltip", function()
         DisenchantBuddy.IsSoD = true
+        loadfile("MaterialSources.lua")("DisenchantBuddy", DisenchantBuddy)
         loadfile("AddMaterialInfo.lua")("DisenchantBuddy", DisenchantBuddy)
 
         DisenchantBuddy.AddMaterialInfo(gameTooltipMock, Materials.VOID_CRYSTAL)
@@ -114,6 +116,7 @@ describe("AddMaterialInfo", function()
         loadfile("DisenchantResults/Uncommon.lua")("DisenchantBuddy", classicDisenchantBuddy)
         loadfile("DisenchantResults/Rare.lua")("DisenchantBuddy", classicDisenchantBuddy)
         loadfile("DisenchantResults/Epic.lua")("DisenchantBuddy", classicDisenchantBuddy)
+        loadfile("MaterialSources.lua")("DisenchantBuddy", classicDisenchantBuddy)
         loadfile("AddMaterialInfo.lua")("DisenchantBuddy", classicDisenchantBuddy)
 
         -- SPIRIT_DUST is not defined for Classic, so its item ID is nil → not in the range map
@@ -139,6 +142,7 @@ describe("AddMaterialInfo", function()
         loadfile("DisenchantResults/Uncommon.lua")("DisenchantBuddy", tbcDisenchantBuddy)
         loadfile("DisenchantResults/Rare.lua")("DisenchantBuddy", tbcDisenchantBuddy)
         loadfile("DisenchantResults/Epic.lua")("DisenchantBuddy", tbcDisenchantBuddy)
+        loadfile("MaterialSources.lua")("DisenchantBuddy", tbcDisenchantBuddy)
         loadfile("AddMaterialInfo.lua")("DisenchantBuddy", tbcDisenchantBuddy)
 
         -- HYPNOTIC_DUST is not defined for TBC, so its item ID is nil → not in the range map
