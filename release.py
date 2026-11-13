@@ -42,7 +42,7 @@ with fileinput.FileInput('README.md', inplace=True) as file:
 
 changelogString = subprocess.run(
     ['git-cliff', '--latest', '--tag', 'v' + version, '--ignore-tags=-b'],
-    capture_output=True, text=True
+    capture_output=True, text=True, check=True
 ).stdout
 
 print('######### START CHANGELOG')
