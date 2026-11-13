@@ -14,6 +14,25 @@ Keep changes as small as possible.
 
 ---
 
+## Commits
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/) (`<type>(<scope>): <description>`).
+The changelog is generated from them with [git-cliff](https://git-cliff.org) (see `cliff.toml`).
+
+| Type / scope         | Changelog section   |
+|----------------------|---------------------|
+| `feat`               | New Features        |
+| `fix`                | General Fixes       |
+| `fix(locale)`        | Localization Fixes  |
+| everything else      | not listed          |
+
+- Other types: `refactor`, `docs`, `test`, `ci`, `chore`, `build`.
+- Write `feat` and `fix` descriptions for end users, because they are published as release notes.
+- Use the imperative mood and keep the description short (e.g. `fix: show correct price for rare items`).
+- Keep tests in the same commit as the change they cover.
+
+---
+
 ## Build / Lint / Test Commands
 
 | Purpose                      | Command                                                  |
@@ -23,7 +42,7 @@ Keep changes as small as possible.
 | Run a single test file       | `busted -p ".test.lua" DisenchantResults/Rare.test.lua`  |
 | Run tests matching a pattern | `busted -p ".test.lua" --filter "should show tooltip" .` |
 | Build the addon              | `python build.py`                                        |
-| Generate changelog           | `python changelog.py`                                    |
+| Generate changelog           | `git-cliff --unreleased`                                 |
 
 > **Single test tip:** Use `--filter "<pattern>"` with a substring of the test name to run one specific `it()` block.
 

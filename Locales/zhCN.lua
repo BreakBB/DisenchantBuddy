@@ -8,6 +8,7 @@ end
 DisenchantBuddy.L = {
     ["Disenchant results:"] = "分解结果：",
     ["Disenchanted from:"] = "分解自：",
-    ["Modifier is now: %s"] = "修改键现在为：%s",
-    ["Syntax:"] = "用法：",
+    ["Modifier"] = "修改键",
+    ["Only show disenchant info while this key is held down."] = "仅在按住此键时显示分解信息。",
+    ["Settings are not available on this client."] = "此客户端不支持设置。",
 }

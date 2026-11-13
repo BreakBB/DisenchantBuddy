@@ -8,6 +8,7 @@ end
 DisenchantBuddy.L = {
     ["Disenchant results:"] = "Disenchant results:",
     ["Disenchanted from:"] = "Disenchanted from:",
-    ["Modifier is now: %s"] = "Modifier is now: %s",
-    ["Syntax:"] = "Syntax:",
+    ["Modifier"] = "Modifier",
+    ["Only show disenchant info while this key is held down."] = "Only show disenchant info while this key is held down.",
+    ["Settings are not available on this client."] = "Settings are not available on this client.",
 }
