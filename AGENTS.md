@@ -27,6 +27,7 @@ The changelog is generated from them with [git-cliff](https://git-cliff.org) (se
 | everything else      | not listed          |
 
 - Other types: `refactor`, `docs`, `test`, `ci`, `chore`, `build`.
+- Only use `feat` and `fix` for changes that actually matter to users; use another type for internal changes (e.g. fixes of unreleased code, refactorings, tests).
 - Write `feat` and `fix` descriptions for end users, because they are published as release notes.
 - Use the imperative mood and keep the description short (e.g. `fix: show correct price for rare items`).
 - Keep tests in the same commit as the change they cover.
