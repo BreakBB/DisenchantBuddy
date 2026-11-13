@@ -10,4 +10,11 @@ DisenchantBuddy.L = {
     ["Disenchanted from:"] = "Désenchanté de :",
     ["Modifier"] = "Modificateur",
     ["Only show disenchant info while this key is held down."] = "N'afficher les infos de désenchantement que lorsque cette touche est maintenue enfoncée.",
+    ["Materials"] = "Matériaux",
+    ["Dusts"] = "Poussières",
+    ["Essences"] = "Essences",
+    ["Shards"] = "Éclats",
+    ["Crystals"] = "Cristaux",
+    ["Item Level"] = "Niveau d'objet",
+    ["Exclude low-chance results"] = "Exclure les résultats à faible probabilité",
 }

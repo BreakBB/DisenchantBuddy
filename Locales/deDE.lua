@@ -10,4 +10,11 @@ DisenchantBuddy.L = {
     ["Disenchanted from:"] = "Entzaubert von:",
     ["Modifier"] = "Modifikatortaste",
     ["Only show disenchant info while this key is held down."] = "Disenchant-Infos nur anzeigen, solange diese Taste gedrückt wird.",
+    ["Materials"] = "Materialien",
+    ["Dusts"] = "Staub",
+    ["Essences"] = "Essenzen",
+    ["Shards"] = "Splitter",
+    ["Crystals"] = "Kristalle",
+    ["Item Level"] = "Gegenstandsstufe",
+    ["Exclude low-chance results"] = "Ergebnisse mit geringer Chance ausschließen",
 }

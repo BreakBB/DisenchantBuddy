@@ -38,9 +38,11 @@ function DisenchantBuddy.RegisterSettings()
     local category = Settings.RegisterVerticalLayoutCategory("Disenchant Buddy")
     local setting = Settings.RegisterProxySetting(category, "DISENCHANTBUDDY_MODIFIER", Settings.VarType.String, L["Modifier"], "OFF", GetModifier, SetModifier)
     Settings.CreateDropdown(category, setting, GetModifierOptions, L["Only show disenchant info while this key is held down."])
+    local materialsCategory = Settings.RegisterCanvasLayoutSubcategory(category, DisenchantBuddy.CreateMaterialsOverviewFrame(), L["Materials"])
     Settings.RegisterAddOnCategory(category)
 
     DisenchantBuddy.SettingsCategoryID = category:GetID()
+    DisenchantBuddy.MaterialsCategoryID = materialsCategory:GetID()
 end
 
 DisenchantBuddy.RegisterSettings()
