@@ -17,4 +17,8 @@ DisenchantBuddy.L = {
     ["Crystals"] = "水晶",
     ["Item Level"] = "物品等级",
     ["Exclude low-chance results"] = "排除低概率结果",
+    ["Shopping list"] = "购物清单",
+    ["Create an Auctionator shopping list for all items that disenchant into this material."] = "创建一个Auctionator购物清单，包含所有可分解为此材料的物品。",
+    ["Created Auctionator shopping list: %s"] = "已创建Auctionator购物清单：%s",
+    ["No item sources left after excluding low-chance results."] = "排除低概率结果后没有剩余物品。",
 }

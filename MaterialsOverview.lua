@@ -12,9 +12,10 @@ local ITEM_CLASS_IDS = {armor = 4, weapon = 2}
 local ICON_SIZE = 24
 local LINE_HEIGHT = 16
 local ROW_SPACING = 8
-local SOURCE_COLUMN = 220
-local ITEM_LEVEL_COLUMN = 370
-local CHANCE_COLUMN = 470
+local SOURCE_COLUMN = 165
+local COLUMN_PADDING = 16
+local MIN_SHOPPING_LIST_BUTTON_WIDTH = 90
+local SHOPPING_LIST_BUTTON_TEXT_PADDING = 24
 
 function DisenchantBuddy.IsLowChanceExcluded()
     return (not DisenchantBuddy_Profile) or DisenchantBuddy_Profile.ExcludeLowChance ~= false
@@ -66,6 +67,21 @@ function DisenchantBuddy.GetMaterialGroups()
     return groups
 end
 
+---Calculates the left offset of each column, so that every column starts after the widest text of the previous one
+---@param startX number
+---@param widths number[] widest text of each column
+---@param padding number
+---@return number[]
+function DisenchantBuddy.GetColumnOffsets(startX, widths, padding)
+    local offsets = {}
+    local x = startX
+    for i, width in ipairs(widths) do
+        offsets[i] = x
+        x = x + width + padding
+    end
+    return offsets
+end
+
 ---@param min number
 ---@param max number
 ---@return string
@@ -91,8 +107,10 @@ end
 ---@param itemId ItemId
 ---@param y number
 ---@param lowChanceLines FontString[]
+---@param columns FontString[][] the texts of each column, to be positioned after all rows exist
+---@param buttons Button[]
 ---@return number height of the row
-local function createMaterialRow(parent, itemId, y, lowChanceLines)
+local function createMaterialRow(parent, itemId, y, lowChanceLines, columns, buttons)
     local icon = CreateFrame("Button", nil, parent)
     icon:SetSize(ICON_SIZE, ICON_SIZE)
     icon:SetPoint("TOPLEFT", 0, y)
@@ -126,18 +144,40 @@ local function createMaterialRow(parent, itemId, y, lowChanceLines)
         end
     end)
 
+    if DisenchantBuddy.IsAuctionatorAvailable() then
+        local shoppingListButton = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
+        shoppingListButton:SetHeight(22)
+        shoppingListButton:SetPoint("TOPRIGHT", 0, y)
+        shoppingListButton:SetText(L["Shopping list"])
+        shoppingListButton:SetScript("OnClick", function()
+            DisenchantBuddy.CreateShoppingList(itemId)
+        end)
+        shoppingListButton:SetScript("OnEnter", function(self)
+            GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+            GameTooltip:SetText(L["Create an Auctionator shopping list for all items that disenchant into this material."], nil, nil, nil, nil, true)
+            GameTooltip:Show()
+        end)
+        shoppingListButton:SetScript("OnLeave", function()
+            GameTooltip:Hide()
+        end)
+        table.insert(buttons, shoppingListButton)
+    end
+
     local sources = DisenchantBuddy.GetMaterialSources(itemId)
     for i, source in ipairs(sources) do
         local lineY = y - (i - 1) * LINE_HEIGHT
-        local columns = {
-            {x = SOURCE_COLUMN, text = getSourceLabel(source)},
-            {x = ITEM_LEVEL_COLUMN, text = L["Item Level"] .. " " .. formatRange(source.minItemLevel, source.maxItemLevel)},
-            {x = CHANCE_COLUMN, text = formatRange(source.minChance, source.maxChance) .. "%"},
+        local texts = {
+            getSourceLabel(source),
+            L["Item Level"] .. " " .. formatRange(source.minItemLevel, source.maxItemLevel),
+            formatRange(source.minChance, source.maxChance) .. "%",
         }
-        for _, column in ipairs(columns) do
+        for columnIndex, value in ipairs(texts) do
             local text = parent:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-            text:SetPoint("TOPLEFT", column.x, lineY)
-            text:SetText(column.text)
+            text:SetPoint("TOPLEFT", SOURCE_COLUMN, lineY)
+            text:SetText(value)
+            text.lineY = lineY
+            columns[columnIndex] = columns[columnIndex] or {}
+            table.insert(columns[columnIndex], text)
             if source.isLowChance then
                 table.insert(lowChanceLines, text)
             end
@@ -145,6 +185,33 @@ local function createMaterialRow(parent, itemId, y, lowChanceLines)
     end
 
     return math.max(ICON_SIZE, #sources * LINE_HEIGHT) + ROW_SPACING
+end
+
+---Positions the columns by the widest text of each column, as translated texts differ a lot in their length
+---@param columns FontString[][]
+local function positionColumns(columns)
+    local widths = {}
+    for i, texts in ipairs(columns) do
+        widths[i] = 0
+        for _, text in ipairs(texts) do
+            widths[i] = math.max(widths[i], text:GetStringWidth())
+        end
+    end
+    local offsets = DisenchantBuddy.GetColumnOffsets(SOURCE_COLUMN, widths, COLUMN_PADDING)
+    for i, texts in ipairs(columns) do
+        for _, text in ipairs(texts) do
+            text:ClearAllPoints()
+            text:SetPoint("TOPLEFT", offsets[i], text.lineY)
+        end
+    end
+end
+
+---Sizes all buttons to fit the translated text
+---@param buttons Button[]
+local function sizeButtons(buttons)
+    for _, button in ipairs(buttons) do
+        button:SetWidth(math.max(MIN_SHOPPING_LIST_BUTTON_WIDTH, button:GetFontString():GetStringWidth() + SHOPPING_LIST_BUTTON_TEXT_PADDING))
+    end
 end
 
 ---@param frame Frame
@@ -161,16 +228,17 @@ local function buildOverview(frame)
         end
     end
 
+    local checkboxLabel = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
+    checkboxLabel:SetPoint("TOPRIGHT", -16, -18)
+    checkboxLabel:SetText(L["Exclude low-chance results"])
+
     local checkbox = CreateFrame("CheckButton", nil, frame, "UICheckButtonTemplate")
-    checkbox:SetPoint("TOPRIGHT", -200, -10)
+    checkbox:SetPoint("RIGHT", checkboxLabel, "LEFT", -4, 0)
     checkbox:SetChecked(DisenchantBuddy.IsLowChanceExcluded())
     checkbox:SetScript("OnClick", function(self)
         DisenchantBuddy.SetLowChanceExcluded(self:GetChecked() and true or false)
         refreshLowChanceLines()
     end)
-    local checkboxLabel = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-    checkboxLabel:SetPoint("LEFT", checkbox, "RIGHT", 4, 0)
-    checkboxLabel:SetText(L["Exclude low-chance results"])
 
     local scrollFrame = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
     scrollFrame:SetPoint("TOPLEFT", 16, -50)
@@ -178,6 +246,8 @@ local function buildOverview(frame)
     local content = CreateFrame("Frame", nil, scrollFrame)
     scrollFrame:SetScrollChild(content)
 
+    local columns = {}
+    local buttons = {}
     local y = 0
     for _, group in ipairs(DisenchantBuddy.GetMaterialGroups()) do
         local header = content:CreateFontString(nil, "ARTWORK", "GameFontNormal")
@@ -185,11 +255,18 @@ local function buildOverview(frame)
         header:SetText(L[GROUP_LABELS[group.key]])
         y = y - LINE_HEIGHT - 4
         for _, itemId in ipairs(group.itemIds) do
-            y = y - createMaterialRow(content, itemId, y, lowChanceLines)
+            y = y - createMaterialRow(content, itemId, y, lowChanceLines, columns, buttons)
         end
         y = y - ROW_SPACING
     end
-    content:SetSize(CHANCE_COLUMN + 100, -y)
+    content:SetHeight(-y)
+    positionColumns(columns)
+    sizeButtons(buttons)
+    -- Keeps the right aligned shopping list buttons inside the visible area
+    scrollFrame:HookScript("OnSizeChanged", function(_, width)
+        content:SetWidth(width)
+    end)
+    content:SetWidth(scrollFrame:GetWidth())
 
     refreshLowChanceLines()
 end

@@ -17,4 +17,8 @@ DisenchantBuddy.L = {
     ["Crystals"] = "Кристаллы",
     ["Item Level"] = "Уровень предмета",
     ["Exclude low-chance results"] = "Исключить результаты с низким шансом",
+    ["Shopping list"] = "Список покупок",
+    ["Create an Auctionator shopping list for all items that disenchant into this material."] = "Создать список покупок Auctionator со всеми предметами, которые распыляются в этот материал.",
+    ["Created Auctionator shopping list: %s"] = "Создан список покупок Auctionator: %s",
+    ["No item sources left after excluding low-chance results."] = "После исключения результатов с низким шансом предметов не осталось.",
 }
