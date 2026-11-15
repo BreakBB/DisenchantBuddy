@@ -21,4 +21,8 @@ DisenchantBuddy.L = {
     ["Create an Auctionator shopping list for all items that disenchant into this material."] = "创建一个Auctionator购物清单，包含所有可分解为此材料的物品。",
     ["Created Auctionator shopping list: %s"] = "已创建Auctionator购物清单：%s",
     ["No item sources left after excluding low-chance results."] = "排除低概率结果后没有剩余物品。",
+    ["Show prices per material"] = "显示每种材料的价格",
+    ["Show the Auctionator price of each material in the tooltip."] = "在鼠标提示中显示每种材料的 Auctionator 价格。",
+    ["Show average price"] = "显示平均价格",
+    ["Show the average disenchant value based on Auctionator prices in the tooltip."] = "在鼠标提示中显示基于 Auctionator 价格的平均分解价值。",
 }

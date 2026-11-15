@@ -72,6 +72,7 @@ describe("AddDisenchantInfo", function()
             end,
         }
         _G.Auctionator = nil
+        _G.DisenchantBuddy_Profile = nil
 
         DisenchantBuddy = {}
         -- We use `loadfile` over `require` to be able to hand in our own environment
@@ -345,6 +346,60 @@ describe("AddDisenchantInfo", function()
         assert.spy(gameTooltipMock.AddLine).was.called_with(gameTooltipMock, "Disenchant results:")
         assert.spy(gameTooltipMock.AddDoubleLine)
             .was.called_with(_, "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r", "100% (1x)")
+    end)
+
+    it("should not show auction price for materials when disabled in the settings", function()
+        _G.DisenchantBuddy_Profile = { ShowMaterialPrices = false }
+        _G.Auctionator = {
+            API = {
+                v1 = {
+                    GetAuctionPriceByItemID = spy.new(function()
+                        return 12345
+                    end)
+                }
+            }
+        }
+        _G.C_Item.GetItemInfo = spy.new(function()
+            return nil, nil, Enum.ItemQuality.Epic, 60, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+        end)
+        _G.GetCoinTextureString = function(amount)
+            return tostring(amount)
+        end
+
+        loadfile("GetTooltipLineData.lua")("DisenchantBuddy", DisenchantBuddy)
+        loadfile("AddDisenchantInfo.lua")("DisenchantBuddy", DisenchantBuddy)
+        DisenchantBuddy.AddDisenchantInfo(gameTooltipMock, "itemLink")
+
+        assert.spy(gameTooltipMock.AddDoubleLine)
+            .was.called_with(_, "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r", "100% (1x)")
+        assert.spy(gameTooltipMock.AddDoubleLine).was.called_with(_, " ", "Ø " .. _G.HIGHLIGHT_FONT_COLOR_CODE .. "12345|r")
+    end)
+
+    it("should not show average disenchant value when disabled in the settings", function()
+        _G.DisenchantBuddy_Profile = { ShowAveragePrice = false }
+        _G.Auctionator = {
+            API = {
+                v1 = {
+                    GetAuctionPriceByItemID = spy.new(function()
+                        return 12345
+                    end)
+                }
+            }
+        }
+        _G.C_Item.GetItemInfo = spy.new(function()
+            return nil, nil, Enum.ItemQuality.Epic, 60, nil, nil, nil, nil, nil, nil, nil, Enum.ItemClass.Armor
+        end)
+        _G.GetCoinTextureString = function(amount)
+            return tostring(amount)
+        end
+
+        loadfile("GetTooltipLineData.lua")("DisenchantBuddy", DisenchantBuddy)
+        loadfile("AddDisenchantInfo.lua")("DisenchantBuddy", DisenchantBuddy)
+        DisenchantBuddy.AddDisenchantInfo(gameTooltipMock, "itemLink")
+
+        assert.spy(gameTooltipMock.AddDoubleLine)
+            .was.called_with(_, "  |T132880:0|t " .. Colors.EPIC .. "Nexus Crystal" .. "|r", "100% (1 x " .. _G.HIGHLIGHT_FONT_COLOR_CODE .. "12345|r)")
+        assert.spy(gameTooltipMock.AddDoubleLine).was_not.called_with(_, " ", _)
     end)
 
     it("should translate tooltip header line", function()

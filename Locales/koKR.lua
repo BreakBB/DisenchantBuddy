@@ -21,4 +21,8 @@ DisenchantBuddy.L = {
     ["Create an Auctionator shopping list for all items that disenchant into this material."] = "이 재료로 마력 추출되는 모든 아이템으로 Auctionator 구매 목록을 만듭니다.",
     ["Created Auctionator shopping list: %s"] = "Auctionator 구매 목록 생성됨: %s",
     ["No item sources left after excluding low-chance results."] = "확률이 낮은 결과를 제외하면 남는 아이템이 없습니다.",
+    ["Show prices per material"] = "재료별 가격 표시",
+    ["Show the Auctionator price of each material in the tooltip."] = "툴팁에 각 재료의 Auctionator 가격을 표시합니다.",
+    ["Show average price"] = "평균 가격 표시",
+    ["Show the average disenchant value based on Auctionator prices in the tooltip."] = "툴팁에 Auctionator 가격을 기준으로 한 평균 마력 추출 가치를 표시합니다.",
 }

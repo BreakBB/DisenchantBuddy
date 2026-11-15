@@ -3,6 +3,12 @@ local DisenchantBuddy = select(2, ...)
 
 DisenchantBuddy.FormatCoin = GetCoinTextureString or (C_CurrencyInfo and C_CurrencyInfo.GetCoinTextureString)
 
+---@param key string
+---@return boolean
+function DisenchantBuddy.IsSettingEnabled(key)
+    return (not DisenchantBuddy_Profile) or DisenchantBuddy_Profile[key] ~= false
+end
+
 ---@class TooltipLineData
 ---@field left string
 ---@field right string
@@ -27,7 +33,7 @@ function DisenchantBuddy.GetTooltipLineData(item, result)
     local auctionValue = 0
     if Auctionator then
         auctionValue = Auctionator.API.v1.GetAuctionPriceByItemID("DisenchantBuddy", result.itemId)
-        if auctionValue then
+        if auctionValue and DisenchantBuddy.IsSettingEnabled("ShowMaterialPrices") then
             rightSide = rightSide .. " x " .. HIGHLIGHT_FONT_COLOR_CODE .. DisenchantBuddy.FormatCoin(auctionValue, 12) .. "|r"
         else
             rightSide = rightSide .. "x"

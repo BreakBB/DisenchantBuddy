@@ -21,4 +21,8 @@ DisenchantBuddy.L = {
     ["Create an Auctionator shopping list for all items that disenchant into this material."] = "Criar uma lista de compras do Auctionator com todos os itens que se desencantam neste material.",
     ["Created Auctionator shopping list: %s"] = "Lista de compras do Auctionator criada: %s",
     ["No item sources left after excluding low-chance results."] = "Nenhum item restante após excluir resultados de baixa chance.",
+    ["Show prices per material"] = "Mostrar preços por material",
+    ["Show the Auctionator price of each material in the tooltip."] = "Mostra o preço do Auctionator de cada material na dica.",
+    ["Show average price"] = "Mostrar preço médio",
+    ["Show the average disenchant value based on Auctionator prices in the tooltip."] = "Mostra o valor médio de desencantamento com base nos preços do Auctionator na dica.",
 }
