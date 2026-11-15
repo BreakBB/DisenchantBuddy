@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import fileinput
-import shutil
 import subprocess
 import sys
 
@@ -10,10 +9,6 @@ if not len(sys.argv) > 1:
     exit()
 
 version = sys.argv[1]
-
-if not shutil.which('git-cliff'):
-    print('git-cliff is needed to generate the changelog. See https://git-cliff.org/docs/installation')
-    sys.exit(1)
 
 if version[0] == "v":
     print('Please omit the "v" prefix. The script will add it')
@@ -39,15 +34,6 @@ with fileinput.FileInput('README.md', inplace=True) as file:
                 '[![Downloads Latest](https://img.shields.io/github/downloads/BreakBB/DisenchantBuddy/v' + version + '/total.svg)](https://github.com/BreakBB/DisenchantBuddy/releases/latest)')
         else:
             print(line, end='')
-
-changelogString = subprocess.run(
-    ['git-cliff', '--unreleased', '--tag', 'v' + version, '--tag-pattern', r'^v[0-9]+\.[0-9]+\.[0-9]+$'],
-    capture_output=True, text=True, check=True
-).stdout
-
-print('######### START CHANGELOG')
-print('# Disenchant Buddy v' + version + '\n\n' + changelogString)
-print('######### END CHANGELOG')
 
 subprocess.run(['git', 'add', 'README.md'])
 subprocess.run(['git', 'add', '*.toc'])
