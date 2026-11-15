@@ -78,7 +78,7 @@ function DisenchantBuddy.AddDisenchantInfo(tooltip, itemLink)
                     tooltip:AddDoubleLine(line.left, line.right)
                 end
 
-                if averageValue > 0 then
+                if averageValue > 0 and DisenchantBuddy.IsSettingEnabled("ShowAveragePrice") then
                     averageValue = math.floor(averageValue + 0.5) -- Round to nearest copper, because GetCoinTextureString does not handle fractions
                     tooltip:AddDoubleLine(" ", "Ø " .. HIGHLIGHT_FONT_COLOR_CODE .. DisenchantBuddy.FormatCoin(averageValue, 12) .. "|r")
                 end

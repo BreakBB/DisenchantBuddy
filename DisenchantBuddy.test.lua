@@ -46,10 +46,11 @@ describe("DisenchantBuddy", function()
 
         DisenchantBuddy = {L = {}, CreateMaterialsOverviewFrame = function() return {} end}
         _G.Settings = {
-            VarType = {String = "string"},
+            VarType = {String = "string", Boolean = "boolean"},
             RegisterVerticalLayoutCategory = function() return {GetID = function() return 1 end} end,
             RegisterProxySetting = function() end,
             CreateDropdown = function() end,
+            CreateCheckbox = function() return { AddModifyPredicate = function() end } end,
             RegisterCanvasLayoutSubcategory = function() return {GetID = function() return 2 end} end,
             RegisterAddOnCategory = function() end,
         }
