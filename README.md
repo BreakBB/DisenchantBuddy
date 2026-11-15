@@ -8,6 +8,11 @@ It helps players to quickly see what materials they can expect to receive from d
 
 When [Auctionator](https://github.com/Auctionator/Auctionator) is installed, then Disenchant Buddy will also show the auction prices for the materials.
 
+## Slash commands
+
+- `/debuddy` or `/disenchantbuddy`: opens the settings
+- `/debuddy materials`: opens the materials overview
+
 ## Compatibility
 
 Disenchant Buddy is compatible with and available for the following World of Warcraft versions:
@@ -17,6 +22,7 @@ Disenchant Buddy is compatible with and available for the following World of War
 - Wrath of the Lich King :white_check_mark:
 - Cataclysm :white_check_mark:
 - Mists of Pandaria :white_check_mark:
+- Forever :white_check_mark:
 - Retail :x: (not planned)
 
 ## Installation
@@ -29,6 +35,7 @@ Alternatively you can always use [the latest GitHub release](https://github.com/
 1. Extract the contents of the zip file to your World of Warcraft Interface\AddOns directory:
     - Era/HC/Anniversary/SoD: `World of Warcraft\_classic_era_\Interface\AddOns\DisenchantBuddy`
     - Cata and beyond: `World of Warcraft\_classic_\Interface\AddOns\DisenchantBuddy`
+    - Forever: `World of Warcraft\_forever_\Interface\AddOns\DisenchantBuddy`
 2. Restart World of Warcraft or reload your UI
 
 ## Development
