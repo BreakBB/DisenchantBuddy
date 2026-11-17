@@ -13,6 +13,13 @@ When [Auctionator](https://github.com/Auctionator/Auctionator) is installed, the
 - `/debuddy` or `/disenchantbuddy`: opens the settings
 - `/debuddy materials`: opens the materials overview
 
+## API for other addons
+
+`DisenchantBuddy.API.v1.GetDisenchantResults(callerName, itemLinkOrId)` returns a list of
+`{ itemId, probability (0-100), minQuantity, maxQuantity }` entries for the given item.
+`callerName` must be the name of your addon.
+It returns `nil` for invalid arguments, unknown or uncached items and items that can't be disenchanted.
+
 ## Compatibility
 
 Disenchant Buddy is compatible with and available for the following World of Warcraft versions:

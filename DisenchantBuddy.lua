@@ -7,7 +7,7 @@ local GetItemInfo = C_Item.GetItemInfo or GetItemInfo
 local AddDisenchantInfo = DisenchantBuddy.AddDisenchantInfo
 local AddMaterialInfo = DisenchantBuddy.AddMaterialInfo
 
-local notDisenchantableItems = {
+DisenchantBuddy.NotDisenchantableItems = {
     [11287] = true, -- Lesser Magic Wand
     [11288] = true, -- Greater Magic Wand
     [11289] = true, -- Lesser Mystic Wand
@@ -16,6 +16,7 @@ local notDisenchantableItems = {
     [20407] = true, -- Twilight Cultist Robe
     [20408] = true, -- Twilight Cultist Cowl
 }
+local notDisenchantableItems = DisenchantBuddy.NotDisenchantableItems
 
 ---@param tooltip GameTooltip
 function DisenchantBuddy.OnTooltipSetItem(tooltip)
