@@ -28,6 +28,7 @@ AddDisenchantInfo.lua
 DisenchantResults/Uncommon.lua
 DisenchantResults/Rare.lua
 DisenchantResults/Epic.lua
+API.lua
 MaterialSources.lua
 AddMaterialInfo.lua
 AuctionatorShoppingList.lua
