@@ -45,7 +45,7 @@ This program accepts optional command line options:
 '''
 addonDir = 'DisenchantBuddy'
 includedExpansions = []
-tocs = ['', 'DisenchantBuddy_Vanilla.toc', 'DisenchantBuddy_TBC.toc', 'DisenchantBuddy_Wrath.toc', '', 'DisenchantBuddy_Mists.toc', 'DisenchantBuddy_Camelot.toc',
+tocs = ['', 'DisenchantBuddy_Vanilla.toc', 'DisenchantBuddy_TBC.toc', 'DisenchantBuddy_Wrath.toc', '', 'DisenchantBuddy_Mists.toc',
         'DisenchantBuddy_Forever.toc']
 
 
@@ -189,7 +189,7 @@ def get_version_dir(is_release_build, versionOverride):
 
 directoriesToInclude = ['DisenchantResults', 'Locales']
 filesToInclude = ['AddDisenchantInfo.lua', 'AddMaterialInfo.lua', 'MaterialSources.lua', 'MaterialsOverview.lua', 'AuctionatorShoppingList.lua', 'Materials.lua', 'GameVersions.lua', 'GetTooltipLineData.lua', 'Settings.lua', 'SlashCommands.lua', 'DisenchantBuddy.lua',
-                  'DisenchantBuddy.toc', 'DisenchantBuddy_Camelot.toc', 'DisenchantBuddy_Forever.toc', 'logo.png', 'LICENSE']
+                  'DisenchantBuddy.toc', 'DisenchantBuddy_Forever.toc', 'logo.png', 'LICENSE']
 ignorePatterns = ["*.test.lua"]
 
 

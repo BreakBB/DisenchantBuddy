@@ -15,7 +15,7 @@ if version[0] == "v":
     exit()
 
 tocs = ['DisenchantBuddy_Vanilla.toc', 'DisenchantBuddy_TBC.toc', 'DisenchantBuddy_Wrath.toc', 'DisenchantBuddy_Cata.toc', 'DisenchantBuddy_Mists.toc',
-        'DisenchantBuddy_Camelot.toc', 'DisenchantBuddy_Forever.toc']
+        'DisenchantBuddy_Forever.toc']
 
 for toc in tocs:
     with fileinput.FileInput(toc, inplace=True) as file:
